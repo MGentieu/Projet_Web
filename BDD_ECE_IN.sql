@@ -30,6 +30,7 @@ CREATE TABLE Administrateur (
 email_admin VARCHAR(50) NOT NULL primary key ,
 mot_de_passe VARCHAR(30) NOT NULL ,
 nom VARCHAR(30) NOT NULL ,
+prenom VARCHAR(30) NOT NULL ,
 num_telephone Numeric(10) NOT NULL
 ) ;
 
@@ -44,6 +45,7 @@ CREATE TABLE Auteur (
 email_auteur VARCHAR(50) NOT NULL primary key ,
 mot_de_passe VARCHAR(30) NOT NULL ,
 nom VARCHAR(30) NOT NULL ,
+prenom VARCHAR(30) NOT NULL ,
 num_telephone Numeric(10) NOT NULL,
 Description VARCHAR(300) ,
 id_im_de_fond Numeric(6),
@@ -121,6 +123,7 @@ CREATE TABLE Photo (
 id_photo Numeric(6) NOT NULL primary key,
 email_auteur VARCHAR(50) NOT NULL,
 alt VARCHAR(50),
+url VARCHAR(100) NOT NULL,
 date_prise DATE NOT NULL,
 heure_prise Time NOT NULL,
 date_post DATE NOT NULL,
@@ -133,6 +136,7 @@ CREATE TABLE Video (
 id_video Numeric(6) NOT NULL primary key,
 email_auteur VARCHAR(50) NOT NULL,
 alt VARCHAR(50),
+url VARCHAR(100) NOT NULL,
 date_prise DATE NOT NULL,
 heure_prise Time NOT NULL,
 date_post DATE NOT NULL,
@@ -145,6 +149,7 @@ CREATE TABLE Evenement (
 id_evenement Numeric(6) NOT NULL primary key,
 email_auteur VARCHAR(50) NOT NULL,
 alt VARCHAR(50),
+url VARCHAR(100) NOT NULL,
 date_debut DATE NOT NULL,
 heure_debut Time NOT NULL,
 date_fin DATE NOT NULL,
@@ -252,6 +257,17 @@ constraint FK1 foreign key (id_evenement) references Evenement(id_evenement),
 constraint FK2 foreign key (email_auteur) references Auteur(email_auteur)
 ) ;
 
+
 INSERT INTO Image_de_fond (id_im_de_fond,alt,url) VALUES
 (145201,"Image de Paris","Paris.png");
+
+INSERT INTO Auteur (email_auteur,id_im_de_fond,mot_de_passe,nom,prenom,num_telephone,Description) VALUES
+("hgentieu97@gmail.com",145201,"volcan1","Gentieu","Hector",0620212425,"J'aime les pommes");
+INSERT INTO Auteur (email_auteur,id_im_de_fond,mot_de_passe,nom,prenom,num_telephone,Description) VALUES 
+("hgentieu98@gmail.com",145201,"siecle2","Gentieu","Hervé",0624212066,"J'aime les poires");
+
+INSERT INTO Administrateur (email_admin,mot_de_passe,nom,prenom,num_telephone) VALUES
+("hergentieu02@gmail.com","volcan1","Gentieu","Martin",0695973078);
+
+INSERT INTO Amitie VALUES ("hgentieu97@gmail.com","hergentieu02@gmail.com");
 
