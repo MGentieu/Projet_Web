@@ -112,11 +112,11 @@ constraint FK1 foreign key (siret) references Entite(siret)
 
 CREATE TABLE Candidature(
 reference_offre VARCHAR(25) NOT NULL ,
-siret Numeric(14) NOT NULL,
+email_auteur VARCHAR(50) NOT NULL,
 date_candidature DATE NOT NULL,
-PRIMARY KEY (reference_offre, siret),
+PRIMARY KEY (reference_offre, email_auteur),
 constraint FK1 foreign key (reference_offre) references Offre_emploi(reference_offre),
-constraint FK2 foreign key (siret) references Entite(siret)
+constraint FK2 foreign key (email_auteur) references Auteur(email_auteur)
 ) ;
 
 CREATE TABLE Photo (
@@ -264,10 +264,74 @@ INSERT INTO Image_de_fond (id_im_de_fond,alt,url) VALUES
 INSERT INTO Auteur (email_auteur,id_im_de_fond,mot_de_passe,nom,prenom,num_telephone,Description) VALUES
 ("hgentieu97@gmail.com",145201,"volcan1","Gentieu","Hector",0620212425,"J'aime les pommes");
 INSERT INTO Auteur (email_auteur,id_im_de_fond,mot_de_passe,nom,prenom,num_telephone,Description) VALUES 
-("hgentieu98@gmail.com",145201,"siecle2","Gentieu","Hervé",0624212066,"J'aime les poires");
+("hergentieu98@gmail.com",145201,"siecle2","Gentieu","Hervé",0624212066,"J'aime les poires");
 
 INSERT INTO Administrateur (email_admin,mot_de_passe,nom,prenom,num_telephone) VALUES
-("hergentieu02@gmail.com","volcan1","Gentieu","Martin",0695973078);
+("mgentieu02@gmail.com","volcan1","Gentieu","Martin",0695973078);
 
 INSERT INTO Amitie VALUES ("hgentieu97@gmail.com","hergentieu02@gmail.com");
+
+INSERT INTO `photo` (`id_photo`, `email_auteur`, `alt`, `url`, `date_prise`, `heure_prise`, `date_post`, `heure_post`, `texte_post`) 
+VALUES ('1', 'hgentieu97@gmail.com', 'photo_sympa', 'machin.png', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', 'Superbe photo d\'un machin.');
+
+
+INSERT INTO `video` (`id_video`, `email_auteur`, `alt`, `url`, `date_prise`, `heure_prise`, `date_post`, `heure_post`, `texte_post`) 
+VALUES ('1', 'hgentieu97@gmail.com', 'photo_sympa', 'machin.mov', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', 'Superbe video');
+
+INSERT INTO `evenement` (`id_evenement`, `email_auteur`, `alt`, `url`, `date_debut`, `heure_debut`, `date_fin`, `heure_fin`, `date_post`, `heure_post`, `texte_post`) 
+VALUES ('1', 'hgentieu97@gmail.com', 'photo_sympa', 'Evenement.jpg', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', '2023-11-13', '11:30:05', 'Venez assister à la conférence sur les chaussettes trouées.');
+
+INSERT INTO `entite` (`siret`, `nom_entite`, `type_entite`, `lieu_siege`) 
+VALUES ('11122233300015', 'ECE', 'Ecole d\'ingénieur', 'Paris');
+
+INSERT INTO `conversation` (`id_conv`, `date_creation`, `nom_conv`) 
+VALUES ('1', '2023-11-08', 'Les Gentioux');
+
+INSERT INTO `participation` (`id_conv`, `email_auteur`) 
+VALUES ('1', 'hgentieu97@gmail.com');
+INSERT INTO `participation` (`id_conv`, `email_auteur`) 
+VALUES ('1', 'hergentieu98@gmail.com');
+
+
+INSERT INTO `message` (`id_conv`, `email_auteur`, `numero`, `date_envoi`, `heure_envoi`, `Contenu`) 
+VALUES ('1', 'hergentieu98@gmail.com', '1', '2023-11-10', '21:34:58', 'Salut Hector !');
+
+INSERT INTO `offre_emploi` (`reference_offre`, `nom_offre`, `duree`, `date_debut`, `remuneration`, `Description`, `siret`) 
+VALUES ('STG235-ECE', 'Poste de balayeur', '6 mois', '2023-12-01', '1500', 'Poste de Balayeur sur le campus Eiffel 1', '11122233300015');
+
+INSERT INTO `candidature` (`reference_offre`, `email_auteur`, `date_candidature`) 
+VALUES ('STG235-ECE', 'hgentieu97@gmail.com', '2023-12-05');
+
+INSERT INTO `correspondance_pseudo_email` (`pseudo`, `email_auteur`) 
+VALUES ('HGentieu', 'hgentieu97@gmail.com');
+INSERT INTO `correspondance_pseudo_email` (`pseudo`, `email_auteur`) 
+VALUES ('HerGentieu', 'hergentieu98@gmail.com');
+
+INSERT INTO `reaction_photo` (`id_photo`, `email_auteur`, `date_reaction`, `reac_positive`) 
+VALUES ('1', 'hergentieu98@gmail.com', '2024-01-01', '1');
+
+INSERT INTO `reaction_video` (`id_video`, `email_auteur`, `date_reaction`, `reac_positive`) 
+VALUES ('1', 'hergentieu98@gmail.com', '2024-01-01', '1');
+
+INSERT INTO `reaction_evenement` (`id_evenement`, `email_auteur`, `date_reaction`, `reac_positive`) 
+VALUES ('1', 'hergentieu98@gmail.com', '2024-01-01', '1');
+
+INSERT INTO `commentaire_photo` (`id_photo`, `email_auteur`, `date_commentaire`, `heure_commentaire`, `texte_commentaire`) 
+VALUES ('1', 'hergentieu98@gmail.com', '2024-01-01', '19:16:32', 'Belle photo en effet');
+
+INSERT INTO `commentaire_video` (`id_video`, `email_auteur`, `date_commentaire`, `heure_commentaire`, `texte_commentaire`) 
+VALUES ('1', 'hergentieu98@gmail.com', '2024-01-01', '19:16:32', 'Belle vidéo en effet');
+
+INSERT INTO `commentaire_evenement` (`id_evenement`, `email_auteur`, `date_commentaire`, `heure_commentaire`, `texte_commentaire`) 
+VALUES ('1', 'hergentieu98@gmail.com', '2023-11-09', '19:16:32', 'J\'ai hâte d\'y participer');
+
+INSERT INTO `partage_photo` (`id_photo`, `email_auteur`, `date_partage`, `heure_partage`, `texte_partage`) 
+VALUES ('1', 'hergentieu98@gmail.com', '2023-12-22', '19:15:29', 'Je partager cette photo d\'Hector car elle est superbe.');
+
+INSERT INTO `partage_video` (`id_video`, `email_auteur`, `date_partage`, `heure_partage`, `texte_partage`) 
+VALUES ('1', 'hergentieu98@gmail.com', '2023-12-22', '19:15:29', 'Je partage cette vidéo d\'Hector car elle est amusante.');
+
+INSERT INTO `partage_evenement` (`id_evenement`, `email_auteur`, `date_partage`, `heure_partage`, `texte_partage`) 
+VALUES ('1', 'hergentieu98@gmail.com', '2023-12-22', '19:15:29', 'Je partage le post pour cet événement car j\'invite ceux que ça intéresse à y participer aussi.');
+
 
