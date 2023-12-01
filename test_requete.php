@@ -2,11 +2,11 @@
 
 $user = 'root';
 $password = ''; //To be completed if you have set a password to root
-$database = 'TEST_ECE_IN'; //To be completed to connect to a database. The database must exist.
+ //To be completed to connect to a database. The database must exist.
 $port = NULL; //Default must be NULL to use default port
 $verif=false;
 $mysqli2=  new mysqli('127.0.0.1', $user, $password, '',$port);
-$mysqli = new mysqli('127.0.0.1', $user, $password, $database, $port);
+
 
 if ($mysqli2->connect_error) {
     die('Connect Error (' . $mysqli2->connect_errno . ') '
@@ -18,6 +18,9 @@ else{
     $mysqli2->query("USE ECE_IN") ;
 }
 $mysqli2->close();
+
+$database = 'TEST_ECE_IN';
+$mysqli = new mysqli('127.0.0.1', $user, $password, $database, $port);
 
 if ($mysqli->connect_error||$verif) {
     die('Connect Error (' . $mysqli->connect_errno . ') '
