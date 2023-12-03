@@ -5,6 +5,8 @@ $password = ''; //To be completed if you have set a password to root
  //To be completed to connect to a database. The database must exist.
 $port = NULL; //Default must be NULL to use default port
 $valid_form=false;
+$verif1=false; //L'email existe-t-il déjà?
+$verif2=false; //Le pseudo existe-t-il déjà?
 $message="";
 $database = 'ECE_IN';
 $mysqli = new mysqli('127.0.0.1', $user, $password, $database, $port);
@@ -52,19 +54,29 @@ else{
     if($num_tel==""){
         $message.="Le champ indiquant le numéro de téléphone est vide.<br>";
     }
-    if(!$valid_form){
-        echo $message;
-    }
-    else{
+    if($valid_form){
         
-        $mysqli->query("INSERT INTO Auteur (email_auteur, id_im_de_fond, mot_de_passe, nom, prenom, num_telephone, Description) VALUES ('$email', 145201, '$mdp', '$nom', '$prenom', '$num_tel', '$descr')");
+        $user_test=$mysqli->query("select email_auteur from auteur where email_auteur='$email'");
+        $user_test2=$mysqli->query("select pseudo from correspondance_pseudo_email where pseudo='$pseudo'");
+        $verif1=($user_test->num_rows > 0)?false:true;
+        $verif2=($user_test2->num_rows > 0)?false:true;
+        if($verif1&&$verif2){
+            $mysqli->query("INSERT INTO Auteur (email_auteur, id_im_de_fond, mot_de_passe, nom, prenom, num_telephone, Description) VALUES ('$email', 145201, '$mdp', '$nom', '$prenom', '$num_tel', '$descr')");
 
 
-        $mysqli->query("INSERT INTO `correspondance_pseudo_email` (`pseudo`, `email_auteur`) 
-        VALUES('$pseudo','$email')");
-        echo "<p>L'utilisateur a bien été rajouté'.</p>";
+            $mysqli->query("INSERT INTO `correspondance_pseudo_email` (`pseudo`, `email_auteur`) 
+            VALUES('$pseudo','$email')");
+            $message.="L'utilisateur a bien été rajouté'.<br>";
+        }
+        if(!$verif1){
+            $message.="L'email est déjà utilisé par quelqu'un d'autre.<br>";
+        }
+        if(!$verif2){
+            $message.="Le pseudo est déjà utilisé par quelqu'un d'autre.<br>";
+        }
 
-    }  
+    } 
+    echo $message; 
 }
 
 $mysqli->close();
