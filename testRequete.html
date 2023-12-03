@@ -6,14 +6,20 @@
 	<title>Test de la requete SQL</title>
 </head>
 <body>
-	<h1>Test de la requete SQL</h1>
+	<h1>Formulaire pour faire une demande d'ami</h1>
+
 	<form action="demande_ami.php" method="post">
 		<table border="1">
 			<tr>
-				<td>Appuyez sur le bouton pour ouvrir la page php et créer la base de données sur localhost.</td>
+				<td>email de la 1re personne</td>
+				<td><input type="text" name="e1"></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="Valider"></td>
+				<td>email de la 2nde personne</td>
+				<td><input type="text" name="e2"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" value="Valider"></td>
 			</tr>
 		</table>
 	</form>
