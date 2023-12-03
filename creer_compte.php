@@ -57,7 +57,7 @@ else{
     }
     else{
         
-        //$mysqli->query("INSERT INTO Auteur (email_auteur, id_im_de_fond, mot_de_passe, nom, prenom, num_telephone, Description) VALUES ('$email', 145201, '$mdp', '$nom', '$prenom', '$num_tel', '$descr')");
+        $mysqli->query("INSERT INTO Auteur (email_auteur, id_im_de_fond, mot_de_passe, nom, prenom, num_telephone, Description) VALUES ('$email', 145201, '$mdp', '$nom', '$prenom', '$num_tel', '$descr')");
 
 
         $mysqli->query("INSERT INTO `correspondance_pseudo_email` (`pseudo`, `email_auteur`) 
