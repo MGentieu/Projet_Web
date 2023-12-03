@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 03 déc. 2023 à 15:28
+-- Généré le : dim. 03 déc. 2023 à 21:50
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `ece_in`
 --
-CREATE DATABASE IF NOT EXISTS `ece_in` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `ece_in`;
 
 -- --------------------------------------------------------
 
@@ -44,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
 --
 
 INSERT INTO `administrateur` (`email_admin`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`) VALUES
-('mgentieu02@gmail.com', 'volcan1', 'Gentieu', 'Martin', 695973078);
+('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 695973078);
 
 -- --------------------------------------------------------
 
@@ -65,7 +63,9 @@ CREATE TABLE IF NOT EXISTS `amitie` (
 --
 
 INSERT INTO `amitie` (`email_ami_1`, `email_ami_2`) VALUES
-('hgentieu97@gmail.com', 'hergentieu02@gmail.com');
+('ericdampierre@edu.ece.fr', 'hergentieu98@edu.ece.fr'),
+('hergentieu98@edu.ece.fr', 'hgentieu97@edu.ece.fr'),
+('hgentieu97@edu.ece.fr', 'ericdampierre@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -91,9 +91,9 @@ CREATE TABLE IF NOT EXISTS `auteur` (
 --
 
 INSERT INTO `auteur` (`email_auteur`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`, `Description`, `id_im_de_fond`) VALUES
-('hgentieu97@gmail.com', 'volcan1', 'Gentieu', 'Hector', 620212425, 'J\'aime les pommes', 145201),
-('hergentieu98@gmail.com', 'siecle2', 'Gentieu', 'Hervé', 624212066, 'J\'aime les poires', 145201),
-('ericdampierre@gmail.com', 'Mec_generique', 'Dampierre', 'Eric', 607080910, 'qui me demande?', 145201);
+('hgentieu97@edu.ece.fr', 'volcan1', 'Gentieu', 'Hector', 620212425, 'J\'aime les pommes', 145201),
+('hergentieu98@edu.ece.fr', 'siecle2', 'Gentieu', 'Hervé', 624212066, 'J\'aime les poires', 145201),
+('ericdampierre@edu.ece.fr', 'Mec_generique', 'Dampierre', 'Eric', 607080910, 'qui me demande?', 145201);
 
 -- --------------------------------------------------------
 
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `candidature` (
 --
 
 INSERT INTO `candidature` (`reference_offre`, `email_auteur`, `date_candidature`) VALUES
-('STG235-ECE', 'hgentieu97@gmail.com', '2023-12-05');
+('STG235-ECE', 'hgentieu97@edu.ece.fr', '2023-12-05');
 
 -- --------------------------------------------------------
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `commentaire_evenement` (
 --
 
 INSERT INTO `commentaire_evenement` (`id_evenement`, `email_auteur`, `date_commentaire`, `heure_commentaire`, `texte_commentaire`) VALUES
-(1, 'hergentieu98@gmail.com', '2023-11-09', '19:16:32', 'J\'ai hâte d\'y participer');
+(1, 'hergentieu98@edu.ece.fr', '2023-11-09', '19:16:32', 'J\'ai hâte d\'y participer');
 
 -- --------------------------------------------------------
 
@@ -163,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `commentaire_photo` (
 --
 
 INSERT INTO `commentaire_photo` (`id_photo`, `email_auteur`, `date_commentaire`, `heure_commentaire`, `texte_commentaire`) VALUES
-(1, 'hergentieu98@gmail.com', '2024-01-01', '19:16:32', 'Belle photo en effet');
+(1, 'hergentieu98@edu.ece.fr', '2024-01-01', '19:16:32', 'Belle photo en effet');
 
 -- --------------------------------------------------------
 
@@ -187,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `commentaire_video` (
 --
 
 INSERT INTO `commentaire_video` (`id_video`, `email_auteur`, `date_commentaire`, `heure_commentaire`, `texte_commentaire`) VALUES
-(1, 'hergentieu98@gmail.com', '2024-01-01', '19:16:32', 'Belle vidéo en effet');
+(1, 'hergentieu98@edu.ece.fr', '2024-01-01', '19:16:32', 'Belle vidéo en effet');
 
 -- --------------------------------------------------------
 
@@ -229,9 +229,9 @@ CREATE TABLE IF NOT EXISTS `correspondance_pseudo_email` (
 --
 
 INSERT INTO `correspondance_pseudo_email` (`pseudo`, `email_auteur`) VALUES
-('HGentieu', 'hgentieu97@gmail.com'),
-('HerGentieu', 'hergentieu98@gmail.com'),
-('ED', 'ericdampierre@gmail.com');
+('HGentieu', 'hgentieu97@edu.ece.fr'),
+('HerGentieu', 'hergentieu98@edu.ece.fr'),
+('ED', 'ericdampierre@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -246,13 +246,6 @@ CREATE TABLE IF NOT EXISTS `demande_ami` (
   PRIMARY KEY (`email_ami_1`,`email_ami_2`),
   KEY `FK2` (`email_ami_2`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `demande_ami`
---
-
-INSERT INTO `demande_ami` (`email_ami_1`, `email_ami_2`) VALUES
-('hgentieu97@gmail.com', 'ericdampierregmail.com');
 
 -- --------------------------------------------------------
 
@@ -304,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `evenement` (
 --
 
 INSERT INTO `evenement` (`id_evenement`, `email_auteur`, `alt`, `url`, `date_debut`, `heure_debut`, `date_fin`, `heure_fin`, `date_post`, `heure_post`, `texte_post`) VALUES
-(1, 'hgentieu97@gmail.com', 'photo_sympa', 'Evenement.jpg', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', '2023-11-13', '11:30:05', 'Venez assister à la conférence sur les chaussettes trouées.');
+(1, 'hgentieu97@edu.ece.fr', 'photo_sympa', 'Evenement.jpg', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', '2023-11-13', '11:30:05', 'Venez assister à la conférence sur les chaussettes trouées.');
 
 -- --------------------------------------------------------
 
@@ -350,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `message` (
 --
 
 INSERT INTO `message` (`id_conv`, `email_auteur`, `numero`, `date_envoi`, `heure_envoi`, `Contenu`) VALUES
-(1, 'hergentieu98@gmail.com', 1, '2023-11-10', '21:34:58', 'Salut Hector !');
+(1, 'hergentieu98@edu.ece.fr', 1, '2023-11-10', '21:34:58', 'Salut Hector !');
 
 -- --------------------------------------------------------
 
@@ -400,7 +393,7 @@ CREATE TABLE IF NOT EXISTS `partage_evenement` (
 --
 
 INSERT INTO `partage_evenement` (`id_evenement`, `email_auteur`, `date_partage`, `heure_partage`, `texte_partage`) VALUES
-(1, 'hergentieu98@gmail.com', '2023-12-22', '19:15:29', 'Je partage le post pour cet événement car j\'invite ceux que ça intéresse à y participer aussi.');
+(1, 'hergentieu98@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage le post pour cet événement car j\'invite ceux que ça intéresse à y participer aussi.');
 
 -- --------------------------------------------------------
 
@@ -424,7 +417,7 @@ CREATE TABLE IF NOT EXISTS `partage_photo` (
 --
 
 INSERT INTO `partage_photo` (`id_photo`, `email_auteur`, `date_partage`, `heure_partage`, `texte_partage`) VALUES
-(1, 'hergentieu98@gmail.com', '2023-12-22', '19:15:29', 'Je partager cette photo d\'Hector car elle est superbe.');
+(1, 'hergentieu98@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partager cette photo d\'Hector car elle est superbe.');
 
 -- --------------------------------------------------------
 
@@ -448,7 +441,7 @@ CREATE TABLE IF NOT EXISTS `partage_video` (
 --
 
 INSERT INTO `partage_video` (`id_video`, `email_auteur`, `date_partage`, `heure_partage`, `texte_partage`) VALUES
-(1, 'hergentieu98@gmail.com', '2023-12-22', '19:15:29', 'Je partage cette vidéo d\'Hector car elle est amusante.');
+(1, 'hergentieu98@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette vidéo d\'Hector car elle est amusante.');
 
 -- --------------------------------------------------------
 
@@ -469,8 +462,8 @@ CREATE TABLE IF NOT EXISTS `participation` (
 --
 
 INSERT INTO `participation` (`id_conv`, `email_auteur`) VALUES
-(1, 'hergentieu98@gmail.com'),
-(1, 'hgentieu97@gmail.com');
+(1, 'hergentieu98@edu.ece.fr'),
+(1, 'hgentieu97@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -498,7 +491,7 @@ CREATE TABLE IF NOT EXISTS `photo` (
 --
 
 INSERT INTO `photo` (`id_photo`, `email_auteur`, `alt`, `url`, `date_prise`, `heure_prise`, `date_post`, `heure_post`, `texte_post`) VALUES
-(1, 'hgentieu97@gmail.com', 'photo_sympa', 'machin.png', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', 'Superbe photo d\'un machin.');
+(1, 'hgentieu97@edu.ece.fr', 'photo_sympa', 'machin.png', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', 'Superbe photo d\'un machin.');
 
 -- --------------------------------------------------------
 
@@ -521,7 +514,7 @@ CREATE TABLE IF NOT EXISTS `reaction_evenement` (
 --
 
 INSERT INTO `reaction_evenement` (`id_evenement`, `email_auteur`, `date_reaction`, `reac_positive`) VALUES
-(1, 'hergentieu98@gmail.com', '2024-01-01', 1);
+(1, 'hergentieu98@edu.ece.fr', '2024-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -544,7 +537,7 @@ CREATE TABLE IF NOT EXISTS `reaction_photo` (
 --
 
 INSERT INTO `reaction_photo` (`id_photo`, `email_auteur`, `date_reaction`, `reac_positive`) VALUES
-(1, 'hergentieu98@gmail.com', '2024-01-01', 1);
+(1, 'hergentieu98@edu.ece.fr', '2024-01-01', 1);
 
 -- --------------------------------------------------------
 
@@ -567,18 +560,8 @@ CREATE TABLE IF NOT EXISTS `reaction_video` (
 --
 
 INSERT INTO `reaction_video` (`id_video`, `email_auteur`, `date_reaction`, `reac_positive`) VALUES
-(1, 'hergentieu98@gmail.com', '2024-01-01', 1);
+(1, 'hergentieu98@edu.ece.fr', '2024-01-01', 1);
 
--- --------------------------------------------------------
-
---
--- Structure de la table `test_table_requet_php`
---
-
-DROP TABLE IF EXISTS `test_table_requet_php`;
-CREATE TABLE IF NOT EXISTS `test_table_requet_php` (
-  `id` int DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -606,35 +589,7 @@ CREATE TABLE IF NOT EXISTS `video` (
 --
 
 INSERT INTO `video` (`id_video`, `email_auteur`, `alt`, `url`, `date_prise`, `heure_prise`, `date_post`, `heure_post`, `texte_post`) VALUES
-(1, 'hgentieu97@gmail.com', 'photo_sympa', 'machin.mov', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', 'Superbe video');
---
--- Base de données : `test_ece_in`
---
-CREATE DATABASE IF NOT EXISTS `test_ece_in` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
-USE `test_ece_in`;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `administrateur`
---
-
-DROP TABLE IF EXISTS `administrateur`;
-CREATE TABLE IF NOT EXISTS `administrateur` (
-  `email_admin` varchar(50) NOT NULL,
-  `mot_de_passe` varchar(30) NOT NULL,
-  `nom` varchar(30) NOT NULL,
-  `prenom` varchar(30) NOT NULL,
-  `num_telephone` decimal(10,0) NOT NULL,
-  PRIMARY KEY (`email_admin`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `administrateur`
---
-
-INSERT INTO `administrateur` (`email_admin`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`) VALUES
-('mgentieu02@gmail.com', 'volcan1', 'Gentieu', 'Martin', 695973078);
+(1, 'hgentieu97@edu.ece.fr', 'photo_sympa', 'machin.mov', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', 'Superbe video');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
