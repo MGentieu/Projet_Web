@@ -36,29 +36,23 @@ else{
         $message.="Le 2nd email n'est pas indiqué.<br>";
     }
     
-    if(!$valid_form){
-        echo $message;
-    }
-    else{
+    if($valid_form){
 
-        $result=$mysqli->query("select * from demande_ami where email_ami_1='$email1' and email_ami_2='$email2'");
+        $result=$mysqli->query("select * from demande_ami where email_ami_1='$email1' and email_ami_2='$email2' or email_ami_1='$email2' and email_ami_2='$email1'");
         if($result->num_rows > 0){
             while($row = $result->fetch_assoc()) {
                 $message.= "e1 " . $row["email_ami_1"]. " - e1 " . $row["email_ami_2"]. "<br>";
             }
             $mysqli->query("INSERT INTO Amitie VALUES ('$email1','$email2')");
-            $mysqli->query("DELETE FROM Demande_ami WHERE email_ami_1='$email1' AND email_ami_2='$email2'");
+            $mysqli->query("DELETE FROM Demande_ami WHERE email_ami_1='$email1' AND email_ami_2='$email2' or email_ami_1='$email2' and email_ami_2='$email1'");
         }
         else{
             $message.="Demande d'ami non trouvée. Erreur. <br>";
         }
-        
-        
+         
 
-        
-        echo $message;
-
-    }  
+    } 
+    echo $message; 
 }
 
 $mysqli->close();
