@@ -32,6 +32,7 @@ else{
     echo '<p>Server '.$mysqli->server_info.'</p>';
     echo '<p>Initial charset: '.$mysqli->character_set_name().'</p>';
 
+    /*
     $mysqli->query("DROP TABLE IF EXISTS Demande_ami") ;
     $mysqli->query("CREATE TABLE Demande_ami (
     email_ami_1 VARCHAR(50) NOT NULL,
@@ -40,8 +41,9 @@ else{
     constraint FK1 foreign key (email_ami_1) references Auteur(email_auteur),
     constraint FK2 foreign key (email_ami_2) references Auteur(email_auteur)
     )");
-
-    $mysqli->query("INSERT INTO Demande_ami VALUES ('hgentieu97@gmail.com','ericdampierregmail.com')");
+    */
+    $result=$mysqli->query("select * from demande_ami where email_ami_1='$email1' and email_ami_2='$email2'");
+    $mysqli->query("INSERT INTO Demande_ami VALUES ('hgentieu97@gmail.com','ericdampierre@gmail.com')");
 
     //$mysqli->query("DROP TABLE IF EXISTS test1");
     //$mysqli->query("DROP DATABASE IF EXISTS TEST_ECE_IN");
