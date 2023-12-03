@@ -8,12 +8,51 @@
 <body>
 	<h1>Test de la requete SQL</h1>
 	<form action="test_requete.php" method="post">
-		<table>
+		<table border="1">
 			<tr>
 				<td>Appuyez sur le bouton pour ouvrir la page php et créer la base de données sur localhost.</td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Valider"></td>
+			</tr>
+		</table>
+	</form>
+	<br>
+	<form action="creer_compte.php" method="post">
+		<table border="1">
+			<tr>
+				<td>email</td>
+				<td><input type="text" name="email"></td>
+			</tr>
+			<tr>
+				<td>mot de passe</td>
+				<td><input type="text" name="mdp"></td>
+			</tr>
+			<tr>
+				<td>nom</td>
+				<td><input type="text" name="nom"></td>
+			</tr>
+			<tr>
+				<td>prénom</td>
+				<td><input type="text" name="prenom"></td>
+			</tr>
+			<tr>
+				<td>pseudo</td>
+				<td><input type="text" name="pseudo"></td>
+			</tr>
+			<tr>
+				<td>numéro de téléphone</td>
+				<td><input type="number" name="phone"></td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td><input type="text" name="descr"></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">L'image de fond est automatique. On pourra la modifier après</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit" value="Valider"></td>
 			</tr>
 		</table>
 	</form>
