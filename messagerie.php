@@ -16,7 +16,7 @@ session_start();
            
     <h1>Vos Messages</h1>
 
-    <div class="leftcolumn">
+    <div class="menu">
 	<div id="logo">
 		<a href="accueil.php">
 			<img src="primehomenav.gif" alt="Accueil">
