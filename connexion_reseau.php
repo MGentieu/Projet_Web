@@ -2,7 +2,7 @@
 
 $user = 'root';
 $serveur='localhost';
-$password = 'root';
+$password = '';
 //$password = 'root'; 
 $port = NULL; //Default must be NULL to use default port
 $valid_form=false;
