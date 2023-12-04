@@ -55,6 +55,8 @@ else{
                 $passw=$mysqli->query("select mot_de_passe from auteur where email_auteur='$email_pseudo' and mot_de_passe='$mdp'");
                 if($passw->num_rows > 0){
                     $message.= "L'utilisateur est maintenant connecté! " ."<br>";
+                    header("Location: accueil.html");
+                    exit();
                 }
                 else{
                     $message.= "Mauvais mot de passe! " ."<br>";
@@ -68,6 +70,8 @@ else{
                 $passw=$mysqli->query("select mot_de_passe from auteur where email_auteur='$email_correspondant' and mot_de_passe='$mdp'");
                 if($passw->num_rows > 0){
                     $message.= "L'utilisateur est maintenant connecté! " ."<br>";
+                    header("Location: accueil.html");
+                    exit();
                 }
                 else{
                     $message.= "Mauvais mot de passe! " ."<br>";
