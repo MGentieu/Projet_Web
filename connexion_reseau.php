@@ -10,7 +10,7 @@ $verif_pseudo=false;
 //$verif_connexion=false;
 $message="";
 $database = 'ECE_IN';
-$mysqli = new mysqli('127.0.0.1', $user, $password, $database, $port);
+$mysqli = new mysqli('localhost', $user, $password, $database, $port);
 
 if ($mysqli->connect_error) {
     echo "Erreur de connexion à la base de données.<br>";
