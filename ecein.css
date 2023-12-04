@@ -3,8 +3,8 @@ color: #003300;
 font-family: Arial, Helvetica, sans-serif; }
 
 .wrapper {
-    width: 680px; /* Largeur du wrapper */
-    min-width: 680px; /* Largeur minimum du wrapper */
+    width: 1000px; /* Largeur du wrapper */
+    min-width: 1000px; /* Largeur minimum du wrapper */
     margin: 0 auto; /* Centre le wrapper horizontalement en utilisant la marge automatique */
     color: cadetblue; /* Couleur du texte dans le wrapper */
     padding-left: 50px; /* Padding à gauche de 10 pixels */

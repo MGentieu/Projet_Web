@@ -55,7 +55,9 @@ else{
                 $passw=$mysqli->query("select mot_de_passe from auteur where email_auteur='$email_pseudo' and mot_de_passe='$mdp'");
                 if($passw->num_rows > 0){
                     $message.= "L'utilisateur est maintenant connecté! " ."<br>";
-                    header("Location: accueil.html");
+                    session_start();
+                    $_SESSION['info'] = "Ceci est une information depuis PHP";
+                    header("Location: accueil.php");
                     exit();
                 }
                 else{
@@ -70,7 +72,9 @@ else{
                 $passw=$mysqli->query("select mot_de_passe from auteur where email_auteur='$email_correspondant' and mot_de_passe='$mdp'");
                 if($passw->num_rows > 0){
                     $message.= "L'utilisateur est maintenant connecté! " ."<br>";
-                    header("Location: accueil.html");
+                    session_start();
+                    $_SESSION['info'] = "Ceci est une information depuis PHP";
+                    header("Location: accueil.php");
                     exit();
                 }
                 else{

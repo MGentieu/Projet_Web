@@ -54,7 +54,9 @@ else{
             $passw=$mysqli->query("select mot_de_passe from administrateur where email_admin='$em' and mot_de_passe='$mdp'");
             if($passw->num_rows > 0){
                 $message.= "L'utilisateur est maintenant connecté! " ."<br>";
-                header("Location: accueil.html");
+                session_start();
+                $_SESSION['info'] = "Ceci est une information depuis PHP";
+                header("Location: accueil.php");
                 exit();
             }
             else{

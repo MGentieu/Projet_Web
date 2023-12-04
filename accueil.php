@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,22 +24,22 @@
 
     <div class="leftcolumn">
     <div id="logo">
-        <a href="accueil.html">
+        <a href="accueil.php">
             <img src="primehomenav.gif" alt="Accueil">
         </a>
-        <a href="monreseau.html">
+        <a href="monreseau.php">
             <img src="primelistingsnav.gif" alt="Mon réseau">
         </a> 
-        <a href="vous.html">
+        <a href="vous.php">
             <img src="primefinancingnav.gif" alt="Vous">
         </a>
-        <a href="notification.html">
+        <a href="notification.php">
             <img src="primecontactnav.gif" alt="Notification">
         </a> 
-        <a href="messagerie.html">
+        <a href="messagerie.php">
             <img src="primecontactnav.gif" alt="Messagerie">
         </a> 
-        <a href="emploi.html">
+        <a href="emploi.php">
             <img src="primecontactnav.gif" alt="Emploi">
         </a> 
     </div>
@@ -41,9 +48,17 @@
 <div class="rightcolumn">
     <p>ECE In est une platforme de réseau social...<br>
     </p>
+    <p>
+        <?php
 
-
-
+            if (isset($_SESSION['info'])) {
+                echo $_SESSION['info'];
+                unset($_SESSION['info']);
+            } else {
+                echo "Aucune information disponible.";
+            }
+        ?>
+    </p>
 
 <div id="footer">
     <br>
