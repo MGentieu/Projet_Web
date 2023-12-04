@@ -15,9 +15,13 @@ $mysqli = new mysqli('127.0.0.1', $user, $password, $database, $port);
 date_default_timezone_set('Europe/Paris');
 $today = getdate(); //On obtient la date et l'heure.
 print_r($today);
+$date2="";
+$date2.=$today['year']."-".$today['mon']."-".$today['mday'];
+echo "<br><br>";
+echo $date2;
 
 $date = "2012-08-06";
-$date_actuelle=date("Y-m-d",strtotime($date));
+$date_actuelle=date("Y-m-d",strtotime($date2));
 
 if ($mysqli->connect_error) {
     die('Connect Error (' . $mysqli->connect_errno . ') '
