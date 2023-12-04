@@ -1,7 +1,7 @@
 <?php
 
 $user = 'root';
-$password = ''; //To be completed if you have set a password to root
+$password = 'root'; //To be completed if you have set a password to root
  //To be completed to connect to a database. The database must exist.
 $port = NULL; //Default must be NULL to use default port
 $valid_form=false;
