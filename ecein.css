@@ -36,19 +36,23 @@ h1 {
         }
 
 .leftcolumn {
-    float: left; /* Fait flotter la colonne vers la gauche */
-    width: 150px; /* Largeur de la colonne gauche */
+     /* Fait flotter la colonne vers la gauche */
+    width: 98%; /* Largeur de la colonne gauche */
     background-color: lightcyan; /* Couleur de fond de la colonne gauche (exemple) */
     padding: 10px; /* Padding à l'intérieur de la colonne gauche */
     margin-right: 10px; /* Marge à droite pour séparer de la colonne principale (exemple) */
 }
-
 .leftcolumn a {
+    /*
+
     display: block; /* Transforme les liens en éléments de bloc */
-    margin: 15px 15px 15px 0; /* Marge à droite, en bas et à gauche */
+    margin: 15px 15px 15px 15px; /* Marge à droite, en bas et à gauche */
     text-decoration: none; /* Supprime le soulignement par défaut des liens */
     color: #003300; /* Couleur du texte pour les liens dans la colonne gauche */
 }
+
+
+
 
 .rightcolumn {
     display: block;
@@ -74,7 +78,10 @@ h1 {
             background-repeat: no-repeat; /* Couleur de fond du second plan */
             z-index: 0; /* Indique que cet élément doit être en arrière-plan */
 
-        }     
+        }
+header{
+    font-weight: bold;
+}
 
 
 
