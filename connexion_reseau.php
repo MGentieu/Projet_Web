@@ -1,7 +1,7 @@
 <?php
 
 $user = 'root';
-$password = ''; //To be completed if you have set a password to root
+$password = 'root'; //To be completed if you have set a password to root
  //To be completed to connect to a database. The database must exist.
 $port = NULL; //Default must be NULL to use default port
 $valid_form=false;
@@ -10,7 +10,7 @@ $verif_pseudo=false;
 //$verif_connexion=false;
 $message="";
 $database = 'ECE_IN';
-$mysqli = new mysqli('127.0.0.1', $user, $password, $database, $port);
+$mysqli = new mysqli('localhost', $user, $password, $database, $port);
 
 if ($mysqli->connect_error) {
     echo "Erreur de connexion à la base de données.<br>";
