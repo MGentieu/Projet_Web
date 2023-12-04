@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 03 déc. 2023 à 21:50
+-- Généré le : lun. 04 déc. 2023 à 16:59
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -208,7 +208,8 @@ CREATE TABLE IF NOT EXISTS `conversation` (
 --
 
 INSERT INTO `conversation` (`id_conv`, `date_creation`, `nom_conv`) VALUES
-(1, '2023-11-08', 'Les Gentioux');
+(1, '2023-11-08', 'Les Gentioux'),
+(2, '2012-08-06', 'Les 3 amis');
 
 -- --------------------------------------------------------
 
@@ -463,7 +464,8 @@ CREATE TABLE IF NOT EXISTS `participation` (
 
 INSERT INTO `participation` (`id_conv`, `email_auteur`) VALUES
 (1, 'hergentieu98@edu.ece.fr'),
-(1, 'hgentieu97@edu.ece.fr');
+(1, 'hgentieu97@edu.ece.fr'),
+(2, 'hgentieu97@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -561,7 +563,6 @@ CREATE TABLE IF NOT EXISTS `reaction_video` (
 
 INSERT INTO `reaction_video` (`id_video`, `email_auteur`, `date_reaction`, `reac_positive`) VALUES
 (1, 'hergentieu98@edu.ece.fr', '2024-01-01', 1);
-
 
 -- --------------------------------------------------------
 
