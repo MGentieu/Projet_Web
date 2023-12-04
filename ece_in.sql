@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
   `prenom` varchar(30) NOT NULL,
   `num_telephone` decimal(10,0) NOT NULL,
   PRIMARY KEY (`email_admin`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `administrateur`
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `amitie` (
   `email_ami_2` varchar(50) NOT NULL,
   PRIMARY KEY (`email_ami_1`,`email_ami_2`),
   KEY `FK2` (`email_ami_2`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `amitie`
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `auteur` (
   `id_im_de_fond` decimal(6,0) DEFAULT NULL,
   PRIMARY KEY (`email_auteur`),
   KEY `FK1` (`id_im_de_fond`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `auteur`
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `candidature` (
   `date_candidature` date NOT NULL,
   PRIMARY KEY (`reference_offre`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `candidature`
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `commentaire_evenement` (
   `texte_commentaire` varchar(150) NOT NULL,
   PRIMARY KEY (`id_evenement`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `commentaire_evenement`
@@ -156,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `commentaire_photo` (
   `texte_commentaire` varchar(150) NOT NULL,
   PRIMARY KEY (`id_photo`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `commentaire_photo`
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `commentaire_video` (
   `texte_commentaire` varchar(150) NOT NULL,
   PRIMARY KEY (`id_video`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `commentaire_video`
@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `conversation` (
   `date_creation` date NOT NULL,
   `nom_conv` varchar(40) NOT NULL,
   PRIMARY KEY (`id_conv`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `conversation`
@@ -223,7 +223,7 @@ CREATE TABLE IF NOT EXISTS `correspondance_pseudo_email` (
   `email_auteur` varchar(50) NOT NULL,
   PRIMARY KEY (`pseudo`),
   KEY `FK1` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `correspondance_pseudo_email`
@@ -246,7 +246,7 @@ CREATE TABLE IF NOT EXISTS `demande_ami` (
   `email_ami_2` varchar(50) NOT NULL,
   PRIMARY KEY (`email_ami_1`,`email_ami_2`),
   KEY `FK2` (`email_ami_2`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -261,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `entite` (
   `type_entite` varchar(40) NOT NULL,
   `lieu_siege` varchar(40) NOT NULL,
   PRIMARY KEY (`siret`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `entite`
@@ -291,7 +291,7 @@ CREATE TABLE IF NOT EXISTS `evenement` (
   `texte_post` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_evenement`),
   KEY `FK1` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `evenement`
@@ -312,7 +312,7 @@ CREATE TABLE IF NOT EXISTS `image_de_fond` (
   `alt` varchar(40) DEFAULT NULL,
   `url` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_im_de_fond`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `image_de_fond`
@@ -337,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `Contenu` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_conv`,`email_auteur`,`numero`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `message`
@@ -363,7 +363,7 @@ CREATE TABLE IF NOT EXISTS `offre_emploi` (
   `siret` decimal(14,0) NOT NULL,
   PRIMARY KEY (`reference_offre`),
   KEY `FK1` (`siret`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `offre_emploi`
@@ -387,7 +387,7 @@ CREATE TABLE IF NOT EXISTS `partage_evenement` (
   `texte_partage` varchar(150) NOT NULL,
   PRIMARY KEY (`id_evenement`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `partage_evenement`
@@ -411,7 +411,7 @@ CREATE TABLE IF NOT EXISTS `partage_photo` (
   `texte_partage` varchar(150) NOT NULL,
   PRIMARY KEY (`id_photo`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `partage_photo`
@@ -435,7 +435,7 @@ CREATE TABLE IF NOT EXISTS `partage_video` (
   `texte_partage` varchar(150) NOT NULL,
   PRIMARY KEY (`id_video`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `partage_video`
@@ -456,7 +456,7 @@ CREATE TABLE IF NOT EXISTS `participation` (
   `email_auteur` varchar(50) NOT NULL,
   PRIMARY KEY (`id_conv`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `participation`
@@ -486,7 +486,7 @@ CREATE TABLE IF NOT EXISTS `photo` (
   `texte_post` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_photo`),
   KEY `FK1` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `photo`
@@ -509,7 +509,7 @@ CREATE TABLE IF NOT EXISTS `reaction_evenement` (
   `reac_positive` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_evenement`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `reaction_evenement`
@@ -532,7 +532,7 @@ CREATE TABLE IF NOT EXISTS `reaction_photo` (
   `reac_positive` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_photo`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `reaction_photo`
@@ -555,7 +555,7 @@ CREATE TABLE IF NOT EXISTS `reaction_video` (
   `reac_positive` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_video`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `reaction_video`
@@ -583,7 +583,7 @@ CREATE TABLE IF NOT EXISTS `video` (
   `texte_post` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_video`),
   KEY `FK1` (`email_auteur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `video`

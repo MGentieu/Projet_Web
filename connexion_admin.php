@@ -68,7 +68,6 @@ else{
             $message.="Email non présent dans la base de données. <br>";
         }
          
-
     } 
     echo $message; 
 }
