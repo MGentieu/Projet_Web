@@ -99,13 +99,13 @@ session_start();
 
             <div id="carrousel">
         
-            <li><img src="rafale1.jpg" width="100" height="100" /></li>
-            <li><img src="rafale2.jpg" width="100" height="100" /></li>
-            <li><img src="rafale3.jpg" width="100" height="100" /></li>
-            <li><img src="rafale4.jpg" width="100" height="100" /></li>
-            <li><img src="rafale5.jpg" width="100" height="100" /></li>
-            <li><img src="rafale6.jpg" width="100" height="100" /></li>
-            <li><img src="rafale7.jpg" width="100" height="100" /></li>
+            <li><img src="france1.jpg" width="100" height="100" /></li>
+            <li><img src="france2.jpg" width="100" height="100" /></li>
+            <li><img src="france3.jpg" width="100" height="100" /></li>
+            <li><img src="france4.jpg" width="100" height="100" /></li>
+            <li><img src="france5.jpg" width="100" height="100" /></li>
+            <li><img src="france6.jpg" width="100" height="100" /></li>
+            <li><img src="france7.jpg" width="100" height="100" /></li>
         
         </div>
     </div>

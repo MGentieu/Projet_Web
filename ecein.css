@@ -78,6 +78,7 @@ h1 {
 .leftcolumn {
     float: left; /* Fait flotter la colonne vers la gauche */
     width: 150px; /* Largeur de la colonne gauche */
+    height: 400px;
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
     padding: 10px; /* Padding à l'intérieur de la colonne gauche */
     margin-right: 10px; /* Marge à droite pour séparer de la colonne principale (exemple) */
@@ -87,13 +88,14 @@ h1 {
 
 
 .rightcolumn {
+    width: auto
+    float: left;
+    height: 400px;
     display: block;
     margin: 15px 0; /* Marge en haut et en bas pour les liens dans la colonne droite */
     text-decoration: none;
     color: #003300;
-    margin-left: 150px;
-    padding-right: 20px;
-    padding-bottom: 20px;
+    
 }
 
 
@@ -175,3 +177,4 @@ img{
 	border: none;
 }
 
+ 
