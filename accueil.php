@@ -86,24 +86,13 @@ session_start();
 
         <div class="menu">
             <div id="logo">
-                <a href="accueil.php">
-                    <img src="primehomenav.gif" alt="Accueil">
-                </a>
-                <a href="monreseau.php">
-                    <img src="primelistingsnav.gif" alt="Mon réseau">
-                </a> 
-                <a href="vous.php">
-                    <img src="primefinancingnav.gif" alt="Vous">
-                </a>
-                <a href="notification.php">
-                    <img src="primecontactnav.gif" alt="Notification">
-                </a> 
-                <a href="messagerie.php">
-                    <img src="primecontactnav.gif" alt="Messagerie">
-                </a> 
-                <a href="emploi.php">
-                    <img src="primecontactnav.gif" alt="Emploi">
-                </a> 
+        <a href="#" class="action-button animate blue">Accueil</a>
+        <a href="#" class="action-button animate blue">Réseau</a>
+        <a href="#" class="action-button animate blue">Vous</a>
+        <a href="#" class="action-button animate blue">Notifs</a>
+        <a href="#" class="action-button animate blue">Messagerie</a>
+        <a href="#" class="action-button animate blue">Emploi</a>
+    
             </div>
         </div>
 

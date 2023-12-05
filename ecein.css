@@ -4,11 +4,10 @@ font-family: Arial, Helvetica, sans-serif; }
 
 .wrapper {
     border: 1px solid black;
-    width: 1000px; /* Largeur du wrapper */
-    min-width: 1000px; /* Largeur minimum du wrapper */
-    margin: 0 auto; /* Centre le wrapper horizontalement en utilisant la marge automatique */
+    width: 90%; /* Largeur du wrapper */
+    line-height: 100%;
+    min-width: 90%; /* Largeur minimum du wrapper */
     color: cadetblue; /* Couleur du texte dans le wrapper */
-    padding-left: 50px; /* Padding à gauche de 10 pixels */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -116,6 +115,32 @@ h1 {
         right: 50px;
     }
 
+.animate {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+        .action-button {
+            position: relative;
+            padding: 10px 40px;
+            margin: 0px 10px 10px 0px;
+            float: left;
+            border-radius: 10px;
+            font-family: 'Pacifico', cursive;
+            font-size: 25px;
+            color: #FFF;
+            text-decoration: none;
+        }
+        .blue {
+            background-color: #3498DB;
+            border-bottom: 5px solid #2980B9;
+            text-shadow: 0px -2px #2980B9;
+        }
+        .red {
+            background-color: #E74C3C;
+            border-bottom: 5px solid #BD3E31;
+            text-shadow: 0px -2px #BD3E31;
+        }
+        
 header{
     font-weight: bold;
 }
