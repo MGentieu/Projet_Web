@@ -62,13 +62,17 @@ h1 {
             transform: translateX(-50%);
         }
 
+.logoece img {
+    margin-top: 20px;
+}
+
 .menu {
      /* Fait flotter la colonne vers la gauche */
     width: 98%; /* Largeur de la colonne gauche */
     background-color: lightcyan; /* Couleur de fond de la colonne gauche (exemple) */
     padding: 10px; /* Padding à l'intérieur de la colonne gauche */
     margin-right: 10px; /* Marge à droite pour séparer de la colonne principale (exemple) */
-    height: 70px;
+    height: 90px;
 }
 .menu a {
     width: 8%;
@@ -82,7 +86,6 @@ h1 {
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
     padding: 10px; /* Padding à l'intérieur de la colonne gauche */
     margin-right: 10px; /* Marge à droite pour séparer de la colonne principale (exemple) */
-    
     border: 1px dashed black;
 }
 
@@ -166,6 +169,10 @@ h1 {
             border-bottom: 5px solid #BD3E31;
             text-shadow: 0px -2px #BD3E31;
         }
+
+#footer {
+    margin-bottom: 0px;
+}
         
 header{
     font-weight: bold;

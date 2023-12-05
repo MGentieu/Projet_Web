@@ -127,7 +127,7 @@ session_start();
     </div>
     
 <div class="fond-second-plan">
-    <h1 class="logo"> <img src="ecebaniere.jpg" alt="logo de ECE"></h1>
+    <h1 class="logoece"> <img src="ecebaniere.jpg" alt="logo de ECE"></h1>
 </div>
 
 
