@@ -78,19 +78,26 @@ session_start();
 </head>
 <body>
     <div class="wrapper">
-        
 
+        <div class="gauche">
+            <h1>ECE In: Social Media Professionel <br> 
+                <br> de l'ECE Paris</h1>
+        </div>
+
+        <div class="droite">
+        <div class="logoece"><img src="ecebaniere.jpg" alt="logo de ECE" width="200px" height="70px"></div>
+        </div>
+        
         <div class="menu">
 
-            <div id="logo">
+        <div id="logo">
         <a href="accueil.php" class="action-button animate blue">Accueil</a>
         <a href="monreseau.php" class="action-button animate blue">Réseau</a>
         <a href="vous.php" class="action-button animate blue">Vous</a>
         <a href="notification.php" class="action-button animate blue">Notification</a>
         <a href="messagerie.php" class="action-button animate blue">Messagerie</a>
         <a href="emploi.php" class="action-button animate blue">Emploi</a>
-    
-            </div>
+        </div>
 
         </div>
         
@@ -127,7 +134,6 @@ session_start();
     </div>
     
 <div class="fond-second-plan">
-    <h1 class="logoece"> <img src="ecebaniere.jpg" alt="logo de ECE"></h1>
 </div>
 
 

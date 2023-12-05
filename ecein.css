@@ -47,24 +47,28 @@ font-family: Arial, Helvetica, sans-serif; }
         }
 
 
-h1 {
-    margin-top: 0; /* Annule la marge par défaut du navigateur pour le titre */
+.gauche {
+    float: left;
+    height: 80px;
+    width: 70%;
+    border: 1px solid black;
+    
+
 }
 
-.logo {
-            position: relative;
-            text-align: center;
-        }
+.droite {
+    width: auto
+    float: left;
+    height: 80px;
+    border:1px solid black;
+    
 
-.logo img {
-            width: 200px; /* Remplacez 200px par la largeur souhaitée */
-            height: auto; 
-            transform: translateX(-50%);
-        }
-
-.logoece img {
-    margin-top: 20px;
 }
+
+#logo {
+    text-align: center;
+}
+
 
 .menu {
      /* Fait flotter la colonne vers la gauche */
@@ -72,7 +76,7 @@ h1 {
     background-color: lightcyan; /* Couleur de fond de la colonne gauche (exemple) */
     padding: 10px; /* Padding à l'intérieur de la colonne gauche */
     margin-right: 10px; /* Marge à droite pour séparer de la colonne principale (exemple) */
-    height: 90px;
+    height: 100px;
 }
 .menu a {
     width: 8%;
@@ -86,7 +90,6 @@ h1 {
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
     padding: 10px; /* Padding à l'intérieur de la colonne gauche */
     margin-right: 10px; /* Marge à droite pour séparer de la colonne principale (exemple) */
-    border: 1px dashed black;
 }
 
 
