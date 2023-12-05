@@ -123,6 +123,14 @@ font-family: Arial, Helvetica, sans-serif; }
 #carrousel {
         position: relative;
     }
+#carrousel ul{
+    list-style: none;
+}
+#carrousel ul li{
+    position: absolute;
+    top: 0;
+    left: 0;
+}    
 
 #titre {
         left: 220px;
@@ -132,7 +140,7 @@ font-family: Arial, Helvetica, sans-serif; }
 
 
 
-.next {
+#next {
         position: absolute;
         top: 100%;
         transform: translateY(-50%);
@@ -141,7 +149,7 @@ font-family: Arial, Helvetica, sans-serif; }
         background-color: slateblue;
     }
 
-.prev {
+#prev {
         color: white;
         background-color: slateblue;
         right: 50px;

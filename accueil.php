@@ -15,69 +15,103 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
         
-        $(document).ready(function(){ 
-            var $carrousel = $('#carrousel'),
-                $img = $('#carrousel img'),
-                indexImg = $img.length - 1,
-                i = 0,
-                $currentImg = $img.eq(i);
+        $(document).ready(function() {
+    var $carrousel = $('#carrousel'), 
+        $img = $('#carrousel img'), 
+        indexImg = $img.length - 1, 
+        i = 0, 
+        k = indexImg,
+        j = i + 1,
+        $currentImg = $img.eq(i),
+        $prevImg = $img.eq(k),
+        $nextImg = $img.eq(j);
 
-            $img.css('display', 'none');
-            $currentImg.css('display', 'block');
+    $img.css('display', 'none');
+    //$prevImg.css('display', 'block');
+    $currentImg.css('display', 'block');
+    //$nextImg.css('display', 'block'); 
+    
+    $('#next').click(function(){ 
+        i++; 
+        j++;
+        k++;
+        if (i > indexImg) {
+            i = 0;
+        }
+        if (k > indexImg) {
+            k = 0;
+        }
+        if (j > indexImg) {
+            j = 0;
+        }
+        
+        $img.css('display', 'none'); 
+        //$prevImg = $img.eq(k); 
+        //$prevImg.css('display', 'block');
+        $currentImg = $img.eq(i); 
+        $currentImg.css('display', 'block');
+        //$nextImg = $img.eq(j); 
+        //$nextImg.css('display', 'block');
+    });
 
-            $carrousel.append('<div class="controls"> <span class="prev">Precedent</span><span class="next">Suivant</span></div>');
+    $('#prev').click(function(){ // image précédente
+        i--;
+        k--;
+        j--;
+        if (i < 0) {
+            i = indexImg;
+        }
+        if (k < 0) {
+            k = indexImg;
+        }
+        if (j < 0) {
+            j = indexImg;
+        }
+        
+        $img.css('display', 'none');
+        //$prevImg = $img.eq(k); 
+        //$prevImg.css('display', 'block');
+        $currentImg = $img.eq(i); 
+        $currentImg.css('display', 'block');
+        //$nextImg = $img.eq(j); 
+        //$nextImg.css('display', 'block');
+    });
 
-            
-            $('.next').click(function(){
-                i++;
-                $img.css('display', 'none');
-                $currentImg = $img.eq(i);
-                $currentImg.css('display', 'block');
-            });
-
-            
-            $('.prev').click(function(){
-                i--;
-                $img.css('display', 'none');
-                $currentImg = $img.eq(i);
-                $currentImg.css('display', 'block');
-            });
-
-            
-            $('.next, .prev').click(function(){
-                if (i > indexImg) {
-                    i = indexImg;
-                }
-                if (i < 0) {
-                    i = 0;
-                }
-            });
-
-
-            
-            function slideImg(){
-                setTimeout(function(){
-                    if (i < indexImg){
-                        i++;
-                    } else {
-                        i = 0;
-                    }
-                    $img.css('display', 'none');
-                    $currentImg = $img.eq(i);
-                    $currentImg.css('display', 'block');
-                    slideImg();
-                }, 4000);
+    function slideImg(){
+        setTimeout(function(){ 
+            i++; 
+            j++;
+            k++;
+            if (i > indexImg) {
+                i = 0;
             }
-
-            
+            if (k > indexImg) {
+                k = 0;
+            }
+            if (j > indexImg) {
+                j = 0;
+            }
+            $img.css('display', 'none');
+            //$prevImg = $img.eq(k); 
+            //$prevImg.css('display', 'block');
+            $currentImg = $img.eq(i); 
+            $currentImg.css('display', 'block');
+            //$nextImg = $img.eq(j); 
+            //$nextImg.css('display', 'block');
             slideImg(); 
-        });
+        }, 1000); 
+    } 
+
+    slideImg();   
+});
+
     </script>
 
 
 </head>
 <body>
     <div class="wrapper">
+
 
         <div class="gauche">
             <h1>ECE In: Social Media Professionel <br> 
@@ -88,16 +122,22 @@ session_start();
         <div class="logoece"><img src="ecebaniere.jpg" alt="logo de ECE" width="200px" height="70px"></div>
         </div>
         
-        <div class="menu">
+        
+        
+        <div _d="titre"></div>
 
-        <div id="logo">
-        <a href="accueil.php" class="action-button animate blue">Accueil</a>
-        <a href="monreseau.php" class="action-button animate blue">Réseau</a>
-        <a href="vous.php" class="action-button animate blue">Vous</a>
-        <a href="notification.php" class="action-button animate blue">Notification</a>
-        <a href="messagerie.php" class="action-button animate blue">Messagerie</a>
-        <a href="emploi.php" class="action-button animate blue">Emploi</a>
-        </div>
+        <div class="menu">
+            
+                
+            
+            <div id="logo">
+                <a href="accueil.php" class="action-button animate red">Accueil</a>
+                <a href="monreseau.php" class="action-button animate blue">Réseau</a>
+                <a href="vous.php" class="action-button animate blue">Vous</a>
+                <a href="notification.php" class="action-button animate blue">Notification</a>
+                <a href="messagerie.php" class="action-button animate blue">Messagerie</a>
+                <a href="emploi.php" class="action-button animate blue">Emploi</a>
+            </div>
 
         </div>
         
@@ -105,7 +145,7 @@ session_start();
         <div class="leftcolumn">
 
             <div id="carrousel">
-        
+            <ul>
             <li><img src="france1.jpg" width="100" height="100" /></li>
             <li><img src="france2.jpg" width="100" height="100" /></li>
             <li><img src="france3.jpg" width="100" height="100" /></li>
@@ -113,7 +153,9 @@ session_start();
             <li><img src="france5.jpg" width="100" height="100" /></li>
             <li><img src="france6.jpg" width="100" height="100" /></li>
             <li><img src="france7.jpg" width="100" height="100" /></li>
-        
+            </ul>
+            <input type="button" id="prev" value="Précédent" onclick="change_color1()">
+            <input type="button" id="next" value="Suivant" onclick="change_color1()">
         </div>
     </div>
         
@@ -134,6 +176,7 @@ session_start();
     </div>
     
 <div class="fond-second-plan">
+
 </div>
 
 
