@@ -3,22 +3,48 @@ color: #003300;
 font-family: Arial, Helvetica, sans-serif; }
 
 .wrapper {
-    border: 1px solid black;
-    width: 1000px; /* Largeur du wrapper */
-    min-width: 1000px; /* Largeur minimum du wrapper */
-    margin: 0 auto; /* Centre le wrapper horizontalement en utilisant la marge automatique */
-    color: cadetblue; /* Couleur du texte dans le wrapper */
-    padding-left: 50px; /* Padding à gauche de 10 pixels */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1; /* Indique que cet élément doit être au premier plan */
-    padding: 20px;
-    background-color: white; /* Couleur de fond du wrapper */
-    text-align: center; /* Pour centrer le contenu dans le wrapper, si nécessaire */
+     border: 1px solid black;
+            width: 90%;
+            left: 5%;
+            margin: 0 auto; /* Centre le wrapper horizontalement en utilisant la marge automatique */
+            color: cadetblue; /* Couleur du texte dans le wrapper */
+            padding-left: 5px; /* Padding à gauche de 10 pixels */
+            position: absolute;
+            
+            
+            
+            z-index: 1; /* Indique que cet élément doit être au premier plan */
+            
+            background-color: white; /* Couleur de fond du wrapper */
+            text-align: center; /* Pour centrer le contenu dans le wrapper, si nécessaire */
+
 
 }
+.animate {
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+        }
+.action-button {
+            position: relative;
+            padding: 10px 40px;
+            margin: 0px 10px 10px 0px;
+            float: left;
+            border-radius: 10px;
+            font-family: 'Pacifico', cursive;
+            font-size: 25px;
+            color: #FFF;
+            text-decoration: none;
+        }
+        .blue {
+            background-color: #3498DB;
+            border-bottom: 5px solid #2980B9;
+            text-shadow: 0px -2px #2980B9;
+        }
+        .red {
+            background-color: #E74C3C;
+            border-bottom: 5px solid #BD3E31;
+            text-shadow: 0px -2px #BD3E31;
+        }
 
 
 h1 {
@@ -42,14 +68,11 @@ h1 {
     background-color: lightcyan; /* Couleur de fond de la colonne gauche (exemple) */
     padding: 10px; /* Padding à l'intérieur de la colonne gauche */
     margin-right: 10px; /* Marge à droite pour séparer de la colonne principale (exemple) */
+    height: 70px;
 }
 .menu a {
-    /*
-
-    display: block; /* Transforme les liens en éléments de bloc */
-    margin: 15px 15px 15px 15px; /* Marge à droite, en bas et à gauche */
-    text-decoration: none; /* Supprime le soulignement par défaut des liens */
-    color: #003300; /* Couleur du texte pour les liens dans la colonne gauche */
+    width: 8%;
+    text-align: center;
 }
 
 .leftcolumn {
