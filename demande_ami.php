@@ -14,7 +14,7 @@ $verif5=false; //Les 2 utilisateurs sont-ils déjà amis ?
 
 $message="";
 $database = 'ECE_IN';
-$mysqli = new mysqli('127.0.0.1', $user, $password, $database, $port);
+$mysqli = new mysqli('localhost', $user, $password, $database, $port);
 
 if ($mysqli->connect_error) {
     die('Connect Error (' . $mysqli->connect_errno . ') '
@@ -51,7 +51,15 @@ else{
         $verif1=($user1->num_rows > 0)?true:false;
         $verif2=($user2->num_rows > 0)?true:false;
         $verif3=($demande->num_rows > 0)?false:true;
-        $verif4=($email1==$email2)?false:true;
+        //$verif4=($email1==$email2)?false:true;
+
+        //Equivalent
+        if($email1==$email2){
+            $verif4=false;
+        }
+        else{
+            $verif4=true;
+        }
         $verif5=($amitie->num_rows > 0)?false:true;
 
         if($verif1&&$verif2&&$verif3&&$verif4&&$verif5){

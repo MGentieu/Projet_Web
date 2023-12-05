@@ -145,19 +145,19 @@ session_start();
         <div class="leftcolumn">
 
             <div id="carrousel">
-            <ul>
-            <li><img src="france1.jpg" width="100" height="100" /></li>
-            <li><img src="france2.jpg" width="100" height="100" /></li>
-            <li><img src="france3.jpg" width="100" height="100" /></li>
-            <li><img src="france4.jpg" width="100" height="100" /></li>
-            <li><img src="france5.jpg" width="100" height="100" /></li>
-            <li><img src="france6.jpg" width="100" height="100" /></li>
-            <li><img src="france7.jpg" width="100" height="100" /></li>
-            </ul>
-            <input type="button" id="prev" value="Précédent" onclick="change_color1()">
-            <input type="button" id="next" value="Suivant" onclick="change_color1()">
+                <ul>
+                    <li><img src="france1.jpg" width="100" height="100" /></li>
+                    <li><img src="france2.jpg" width="100" height="100" /></li>
+                    <li><img src="france3.jpg" width="100" height="100" /></li>
+                    <li><img src="france4.jpg" width="100" height="100" /></li>
+                    <li><img src="france5.jpg" width="100" height="100" /></li>
+                    <li><img src="france6.jpg" width="100" height="100" /></li>
+                    <li><img src="france7.jpg" width="100" height="100" /></li>
+                </ul>
+                <input type="button" id="prev" value="Précédent" onclick="change_color1()">
+                <input type="button" id="next" value="Suivant" onclick="change_color1()">
+            </div>
         </div>
-    </div>
         
 
         <div class="rightcolumn">

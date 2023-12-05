@@ -11,54 +11,61 @@ session_start();
 <link href="ecein.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<div class="wrapper">
-		
-           
-    <h1>Vos Messages</h1>
-
-    <div class="menu">
-	<div id="logo">
-		<a href="accueil.php">
-			<img src="primehomenav.gif" alt="Accueil">
-		</a>
-		<a href="monreseau.php">
-			<img src="primelistingsnav.gif" alt="Mon réseau">
-		</a> 
-		<a href="vous.php">
-			<img src="primefinancingnav.gif" alt="Vous">
-		</a>
-		<a href="notification.php">
-			<img src="primecontactnav.gif" alt="Notification">
-		</a> 
-		<a href="messagerie.php">
-			<img src="primecontactnav.gif" alt="Messagerie">
-		</a> 
-		<a href="emploi.php">
-			<img src="primecontactnav.gif" alt="Emploi">
-		</a> 
-	</div>
-</div>
-
-<div class="rightcolumn">
-<p>ECE In est une platforme de réseau social...<br>
-</p>
+    <div class="wrapper">
 
 
-<div id="footer">
-	<br>
-<p> <strong> ECE In <br> 75015 Paris </strong> <br> 
-</p>
-<div id="footer">Copyright &copy; 2023 ECE In<br>
-	<a href="mailto:ecein@ece.fr">ecein@ece.fr</a> 
-</div>
-</div>
-</div>
-</div>
+        <div class="gauche">
+            <h1>ECE In: Social Media Professionel <br> 
+                <br> de l'ECE Paris</h1>
+        </div>
 
+        <div class="droite">
+        <div class="logoece"><img src="ecebaniere.jpg" alt="logo de ECE" width="200px" height="70px"></div>
+        </div>
+        
+        
+        
+        <div _d="titre"></div>
 
+        <div class="menu">
+            
+                
+            
+            <div id="logo">
+                <a href="accueil.php" class="action-button animate blue">Accueil</a>
+                <a href="monreseau.php" class="action-button animate blue">Réseau</a>
+                <a href="vous.php" class="action-button animate blue">Vous</a>
+                <a href="notification.php" class="action-button animate blue">Notification</a>
+                <a href="messagerie.php" class="action-button animate red">Messagerie</a>
+                <a href="emploi.php" class="action-button animate blue">Emploi</a>
+            </div>
 
+        </div>
+        
+
+        <div class="leftcolumn">
+
+            
+    	</div>
+        
+
+        <div class="rightcolumn">
+            <p>ECE In est une platforme de réseau social...
+                <br>
+            </p>
+        </div>
+
+        <div id="footer">
+            <footer>
+             <strong> ECE In <br> 75015 Paris </strong>      
+            </footer> 
+        
+        
+        </div>
+    </div>
+    
 <div class="fond-second-plan">
-	<h1 class="logo"> <img src="ecebaniere.jpg" alt="logo de ECE"></h1>
+
 </div>
 
 
