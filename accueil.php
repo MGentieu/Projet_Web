@@ -108,6 +108,7 @@ session_start();
             <li><img src="rafale7.jpg" width="100" height="100" /></li>
         
         </div>
+    </div>
         
 
         <div class="rightcolumn">
@@ -124,7 +125,7 @@ session_start();
         
         </div>
     </div>
-    </div>
+    
 <div class="fond-second-plan">
     <h1 class="logo"> <img src="ecebaniere.jpg" alt="logo de ECE"></h1>
 </div>
