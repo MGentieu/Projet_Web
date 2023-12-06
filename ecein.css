@@ -84,16 +84,30 @@ font-family: Arial, Helvetica, sans-serif; }
 }
 
 .leftcolumn {
+    border: 1px solid black;
     float: left; /* Fait flotter la colonne vers la gauche */
-    width: 150px; /* Largeur de la colonne gauche */
+    width: 20%; /* Largeur de la colonne gauche */
     height: 400px;
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
-    padding: 10px; /* Padding à l'intérieur de la colonne gauche */
-    margin-right: 10px; /* Marge à droite pour séparer de la colonne principale (exemple) */
+
+    margin: 15px 0;
+    
 }
 
 
 .rightcolumn {
+    border: 1px solid black;
+    width: 60%;
+    float: left;
+    height: 400px;
+    display: block;
+    margin: 15px 0; /* Marge en haut et en bas pour les liens dans la colonne droite */
+    text-decoration: none;
+    color: #003300;
+    
+}
+.rightestcolumn {
+    border: 1px solid black;
     width: auto
     float: left;
     height: 400px;

@@ -39,8 +39,8 @@ session_start();
                 <a href="monreseau.php" class="action-button animate blue">Réseau</a>
                 <a href="vous.php" class="action-button animate blue">Vous</a>
                 <a href="notification.php" class="action-button animate blue">Notification</a>
-                <a href="messagerie.php" class="action-button animate red">Messagerie</a>
-                <a href="emploi.php" class="action-button animate blue">Emploi</a>
+                <a href="messagerie.php" class="action-button animate blue">Messagerie</a>
+                <a href="emploi.php" class="action-button animate red">Emploi</a>
             </div>
 
         </div>
@@ -56,6 +56,10 @@ session_start();
             <p>ECE In est une platforme de réseau social...
                 <br>
             </p>
+        </div>
+        <div class="rightestcolumn">
+            
+            
         </div>
 
         <div id="footer">
