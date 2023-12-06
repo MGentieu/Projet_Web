@@ -167,6 +167,17 @@ session_start();
         </div>
 
         <div id="footer">
+
+            <div class="gauche">
+            <h1>ECE In: Social Media Professionel <br> 
+                <br> de l'ECE Paris</h1>
+            </div>
+
+        <div class="droite">
+        <div class="logoece"><img src="ecebaniere.jpg" alt="logo de ECE" width="200px" height="70px"></div>
+        </div>
+            
+
             <footer>
              <strong> ECE In <br> 75015 Paris </strong>      
             </footer> 
