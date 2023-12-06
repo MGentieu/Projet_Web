@@ -20,7 +20,7 @@ session_start();
         </div>
 
         <div class="droite">
-        <div class="logoece"><img src="ecebaniere.jpg" alt="logo de ECE" width="200px" height="70px"></div>
+        <div class="logoece"><img src="images/ecebaniere.jpg" alt="logo de ECE" width="200px" height="70px"></div>
         </div>
         
         
@@ -53,6 +53,10 @@ session_start();
             <p>ECE In est une platforme de réseau social...
                 <br>
             </p>
+        </div>
+        <div class="rightestcolumn">
+            
+            
         </div>
 
         <div id="footer">
