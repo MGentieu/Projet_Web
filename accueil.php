@@ -119,7 +119,7 @@ session_start();
         </div>
 
         <div class="droite">
-        <div class="logoece"><img src="ecebaniere.jpg" alt="logo de ECE" width="200px" height="70px"></div>
+        <div class="logoece"><img src="images/ecebaniere.jpg" alt="logo de ECE" width="200px" height="70px"></div>
         </div>
         
         
@@ -146,13 +146,13 @@ session_start();
 
             
                 <ul>
-                    <li><img src="france1.jpg" width="100" height="100" /></li>
-                    <li><img src="france2.jpg" width="100" height="100" /></li>
-                    <li><img src="france3.jpg" width="100" height="100" /></li>
-                    <li><img src="france4.jpg" width="100" height="100" /></li>
-                    <li><img src="france5.jpg" width="100" height="100" /></li>
-                    <li><img src="france6.jpg" width="100" height="100" /></li>
-                    <li><img src="france7.jpg" width="100" height="100" /></li>
+                    <li><img src="images/france1.jpg" width="100" height="100" /></li>
+                    <li><img src="images/france2.jpg" width="100" height="100" /></li>
+                    <li><img src="images/france3.jpg" width="100" height="100" /></li>
+                    <li><img src="images/france4.jpg" width="100" height="100" /></li>
+                    <li><img src="images/france5.jpg" width="100" height="100" /></li>
+                    <li><img src="images/france6.jpg" width="100" height="100" /></li>
+                    <li><img src="images/france7.jpg" width="100" height="100" /></li>
                 </ul>
                 <input type="button" id="prev" value="Précédent" onclick="change_color1()">
                 <input type="button" id="next" value="Suivant" onclick="change_color1()">
