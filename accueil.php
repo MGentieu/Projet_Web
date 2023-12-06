@@ -13,6 +13,8 @@ session_start();
     <title>Emploi</title>
     <link href="ecein.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+   
+
     <script type="text/javascript">
         
         $(document).ready(function() {
@@ -105,6 +107,7 @@ session_start();
     slideImg();   
 });
 
+
     </script>
 
 
@@ -173,19 +176,16 @@ session_start();
         <div id="footer">
 
             <div class="gauche">
-            <h1>ECE In: Social Media Professionel <br> 
-                <br> de l'ECE Paris</h1>
-            </div>
-
-        <div class="droite">
-        <div class="logoece"><img src="ecebaniere.jpg" alt="logo de ECE" width="200px" height="70px"></div>
-        </div>
-            
-
             <footer>
              <strong> ECE In <br> 75015 Paris </strong>      
             </footer> 
-        
+            </div>
+
+        <div class="droite">
+        <div id="maCarte" style="height: 100px;"></div>
+
+        </div>
+            
         
         </div>
     </div>
