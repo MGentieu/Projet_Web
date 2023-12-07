@@ -169,6 +169,12 @@ font-family: Arial, Helvetica, sans-serif; }
         right: 50px;
     }
 
+#map {
+    position: relative;
+    width: 10px;
+    height: 10px;
+}
+
 
 
 #footer {
