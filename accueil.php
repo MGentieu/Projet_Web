@@ -203,7 +203,7 @@ if (isset($_GET['logout'])){
        <div  id="map">
         
             <a href="https://www.google.com/maps/place/6+Rue+Sextius+Michel,+75015+Paris/@48.8533916,2.2818063,15z/data=!4m6!3m5!1s0x47e6701b461cfb0b:0x826182e3c9eae061!8m2!3d48.85132!4d2.2886082!16s%2Fg%2F11tgf3tdc9?entry=ttu" target="_blank">
-            <img src="map.jpg" alt="map" height="90px" width="200px">
+            <img src="map.jpg" alt="map" height="90px" width="190px">
             </a>
         
         </div>
