@@ -4,13 +4,12 @@ session_start();
 
 
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Vous</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vous</title>
 <link href="ecein.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -47,9 +46,30 @@ session_start();
         
 
         <div class="leftcolumn">
-
+            <div >
+                <img id ="photoProfil"src ="images/france1.jpg" alt = "Photo de profil" height="70" width="70">
+            </div>
+            <p>Formations</p>
+            <ul>
+                <!-- Rendre cliquable les formation pour les supprimer -->
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+            </ul>
+            <!-- java  : une fois cliquer on va demander de remplir un formulaire et apres jquery ou php ca enregistre la donnée et ca la stoc pour venir la recuperer avec le h ref puisque on sotck par ordre chrono
+            -->
+            <input type="button" name="ajoutformation" value ="Ajouter une formation">
             
-    	</div>
+        </div>
         
 
         <div class="rightcolumn">
