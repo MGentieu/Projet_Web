@@ -40,7 +40,7 @@ session_start();
                 <a href="vous.php" class="action-button animate blue">Vous</a>
                 <a href="notification.php" class="action-button animate blue">Notification</a>
                 <a href="messagerie.php" class="action-button animate blue">Messagerie</a>
-                <a href="emploi.php" class="action-button animate red">Emploi</a>
+                <a href="emploi.php" class="action-button animate green">Emploi</a>
             </div>
 
         </div>

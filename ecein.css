@@ -45,12 +45,17 @@ font-family: Arial, Helvetica, sans-serif; }
             border-bottom: 5px solid #BD3E31;
             text-shadow: 0px -2px #BD3E31;
         }
+        .green{
+            background-color: #0FB24D;
+            border-bottom: 5px solid #0E833A;
+            text-shadow: 0px -2px #0E833A;
+        }
 
 
 .gauche {
     float: left;
     height: 80px;
-    width: 70%;
+    width: 80%;
     border: 1px solid black;
     
 

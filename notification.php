@@ -36,7 +36,7 @@ session_start();
                 <a href="accueil.php" class="action-button animate blue">Accueil</a>
                 <a href="monreseau.php" class="action-button animate blue">Réseau</a>
                 <a href="vous.php" class="action-button animate blue">Vous</a>
-                <a href="notification.php" class="action-button animate red">Notification</a>
+                <a href="notification.php" class="action-button animate green">Notification</a>
                 <a href="messagerie.php" class="action-button animate blue">Messagerie</a>
                 <a href="emploi.php" class="action-button animate blue">Emploi</a>
             </div>
