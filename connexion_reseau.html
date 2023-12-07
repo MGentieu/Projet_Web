@@ -28,11 +28,11 @@
 		function form_etu(){
 			var contenu_html="";
 			contenu_html+="<p><center>"; 
-			contenu_html+="<form action = 'connexion_reseau.php' method='post'>";
+			contenu_html+="<form action = 'accueil.php' method='post'>";
 			contenu_html+="<table border='1'>";
 			contenu_html+="<tr><td>Identifiant (Mail ou pseudo) : </td><td> <input type = 'text' name = 'ep'></td></tr>";
 			contenu_html+="<tr><td>Mot de passe : </td><td> <input type = 'password' name = 'mdp'></td></tr>";
-			contenu_html+="</table><input type='submit' value='Connexion'></form>";
+			contenu_html+="</table><input type='submit' name='enter' value='Connexion'></form>";
 			contenu_html+="</center></p>";
 			document.body.innerHTML=contenu_html;
 
@@ -40,11 +40,11 @@
 		function form_admin(){
 			var contenu_html="";
 			contenu_html+="<p><center>"; 
-			contenu_html+="<form action = 'connexion_admin.php' method='post'>";
+			contenu_html+="<form action = 'accueil.php' method='post'>";
 			contenu_html+="<table border='1'>";
 			contenu_html+="<tr><td>Identifiant (Mail) : </td><td> <input type = 'text' name = 'ep'></td></tr>";
 			contenu_html+="<tr><td>Mot de passe : </td><td> <input type = 'password' name = 'mdp'></td></tr>";
-			contenu_html+="</table><input type='submit' value='Connexion'></form>";
+			contenu_html+="</table><input type='submit' name='enter' value='Connexion'></form>";
 			contenu_html+="</center></p>";
 
 			//contenu_html+="<p><center>";

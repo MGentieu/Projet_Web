@@ -2,18 +2,54 @@
 session_start();
 if (isset($_GET['logout'])){ 
 //Message de sortie simple 
-    $logout_message = "On a quitté";
+    $logout_message = "On a quitté<br>";
     $myfile = fopen(__DIR__ . "/currentUser.html", "a") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/currentUser.html"); 
     fwrite($myfile, $logout_message); 
     fclose($myfile); 
     session_destroy(); 
     sleep(1); 
-    header("Location: emploi.php"); 
+    header("Location: accueil.php"); 
     exit();
     //Rediriger l'utilisateur 
 } 
 
+if (isset($_POST['enter'])){ 
+    if($_POST['ep'] != ""){ 
+        $_SESSION['ep'] = stripslashes(htmlspecialchars($_POST['ep'])); 
+        //$_SESSION['name'] = "Yolo";
+    } 
+    else{ 
+        echo '<span class="error">Veuillez saisir votre mail</span>'; 
+    } 
+}
+
+function loginForm() { 
+    //echo '<div id="loginform"> <p>Veuillez saisir votre nom pour continuer!</p> <form action="chat.php" method="post"> <label for="name">Nom: </label> <input type="text" name="name" id="name" /> <input type="submit" name="enter" id="enter" value="Soumettre" /> </form> </div>'; 
+    /*
+    $contenu_html="";
+    $contenu_html.="<p><center>"; 
+    $contenu_html.="<form action = 'connexion_admin.php' method='post'>";
+    $contenu_html.="<table border='1'>";
+    $contenu_html.="<tr><td>Identifiant (Mail) : </td><td> <input type = 'text' name = 'ep'></td></tr>";
+    $contenu_html.="<tr><td>Mot de passe : </td><td> <input type = 'password' name = 'mdp'></td></tr>";
+    $contenu_html.="</table><input type='submit' name='enter' value='Connexion'></form>";
+    $contenu_html.="</center></p>";
+    */
+    //echo "Bonjour";
+    if(file_exists("connexion_reseau.html") && filesize("connexion_reseau.html") > 0){ 
+        $contents = file_get_contents("connexion_reseau.html"); 
+        echo $contents; 
+    } 
+} 
+
 ?>
+
+
+<?php  
+    if(!isset($_SESSION['ep'])){
+        loginForm();
+    }
+    else{?>
 
 <!DOCTYPE html>
 <html>
@@ -130,6 +166,8 @@ if (isset($_GET['logout'])){
 
 </head>
 <body>
+    
+    
     <div class="wrapper">
 
 
@@ -218,4 +256,8 @@ if (isset($_GET['logout'])){
 
 
 </body>
+
 </html>
+<?php  
+}
+?>
