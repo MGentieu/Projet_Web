@@ -36,9 +36,9 @@ font-family: Arial, Helvetica, sans-serif; }
             text-decoration: none;
         }
         .blue {
-            background-color: #3498DB;
-            border-bottom: 5px solid #2980B9;
-            text-shadow: 0px -2px #2980B9;
+            background-color: #188385;
+            border-bottom: 5px solid #115D5F;
+            text-shadow: 0px -2px #115D5F;
         }
         .red {
             background-color: #E74C3C;
@@ -170,14 +170,21 @@ font-family: Arial, Helvetica, sans-serif; }
     }
 
 #map {
+    width: auto
+    float: left;
+    height: 90px;
+    border:1px solid black;
     position: relative;
-    width: 10px;
-    height: 10px;
+    
 }
 
 
 
 #footer {
+    float: left;
+    height: 90px;
+    width: 82%;
+    border: 1px solid black;
     margin-bottom: 10px;
 }
         
