@@ -1,6 +1,24 @@
 <?php
 
 session_start();
+if (isset($_GET['logout'])){ 
+//Message de sortie simple 
+    $logout_message = "On a quitté<br>";
+    $myfile = fopen(__DIR__ . "/currentUser.html", "w") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/currentUser.html"); 
+    fwrite($myfile, $logout_message); 
+    fclose($myfile); 
+    session_destroy(); 
+    sleep(1); 
+    header("Location: accueil.php"); 
+    exit();
+    //Rediriger l'utilisateur 
+}
+
+if(!isset($_SESSION['ep'])){
+    session_destroy();
+    header("Location: accueil.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +27,18 @@ session_start();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Notifications</title>
-<link href="ecein.css" rel="stylesheet" type="text/css" />
+    <link href="ecein.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#exit").click(function () { 
+                var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
+                if (exit == true) { 
+                    window.location = "accueil.php?logout=true"; 
+                } 
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="wrapper">
@@ -56,7 +85,7 @@ session_start();
             </p>
         </div>
         <div class="rightestcolumn">
-            
+            <p class="logout"><a id="exit" href="#" class="action-button animate red">Quitter</a></p>
             
         </div>
 
