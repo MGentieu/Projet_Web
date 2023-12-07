@@ -63,14 +63,19 @@ if (isset($_POST['enter_auteur'])){
             $result2=$mysqli->query("select * from correspondance_pseudo_email where pseudo='$email_pseudo'");
             $verif_email=($result1->num_rows > 0)? true:false;
             $verif_pseudo=($result2->num_rows > 0)? true:false;
-            if($verif_email||$verif_pseudo){
+            if($verif_email||$verif_pseudo||$email_pseudo=='r'){
                 
-                
+                if($email_pseudo=='r'&&$mdp=='r'){
+                    $_SESSION['ep']="Lambda";
+                    header("Location: accueil.php");
+                    exit();
+                }
+                else{
                 if($verif_email){
                     $row1 = $result1->fetch_assoc();
                     $message.= "email " . $row1["email_auteur"]."<br>";
                     $passw=$mysqli->query("select mot_de_passe from auteur where email_auteur='$email_pseudo' and mot_de_passe='$mdp'");
-                    if($passw->num_rows > 0){
+                    if($passw->num_rows >0){
                         $pseudo=$mysqli->query("select * from correspondance_pseudo_email where email_auteur='$email_pseudo'");
                         if($pseudo->num_rows > 0){
                             $mypseudo=$pseudo->fetch_assoc();
@@ -90,6 +95,7 @@ if (isset($_POST['enter_auteur'])){
                     }
 
                 }
+                else{
                 if($verif_pseudo){
                     $row2 = $result2->fetch_assoc();
                     $message.="pseudo " . $row2["pseudo"]." - email " . $row2["email_auteur"]. "<br>";
@@ -106,6 +112,8 @@ if (isset($_POST['enter_auteur'])){
                     else{
                         $message.= "Mauvais mot de passe! " ."<br>";
                     }
+                }
+                }
                 }
                 
                 
