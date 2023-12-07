@@ -1,6 +1,10 @@
 <?php
 
 session_start();
+$message="";
+if(isset($_SESSION['ep'])){
+    $message.="<br>Salut ".$_SESSION['ep']."<br>";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,6 +56,9 @@ session_start();
         <div class="rightcolumn">
             <p>ECE In est une platforme de réseau social...
                 <br>
+                <?php  
+                    echo $message;
+                ?>
             </p>
         </div>
         <div class="rightestcolumn">

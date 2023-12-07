@@ -123,15 +123,7 @@ if (isset($_POST['enter_auteur'])){
     $mysqli->close();
     
 
-    /*
-    if($_POST['ep'] != ""){ 
-        $_SESSION['ep'] = $_POST['ep']; 
-        //$_SESSION['name'] = "Yolo";
-    } 
-    else{ 
-        echo '<span class="error">Veuillez saisir votre mail</span>'; 
-    } 
-    */
+    
 }
 
 if (isset($_POST['enter_admin'])){ 
@@ -302,7 +294,7 @@ function loginForm() {
                 
             
             <div id="logo">
-                <a href="accueil.php" class="action-button animate green">Accueil</a>
+                <a href="accueil.php" class="action-button animate green" id="ref1">Accueil</a>
                 <a href="monreseau.php" class="action-button animate blue">Réseau</a>
                 <a href="vous.php" class="action-button animate blue">Vous</a>
                 <a href="notification.php" class="action-button animate blue">Notification</a>

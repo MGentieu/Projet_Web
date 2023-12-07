@@ -71,6 +71,7 @@ function loginForm() {
 				var clientmsg = $("#usermsg").val(); 
 				$.post("post.php", { 
 					text: clientmsg 
+					
 				}); 
 				$("#usermsg").val(""); 
 				return false; 
