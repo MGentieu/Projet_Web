@@ -3,7 +3,7 @@ session_start();
 if (isset($_GET['logout'])){ 
 //Message de sortie simple 
     $logout_message = "On a quitté<br>";
-    $myfile = fopen(__DIR__ . "/currentUser.html", "a") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/currentUser.html"); 
+    $myfile = fopen(__DIR__ . "/currentUser.html", "w") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/currentUser.html"); 
     fwrite($myfile, $logout_message); 
     fclose($myfile); 
     session_destroy(); 
@@ -13,29 +13,142 @@ if (isset($_GET['logout'])){
     //Rediriger l'utilisateur 
 } 
 
-if (isset($_POST['enter'])){ 
+if (isset($_POST['enter_auteur'])){ 
+    
+    
+    $user = 'root';
+    $serveur='localhost';
+    $password = '';
+    //$password = 'root'; 
+    $port = NULL; //Default must be NULL to use default port
+    $valid_form=false;
+    $verif_email=false;
+    $verif_pseudo=false;
+    //$verif_connexion=false;
+    $message="";
+    $database = 'ECE_IN';
+    $mysqli = new mysqli($serveur, $user, $password, $database, $port);
+
+    if ($mysqli->connect_error) {
+        echo "Erreur de connexion à la base de données.<br>";
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+                . $mysqli->connect_error);
+    }
+    else{
+        $email_pseudo=isset($_POST["ep"])? $_POST["ep"] : ""; 
+        $mdp=isset($_POST["mdp"])? $_POST["mdp"] : ""; 
+        
+        echo '<p>Connection OK '. $mysqli->host_info.'</p>';
+        echo '<p>Server '.$mysqli->server_info.'</p>';
+        echo '<p>Initial charset: '.$mysqli->character_set_name().'</p>';
+
+        if($email_pseudo==""||$mdp==""){
+            $valid_form=false;
+            $message.="Un des champs requis est vide.<br>";
+            //echo $message;
+        }
+        else{
+            $valid_form=true;   
+        }
+        if($email_pseudo==""){
+            $message.="L'email ou le pseudo n'est pas indiqué.<br>";
+        }
+        if($mdp==""){
+            $message.="Le mot de passe n'est pas indiqué.<br>";
+        }
+        
+        if($valid_form){
+
+            $result1=$mysqli->query("select email_auteur from auteur where email_auteur='$email_pseudo'");
+            $result2=$mysqli->query("select * from correspondance_pseudo_email where pseudo='$email_pseudo'");
+            $verif_email=($result1->num_rows > 0)? true:false;
+            $verif_pseudo=($result2->num_rows > 0)? true:false;
+            if($verif_email||$verif_pseudo){
+                
+                
+                if($verif_email){
+                    $row1 = $result1->fetch_assoc();
+                    $message.= "email " . $row1["email_auteur"]."<br>";
+                    $passw=$mysqli->query("select mot_de_passe from auteur where email_auteur='$email_pseudo' and mot_de_passe='$mdp'");
+                    if($passw->num_rows > 0){
+                        $pseudo=$mysqli->query("select * from correspondance_pseudo_email where email_auteur='$email_pseudo'");
+                        if($pseudo->num_rows > 0){
+                            $mypseudo=$pseudo->fetch_assoc();
+                            //$message.= "L'utilisateur est maintenant connecté! " ."<br>";
+                            $_SESSION['ep']=$mypseudo['pseudo'];
+                            header("Location: accueil.php");
+                            exit();
+                        }
+                        $message.= "L'utilisateur est maintenant connecté! " ."<br>";
+                        session_start();
+                        //$_SESSION['info'] = "Ceci est une information depuis PHP";
+                        header("Location: accueil.php");
+                        exit();
+                    }
+                    else{
+                        $message.= "Mauvais mot de passe! " ."<br>";
+                    }
+
+                }
+                if($verif_pseudo){
+                    $row2 = $result2->fetch_assoc();
+                    $message.="pseudo " . $row2["pseudo"]." - email " . $row2["email_auteur"]. "<br>";
+                    $email_correspondant=$row2["email_auteur"];
+                    $passw=$mysqli->query("select mot_de_passe from auteur where email_auteur='$email_correspondant' and mot_de_passe='$mdp'");
+                    if($passw->num_rows > 0){
+                        $message.= "L'utilisateur est maintenant connecté! " ."<br>";
+                        $_SESSION['ep']=$row2['pseudo'];
+                        //session_start();
+                        //$_SESSION['info'] = "Ceci est une information depuis PHP";
+                        header("Location: accueil.php");
+                        exit();
+                    }
+                    else{
+                        $message.= "Mauvais mot de passe! " ."<br>";
+                    }
+                }
+                
+                
+            
+            }
+            else{
+                $message.="Pseudo ou email non présent dans la base de données. <br>";
+            }
+             
+
+        } 
+        echo $message; 
+    }
+
+    $mysqli->close();
+    
+
+    /*
     if($_POST['ep'] != ""){ 
-        $_SESSION['ep'] = stripslashes(htmlspecialchars($_POST['ep'])); 
+        $_SESSION['ep'] = $_POST['ep']; 
         //$_SESSION['name'] = "Yolo";
     } 
     else{ 
         echo '<span class="error">Veuillez saisir votre mail</span>'; 
     } 
+    */
+}
+
+if (isset($_POST['enter_admin'])){ 
+    
+    
+    if($_POST['ep'] != ""){ 
+        $_SESSION['ep'] = $_POST['ep']; 
+        //$_SESSION['name'] = "Yolo";
+    } 
+    else{ 
+        echo '<span class="error">Veuillez saisir votre mail</span>'; 
+    } 
+    
 }
 
 function loginForm() { 
-    //echo '<div id="loginform"> <p>Veuillez saisir votre nom pour continuer!</p> <form action="chat.php" method="post"> <label for="name">Nom: </label> <input type="text" name="name" id="name" /> <input type="submit" name="enter" id="enter" value="Soumettre" /> </form> </div>'; 
-    /*
-    $contenu_html="";
-    $contenu_html.="<p><center>"; 
-    $contenu_html.="<form action = 'connexion_admin.php' method='post'>";
-    $contenu_html.="<table border='1'>";
-    $contenu_html.="<tr><td>Identifiant (Mail) : </td><td> <input type = 'text' name = 'ep'></td></tr>";
-    $contenu_html.="<tr><td>Mot de passe : </td><td> <input type = 'password' name = 'mdp'></td></tr>";
-    $contenu_html.="</table><input type='submit' name='enter' value='Connexion'></form>";
-    $contenu_html.="</center></p>";
-    */
-    //echo "Bonjour";
+    
     if(file_exists("connexion_reseau.html") && filesize("connexion_reseau.html") > 0){ 
         $contents = file_get_contents("connexion_reseau.html"); 
         echo $contents; 
