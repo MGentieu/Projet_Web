@@ -74,7 +74,9 @@ font-family: Arial, Helvetica, sans-serif; }
     text-align: center;
 }
 
-
+#photoProfil{
+    border-radius: 50%;
+}
 .menu {
      /* Fait flotter la colonne vers la gauche */
     width: 98%; /* Largeur de la colonne gauche */
