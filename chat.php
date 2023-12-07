@@ -15,6 +15,7 @@ if (isset($_GET['logout'])){
 if (isset($_POST['enter'])){ 
 	if($_POST['name'] != ""){ 
 		$_SESSION['name'] = stripslashes(htmlspecialchars($_POST['name'])); 
+		//$_SESSION['name'] = "Yolo";
 	} 
 	else{ 
 		echo '<span class="error">Veuillez saisir votre nom</span>'; 

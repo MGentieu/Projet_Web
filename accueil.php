@@ -1,7 +1,17 @@
 <?php
-
 session_start();
-
+if (isset($_GET['logout'])){ 
+//Message de sortie simple 
+    $logout_message = "On a quitté";
+    $myfile = fopen(__DIR__ . "/currentUser.html", "a") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/currentUser.html"); 
+    fwrite($myfile, $logout_message); 
+    fclose($myfile); 
+    session_destroy(); 
+    sleep(1); 
+    header("Location: emploi.php"); 
+    exit();
+    //Rediriger l'utilisateur 
+} 
 
 ?>
 
@@ -78,6 +88,13 @@ session_start();
         //$nextImg = $img.eq(j); 
         //$nextImg.css('display', 'block');
     });
+
+    $("#exit").click(function () { 
+                var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
+                if (exit == true) { 
+                    window.location = "accueil.php?logout=true"; 
+                } 
+            });
 
     function slideImg(){
         setTimeout(function(){ 
@@ -170,17 +187,19 @@ session_start();
         </div>
         <div class="rightestcolumn">
             
-            
+            <p class="logout"><a id="exit" href="#" class="action-button animate red">Quitter</a></p>
         </div>
 
         <div id="footer">
 
             
             <footer>
-             <strong> ECE In <br> 75015 Paris </strong>      
+             <strong> ECE In <br> 75015 Paris </strong>  
+                 
             </footer> 
             
         </div>
+        
        <div  id="map">
         
             <a href="https://www.google.com/maps/place/6+Rue+Sextius+Michel,+75015+Paris/@48.8533916,2.2818063,15z/data=!4m6!3m5!1s0x47e6701b461cfb0b:0x826182e3c9eae061!8m2!3d48.85132!4d2.2886082!16s%2Fg%2F11tgf3tdc9?entry=ttu" target="_blank">
