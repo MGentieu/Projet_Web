@@ -18,6 +18,36 @@ if (isset($_GET['logout'])){
 $message="";
 if(isset($_SESSION['ep'])){
     $message.="<br>Salut ".$_SESSION['ep']."<br>";
+    $user = 'root';
+    $serveur='localhost';
+    $password=(isset($_SESSION['mdp_bdd']))?$_SESSION['mdp_bdd']:'';
+    $port = NULL;
+
+    $database = 'ECE_IN';
+    $mysqli = new mysqli($serveur, $user, $password, $database, $port);
+
+    if ($mysqli->connect_error) {
+        echo "Erreur de connexion à la base de données.<br>";
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+                . $mysqli->connect_error);
+    }
+    else{
+        $pseudo=$_SESSION['ep']; 
+        $SQL="SELECT DISTINCT P.id_conv,C.nom_conv FROM participation P JOIN conversation C JOIN correspondance_pseudo_email CPE ON P.id_conv=C.id_conv AND P.email_auteur=CPE.email_auteur WHERE CPE.pseudo='$pseudo'";
+        $conversations=$mysqli->query($SQL);
+        if($conversations->num_rows >0){
+            while($row = $conversations->fetch_assoc()){
+                $message.="La conversation nommée : '".$row['nom_conv']."'<br>";
+            }
+        }
+        else{
+            $message.="Vous ne participez à aucune conversation.<br>";
+        }
+
+        echo $message; 
+    }
+
+    $mysqli->close();
 }
 else{
     session_destroy();

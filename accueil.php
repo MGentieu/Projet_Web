@@ -27,7 +27,8 @@ if (isset($_POST['enter_auteur'])){
                 
     $user = 'root';
     $serveur='localhost';
-    $password = isset($_POST["mdp_bdd"])? $_POST["mdp_bdd"] : "";;
+    $password = isset($_POST["mdp_bdd"])? $_POST["mdp_bdd"] : "";
+    $_SESSION['mdp_bdd']=$password;
     //$password = 'root'; 
     $port = NULL; //Default must be NULL to use default port
     $valid_form=false;

@@ -35,6 +35,11 @@ font-family: Arial, Helvetica, sans-serif; }
             color: #FFF;
             text-decoration: none;
         }
+        .action-button:active {
+            transform: translate(0px, 5px);
+            -webkit-transform: translate(0px, 5px);
+            border-bottom: 1px solid;
+        }
         .blue {
             background-color: #188385;
             border-bottom: 5px solid #115D5F;
@@ -207,4 +212,3 @@ img{
 	border: none;
 }
 
- 
