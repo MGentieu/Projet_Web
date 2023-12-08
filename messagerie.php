@@ -36,9 +36,13 @@ if(isset($_SESSION['ep'])){
         $SQL="SELECT DISTINCT P.id_conv,C.nom_conv FROM participation P JOIN conversation C JOIN correspondance_pseudo_email CPE ON P.id_conv=C.id_conv AND P.email_auteur=CPE.email_auteur WHERE CPE.pseudo='$pseudo'";
         $conversations=$mysqli->query($SQL);
         if($conversations->num_rows >0){
+            $message.="<table border='1' align='center'>";
+            $message.=`<tr> <th>Liste des conversations</th></tr>`;
             while($row = $conversations->fetch_assoc()){
-                $message.="La conversation nommée : '".$row['nom_conv']."'<br>";
+                //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
+                $message.="<tr><td>".$row['nom_conv']."</td></tr>";
             }
+            $message.="</table>";
         }
         else{
             $message.="Vous ne participez à aucune conversation.<br>";
