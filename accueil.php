@@ -15,7 +15,15 @@ if (isset($_GET['logout'])){
 
 if (isset($_POST['enter_auteur'])){ 
     
-    
+    $email_pseudo=isset($_POST["ep"])? $_POST["ep"] : ""; 
+    $mdp=isset($_POST["mdp"])? $_POST["mdp"] : "";
+    if($email_pseudo=='r'&&$mdp=='r'){
+        $_SESSION['ep']="Lambda";
+        header("Location: accueil.php");
+        $mysqli->close();
+        exit();
+    }
+                
     $user = 'root';
     $serveur='localhost';
     $password = '';
@@ -65,12 +73,7 @@ if (isset($_POST['enter_auteur'])){
             $verif_pseudo=($result2->num_rows > 0)? true:false;
             if($verif_email||$verif_pseudo||$email_pseudo=='r'){
                 
-                if($email_pseudo=='r'&&$mdp=='r'){
-                    $_SESSION['ep']="Lambda";
-                    header("Location: accueil.php");
-                    exit();
-                }
-                else{
+                
                 if($verif_email){
                     $row1 = $result1->fetch_assoc();
                     $message.= "email " . $row1["email_auteur"]."<br>";
@@ -88,6 +91,7 @@ if (isset($_POST['enter_auteur'])){
                         session_start();
                         //$_SESSION['info'] = "Ceci est une information depuis PHP";
                         header("Location: accueil.php");
+                        $mysqli->close();
                         exit();
                     }
                     else{
@@ -95,7 +99,7 @@ if (isset($_POST['enter_auteur'])){
                     }
 
                 }
-                else{
+                
                 if($verif_pseudo){
                     $row2 = $result2->fetch_assoc();
                     $message.="pseudo " . $row2["pseudo"]." - email " . $row2["email_auteur"]. "<br>";
@@ -107,14 +111,15 @@ if (isset($_POST['enter_auteur'])){
                         //session_start();
                         //$_SESSION['info'] = "Ceci est une information depuis PHP";
                         header("Location: accueil.php");
+                        $mysqli->close();
                         exit();
                     }
                     else{
                         $message.= "Mauvais mot de passe! " ."<br>";
                     }
                 }
-                }
-                }
+                
+                
                 
                 
             
