@@ -17,6 +17,7 @@ if (isset($_POST['enter_auteur'])){
     
     $email_pseudo=isset($_POST["ep"])? $_POST["ep"] : ""; 
     $mdp=isset($_POST["mdp"])? $_POST["mdp"] : "";
+
     if($email_pseudo=='r'&&$mdp=='r'){
         $_SESSION['ep']="Lambda";
         header("Location: accueil.php");
@@ -26,7 +27,7 @@ if (isset($_POST['enter_auteur'])){
                 
     $user = 'root';
     $serveur='localhost';
-    $password = '';
+    $password = isset($_POST["mdp_bdd"])? $_POST["mdp_bdd"] : "";;
     //$password = 'root'; 
     $port = NULL; //Default must be NULL to use default port
     $valid_form=false;
@@ -244,11 +245,11 @@ function loginForm() {
     });
 
     $("#exit").click(function () { 
-                var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
-                if (exit == true) { 
-                    window.location = "accueil.php?logout=true"; 
-                } 
-            });
+        var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
+        if (exit == true) { 
+            window.location = "accueil.php?logout=true"; 
+        } 
+    });
 
     function slideImg(){
         setTimeout(function(){ 
