@@ -20,6 +20,8 @@ if (isset($_POST['enter_auteur'])){
 
     if($email_pseudo=='r'&&$mdp=='r'){
         $_SESSION['ep']="Lambda";
+        $password = isset($_POST["mdp_bdd"])? $_POST["mdp_bdd"] : "";
+        $_SESSION['mdp_bdd']=$password;
         header("Location: accueil.php");
         $mysqli->close();
         exit();

@@ -2,6 +2,11 @@
 
 session_start();
 
+function load_conv($el) { 
+
+    echo "<br>L'id de conversation choisi est : ".$el."<br>"; 
+} 
+
 if (isset($_GET['logout'])){ 
 //Message de sortie simple 
     $logout_message = "On a quitté<br>";
@@ -16,6 +21,7 @@ if (isset($_GET['logout'])){
 }
 
 $message="";
+$message2="";
 if(isset($_SESSION['ep'])){
     $message.="<br>Salut ".$_SESSION['ep']."<br>";
     $user = 'root';
@@ -36,13 +42,15 @@ if(isset($_SESSION['ep'])){
         $SQL="SELECT DISTINCT P.id_conv,C.nom_conv FROM participation P JOIN conversation C JOIN correspondance_pseudo_email CPE ON P.id_conv=C.id_conv AND P.email_auteur=CPE.email_auteur WHERE CPE.pseudo='$pseudo'";
         $conversations=$mysqli->query($SQL);
         if($conversations->num_rows >0){
-            $message.="<table border='1' align='center'>";
-            $message.=`<tr> <th>Liste des conversations</th></tr>`;
+            $message.="<form action='messagerie.php' method='post'><table border='1' align='center' width='400'>";
+            $message.="<tr> <th colspan='3'>Liste des conversations</th></tr>";
             while($row = $conversations->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
-                $message.="<tr><td>".$row['nom_conv']."</td></tr>";
+                $message.="<tr><td name='Conv_Id'>".$row['id_conv']."</td>";
+                $message.="<td>".$row['nom_conv']."</td>";
+                $message.="<td><button type='submit' name='valid_conv' value='".$row['id_conv']."'>Accéder à la conversation"."</td></tr>";
             }
-            $message.="</table>";
+            $message.="</table></form>";
         }
         else{
             $message.="Vous ne participez à aucune conversation.<br>";
@@ -58,6 +66,19 @@ else{
     header("Location: accueil.php");
     exit();
 }
+
+if(isset($_POST['valid_conv'])){
+    $myId = $_POST['valid_conv'];
+    $message2 = "Bouton appuyé. Id de la conv = ".$myId."<br>";
+    $nameFile = $myId.".html";
+    $filepath = __DIR__ . "/test_log.html";  // Correction du chemin du fichier
+    $_SESSION['filepath']=$filepath;
+    $myfile = fopen($filepath, "a") or die("Impossible d'ouvrir le fichier " . $filepath);
+    fwrite($myfile, $message2);
+    fclose($myfile);
+
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,6 +97,10 @@ else{
                 } 
             });
         });
+        
+            
+        
+
     </script>
 </head>
 <body>
@@ -122,6 +147,7 @@ else{
                 <br>
                 <?php  
                     echo $message;
+                    echo $message2;
                 ?>
             </p>
         </div>
