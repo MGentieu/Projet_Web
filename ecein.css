@@ -147,16 +147,29 @@ font-family: Arial, Helvetica, sans-serif; }
         }
 
 #carrousel {
-        position: relative;
+        height: 100%; /* Set the height of the carousel to 100% of its container */
+        overflow: hidden; /* Hide the overflow to create a vertical scroll effect */
     }
-#carrousel ul{
-    list-style: none;
-}
-#carrousel ul li{
-    position: absolute;
-    top: 0;
-    left: 0;
-}    
+
+    #carrousel ul {
+        list-style-type: none; /* Remove list styling */
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column; /* Arrange list items vertically */
+        transition: transform 0.5s ease; /* Add smooth transition for animation */
+    }
+
+    #carrousel ul li {
+        margin-bottom: 10px; /* Add margin between list items */
+    }
+
+    #carrousel ul li img {
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        display: block;
+    }
 
 #titre {
         left: 220px;

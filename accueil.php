@@ -322,21 +322,23 @@ function loginForm() {
         </div>
         
 
-        <div class="leftcolumn" id="carrousel">
+        <div class="leftcolumn">
+            <div id="carrousel">
 
             
                 <ul>
-                    <li><img src="images/france1.jpg" width="100" height="100" /></li>
-                    <li><img src="images/france2.jpg" width="100" height="100" /></li>
-                    <li><img src="images/france3.jpg" width="100" height="100" /></li>
-                    <li><img src="images/france4.jpg" width="100" height="100" /></li>
-                    <li><img src="images/france5.jpg" width="100" height="100" /></li>
-                    <li><img src="images/france6.jpg" width="100" height="100" /></li>
-                    <li><img src="images/france7.jpg" width="100" height="100" /></li>
+                    <li><img src="images/france1.jpg" width="200" height="200" /></li>
+                    <li><img src="images/france2.jpg" width="200" height="200" /></li>
+                    <li><img src="images/france3.jpg" width="200" height="200" /></li>
+                    <li><img src="images/france4.jpg" width="200" height="200" /></li>
+                    <li><img src="images/france5.jpg" width="200" height="200" /></li>
+                    <li><img src="images/france6.jpg" width="200" height="200" /></li>
+                    <li><img src="images/france7.jpg" width="200" height="200" /></li>
                 </ul>
                 <input type="button" id="prev" value="Précédent" onclick="change_color1()">
                 <input type="button" id="next" value="Suivant" onclick="change_color1()">
             
+        </div>
         </div>
         
 

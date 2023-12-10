@@ -42,7 +42,10 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
 --
 
 INSERT INTO `administrateur` (`email_admin`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`) VALUES
-('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 695973078);
+('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 0695973078),
+('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 0671410348),
+('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 0648527954),
+('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 0648527954);
 
 -- --------------------------------------------------------
 
@@ -54,7 +57,9 @@ DROP TABLE IF EXISTS `amitie`;
 CREATE TABLE IF NOT EXISTS `amitie` (
   `email_ami_1` varchar(50) NOT NULL,
   `email_ami_2` varchar(50) NOT NULL,
-  PRIMARY KEY (`email_ami_1`,`email_ami_2`),
+  `email_ami_3` varchar(50) NOT NULL,
+  `email_ami_3` varchar(50) NOT NULL,
+  PRIMARY KEY (`email_ami_1`,`email_ami_2`,`email_ami_3`,`email_ami_4`),
   KEY `FK2` (`email_ami_2`)
 ) ;
 
@@ -62,10 +67,11 @@ CREATE TABLE IF NOT EXISTS `amitie` (
 -- Déchargement des données de la table `amitie`
 --
 
-INSERT INTO `amitie` (`email_ami_1`, `email_ami_2`) VALUES
-('ericdampierre@edu.ece.fr', 'hergentieu98@edu.ece.fr'),
-('hergentieu98@edu.ece.fr', 'hgentieu97@edu.ece.fr'),
-('hgentieu97@edu.ece.fr', 'ericdampierre@edu.ece.fr');
+INSERT INTO `amitie` (`email_ami_1`, `email_ami_2`,`email_ami_3`,`email_ami_4`) VALUES
+('danae.collard@edu.ece.fr', 'hergentieu98@edu.ece.fr','mgentieu02@edu.ece.fr','theo.mettez@edu.ece.fr'),
+('theo.mettez@edu.ece.fr', 'danae.collard@edu.ece.fr','hergentieu98@edu.ece.fr','mgentieu02@edu.ece.fr'),
+('mgentieu02@edu.ece.fr', 'theo.mettez@edu.ece.fr','danae.collard@edu.ece.fr','hergentieu98@edu.ece.fr'),
+('hergentieu98@edu.ece.fr', 'mgentieu02@edu.ece.fr','theo.mettez@edu.ece.fr','danae.collard@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -91,9 +97,10 @@ CREATE TABLE IF NOT EXISTS `auteur` (
 --
 
 INSERT INTO `auteur` (`email_auteur`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`, `Description`, `id_im_de_fond`) VALUES
-('hgentieu97@edu.ece.fr', 'volcan1', 'Gentieu', 'Hector', 620212425, 'J\'aime les pommes', 145201),
-('hergentieu98@edu.ece.fr', 'siecle2', 'Gentieu', 'Hervé', 624212066, 'J\'aime les poires', 145201),
-('ericdampierre@edu.ece.fr', 'Mec_generique', 'Dampierre', 'Eric', 607080910, 'qui me demande?', 145201);
+('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 0695973078, 'Moi je suis Ingenieur Numérique', 145201),
+('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 0648527954, 'Moi je suis Ingenieur Aeronautique', 145202),
+('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 0648527954, 'Moi je suis Ingenieur dans la Finance', 145203)
+('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 0671410348, 'Moi je suis Pilote de ligne', 145204);
 
 -- --------------------------------------------------------
 
@@ -115,7 +122,10 @@ CREATE TABLE IF NOT EXISTS `candidature` (
 --
 
 INSERT INTO `candidature` (`reference_offre`, `email_auteur`, `date_candidature`) VALUES
-('STG235-ECE', 'hgentieu97@edu.ece.fr', '2023-12-05');
+('STG235-ECE', 'mgentieu02@edu.ece.fr', '2023-12-05'),
+('STG245-AIRBUS', 'hergentieu98@edu.ece.fr', '2023-10-07')
+('STG255-BNP', 'theo.mettez@edu.ece.fr', '2023-27-09')
+('STG265-AIRFRANCE', 'danae.collard@edu.ece.fr', '2023-11-10')
 
 -- --------------------------------------------------------
 
@@ -139,7 +149,14 @@ CREATE TABLE IF NOT EXISTS `commentaire_evenement` (
 --
 
 INSERT INTO `commentaire_evenement` (`id_evenement`, `email_auteur`, `date_commentaire`, `heure_commentaire`, `texte_commentaire`) VALUES
-(1, 'hergentieu98@edu.ece.fr', '2023-11-09', '19:16:32', 'J\'ai hâte d\'y participer');
+(1, 'mgentieu02@edu.ece.fr', '2023-11-09', '07:24:16', 'J\'ai hâte d\'y participer'),
+(1, 'hergentieu98@edu.ece.fr', '2023-10-09', '13:26:33', 'Ça a l\'air trop bien!'),
+(2, 'theo.mettez@edu.ece.fr', '2023-09-09', '19:16:32', 'Fantastique'),
+(2, 'danae.collard@edu.ece.fr', '2023-08-09', '17:13:52', 'Quelle organisation!'),
+(3, 'hergentieu98@edu.ece.fr', '2023-10-09', '13:26:33', 'Ça a l\'air trop bien!'),
+(3, 'theo.mettez@edu.ece.fr', '2023-09-09', '19:16:32', 'Fantastique'),
+(4, 'mgentieu02@edu.ece.fr', '2023-11-09', '07:24:16', 'J\'ai hâte d\'y participer'),
+(4, 'danae.collard@edu.ece.fr', '2023-08-09', '17:13:52', 'Quelle organisation!');
 
 -- --------------------------------------------------------
 
@@ -163,7 +180,10 @@ CREATE TABLE IF NOT EXISTS `commentaire_photo` (
 --
 
 INSERT INTO `commentaire_photo` (`id_photo`, `email_auteur`, `date_commentaire`, `heure_commentaire`, `texte_commentaire`) VALUES
-(1, 'hergentieu98@edu.ece.fr', '2024-01-01', '19:16:32', 'Belle photo en effet');
+(1, 'mgentieu02@edu.ece.fr', '2023-11-09', '09:24:16', 'Belle photo en effet.'),
+(1, 'hergentieu98@edu.ece.fr', '2023-10-09', '14:45:31', 'Magnifique!'),
+(1, 'theo.mettez@edu.ece.fr', '2023-09-09', '20:16:32', 'Qu\'est-ce que tu ressembles à ton père!'),
+(1, 'danae.collard@edu.ece.fr', '2023-08-09', '18:33:52', 'Le paysage est superbe.');
 
 -- --------------------------------------------------------
 
@@ -187,7 +207,11 @@ CREATE TABLE IF NOT EXISTS `commentaire_video` (
 --
 
 INSERT INTO `commentaire_video` (`id_video`, `email_auteur`, `date_commentaire`, `heure_commentaire`, `texte_commentaire`) VALUES
-(1, 'hergentieu98@edu.ece.fr', '2024-01-01', '19:16:32', 'Belle vidéo en effet');
+(1, 'mgentieu02@edu.ece.fr', '2023-11-09', '09:24:16', 'Belle vidéo en effet.'),
+(1, 'hergentieu98@edu.ece.fr', '2024-01-01', '19:16:32', 'Impressionnant!'),
+(1, 'theo.mettez@edu.ece.fr', '2023-09-09', '20:16:32', 'Sur cette vidéo la ressemblance est frappante!'),
+(1, 'danae.collard@edu.ece.fr', '2023-08-09', '18:33:52', 'Le paysage est superbe.');
+
 
 -- --------------------------------------------------------
 
@@ -209,7 +233,8 @@ CREATE TABLE IF NOT EXISTS `conversation` (
 
 INSERT INTO `conversation` (`id_conv`, `date_creation`, `nom_conv`) VALUES
 (1, '2023-11-08', 'Les Gentioux'),
-(2, '2012-08-06', 'Les 3 amis');
+(2, '2012-08-06', 'promo2026'),
+(3, '2017-03-11', 'TDS02');
 
 -- --------------------------------------------------------
 
@@ -230,9 +255,10 @@ CREATE TABLE IF NOT EXISTS `correspondance_pseudo_email` (
 --
 
 INSERT INTO `correspondance_pseudo_email` (`pseudo`, `email_auteur`) VALUES
-('HGentieu', 'hgentieu97@edu.ece.fr'),
-('HerGentieu', 'hergentieu98@edu.ece.fr'),
-('ED', 'ericdampierre@edu.ece.fr');
+('MGentieu', 'mgentieu02@edu.ece.fr'),
+('HerGentily', 'hergentieu98@edu.ece.fr'),
+('Théooo', 'theo.mettez@edu.ece.fr'),
+('Danao', 'danae.collard@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -268,7 +294,10 @@ CREATE TABLE IF NOT EXISTS `entite` (
 --
 
 INSERT INTO `entite` (`siret`, `nom_entite`, `type_entite`, `lieu_siege`) VALUES
-(11122233300015, 'ECE', 'Ecole d\'ingénieur', 'Paris');
+(11122233300015, 'ECE', 'Ecole d\'ingénieur', 'Paris'),
+(11122233300016, 'AIRBUS', 'Base de Airbus', 'Toulouse'),
+(11122233300017, 'BNP', 'Banque', 'Paris'),
+(11122233300018, 'AIRFRANCE', 'Aéroport', 'Roissy');
 
 -- --------------------------------------------------------
 
@@ -298,7 +327,10 @@ CREATE TABLE IF NOT EXISTS `evenement` (
 --
 
 INSERT INTO `evenement` (`id_evenement`, `email_auteur`, `alt`, `url`, `date_debut`, `heure_debut`, `date_fin`, `heure_fin`, `date_post`, `heure_post`, `texte_post`) VALUES
-(1, 'hgentieu97@edu.ece.fr', 'photo_sympa', 'Evenement.jpg', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', '2023-11-13', '11:30:05', 'Venez assister à la conférence sur les chaussettes trouées.');
+(1, 'mgentieu02@edu.ece.fr', 'salon_entreprise', 'salon.jpg', '2023-05-15', '16:29:59', '2023-05-17', '18:29:59', '2023-04-20', '11:30:05', 'Venez assister au salon des entreprises.'),
+(2, 'hergentieu98@edu.ece.fr', 'remise_diplome', 'diplome.jpg', '2023-07-11', '18:29:59', '2023-07-11', '22:29:59', '2023-06-20', '11:30:05', 'Venez assister à la remise des diplomes.'),
+(3, 'theo.mettez@edu.ece.fr', 'information_rentrée', 'rentree.jpg', '2023-09-01', '13:59:59', '2023-09-01', '15:59:59', '2023-08-20', '11:30:05', 'Venez assister à l\'amphithéatre d\'information de rentrée.'),
+(4, 'danae.collard@edu.ece.fr', 'noël', 'noel.jpg', '2023-12-22', '18:29:59', '2023-12-22', '22:29:59', '2023-12-05', '11:30:05', 'Venez assister au repas de Noël de l\'école.');
 
 -- --------------------------------------------------------
 
@@ -319,7 +351,11 @@ CREATE TABLE IF NOT EXISTS `image_de_fond` (
 --
 
 INSERT INTO `image_de_fond` (`id_im_de_fond`, `alt`, `url`) VALUES
-(145201, 'Image de Paris', 'Paris.png');
+(145201, 'Image d\'informatique', 'numerique.png'),
+(145202, 'Image d\'aéronautique', 'aeronautique.png'),
+(145203, 'Image d\'argent', 'finance.png'),
+(145204, 'Image de AirFrance', 'airfrance.png');
+
 
 -- --------------------------------------------------------
 
@@ -344,7 +380,13 @@ CREATE TABLE IF NOT EXISTS `message` (
 --
 
 INSERT INTO `message` (`id_conv`, `email_auteur`, `numero`, `date_envoi`, `heure_envoi`, `Contenu`) VALUES
-(1, 'hergentieu98@edu.ece.fr', 1, '2023-11-10', '21:34:58', 'Salut Hector !');
+(1, 'mgentieu02@edu.ece.fr', 1, '2023-11-10', '21:34:58', 'Salut Hector, tu vas bien?'),
+(1, 'hergentieu98@edu.ece.fr', 2, '2023-11-10', '21:40:58', 'Salut Martin, je vais super et toi? !'),
+(2, 'theo.mettez@edu.ece.fr', 1, '2023-11-10', '20:22:58', 'Bonjour à tous, vous savez si on a des devoirs pour demain?'),
+(2, 'danae.collard@edu.ece.fr', 2, '2023-11-10', '20:45:58', 'Salut Theo, non je ne crois.'),
+(3, 'hergentieu98@edu.ece.fr', 1, '2023-11-10', '23:12:58', 'Hello, qui va au repas de Noël prevu le 22 décembre?'),
+(3, 'theo.mettez@edu.ece.fr', 2, '2023-11-10', '23:19:58', 'Salut, je pense y aller avec un ami.'),
+(3, 'danae.collard@edu.ece.fr', 2, '2023-11-10', '23:19:58', 'Moi, je ne peux pas y aller, je vais en Normandie...');
 
 -- --------------------------------------------------------
 
@@ -370,7 +412,11 @@ CREATE TABLE IF NOT EXISTS `offre_emploi` (
 --
 
 INSERT INTO `offre_emploi` (`reference_offre`, `nom_offre`, `duree`, `date_debut`, `remuneration`, `Description`, `siret`) VALUES
-('STG235-ECE', 'Poste de balayeur', '6 mois', '2023-12-01', 1500, 'Poste de Balayeur sur le campus Eiffel 1', 11122233300015);
+('STG235-ECE', 'Developpeur informatique', '4 mois', '2024-04-01', 2000, 'Poste de developpeur informatique sur le campus Eiffel 1', 11122233300015),
+('STG245-AIRBUS', 'Ingenieur en maintenance aeronautique' , '3 mois', '2024-01-01', 1500, 'Poste d\'ingenieur en maintenance aeronautique à Toulouse.', 11122233300016),
+('STG255-BNP', 'Conseiller bancaire', '2 mois', '2024-02-01', 1600, 'Poste de Conseiller bancaire à la BNP de Bir Hakeim', 11122233300017),
+('STG265-AIRFRANCE', 'Personnel Complémentaire de bord', '3 mois', '2024-07-01', 1700, 'Poste de Personnel Complémentaire de bord basé à l\'aeroport de Roissy CDG', 11122233300018);
+
 
 -- --------------------------------------------------------
 
@@ -394,8 +440,11 @@ CREATE TABLE IF NOT EXISTS `partage_evenement` (
 --
 
 INSERT INTO `partage_evenement` (`id_evenement`, `email_auteur`, `date_partage`, `heure_partage`, `texte_partage`) VALUES
-(1, 'hergentieu98@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage le post pour cet événement car j\'invite ceux que ça intéresse à y participer aussi.');
-
+(1, 'theo.mettez@edu.ece.fr', '2023-04-25', '19:15:29', 'Je partage le post pour cet événement car j\'invite ceux que ça intéresse à y participer aussi.'),
+(2, 'mgentieu02@edu.ece.fr', '2023-06-24', '19:15:29', 'Venez feliciter les diplomés avec nous et leur dire au revoir!'),
+(3, 'danae.collard@edu.ece.fr', '2023-08-27', '19:15:29', 'Toutes les informations dont vous avez besoin seront abordées lors de cet evênement.'),
+(4, 'hergentieu98@edu.ece.fr', '2023-12-09', '19:15:29', 'Rejoignez-nous au repas de Noel!'),
+(4, 'theo.mettez@edu.ece.fr', '2023-12-10', '19:15:29', 'Encore une belle occasion de faire la fête!');
 -- --------------------------------------------------------
 
 --
@@ -418,7 +467,14 @@ CREATE TABLE IF NOT EXISTS `partage_photo` (
 --
 
 INSERT INTO `partage_photo` (`id_photo`, `email_auteur`, `date_partage`, `heure_partage`, `texte_partage`) VALUES
-(1, 'hergentieu98@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partager cette photo d\'Hector car elle est superbe.');
+(1, 'danae.collard@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo de Martin car elle est superbe.'),
+(1, 'hergentieu98@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo de Martin car elle est superbe.'),
+(2, 'danae.collard@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo d\'Hector car elle est superbe.'),
+(2, 'theo.collard@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo d\'Hector car elle est superbe.'),
+(3, 'hergentieu98@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo de Théo car elle est superbe.'),
+(4, 'mgentieu02@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo de Danaé car elle est superbe.'),
+(4, 'theo.mettez@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo dde Danaé car elle est superbe.');
+
 
 -- --------------------------------------------------------
 
@@ -493,8 +549,10 @@ CREATE TABLE IF NOT EXISTS `photo` (
 --
 
 INSERT INTO `photo` (`id_photo`, `email_auteur`, `alt`, `url`, `date_prise`, `heure_prise`, `date_post`, `heure_post`, `texte_post`) VALUES
-(1, 'hgentieu97@edu.ece.fr', 'photo_sympa', 'machin.png', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', 'Superbe photo d\'un machin.');
-
+(1, 'mgentieu02@edu.ece.fr', 'arc_de_triomphe', 'arctriomphe.png', '2023-07-14', '11:25:59', '2023-08-01', '19:25:59', 'l\'arc de Triomphe en bleu blanc rouge pour le 14 juillet.');
+(2, 'hgentieu98@edu.ece.fr', 'sacre_coeur', 'sacrecoeur.png', '2023-08-22', '15:25:59', '2023-09-11', '19:25:59', 'Superbe photo du sacré coeur.'),
+(3, 'theo.mettez@edu.ece.fr', 'notre_dame', 'notredame.png', '2023-10-27', '17:25:59', '2023-11-16', '19:25:59', 'Photo prise le mois dernier.'),
+(4, 'danae.collard@edu.ece.fr', 'toureiffel', 'toureiffel.png', '2023-09-05', '14:25:59', '2023-09-05', '19:25:59', 'Petite visite de la Tour Eiffel aujourd\'hui!');
 -- --------------------------------------------------------
 
 --
