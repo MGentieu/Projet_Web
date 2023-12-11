@@ -41,6 +41,7 @@ if(isset($_SESSION['ep'])){
         $pseudo=$_SESSION['ep']; 
         $SQL="SELECT DISTINCT P.id_conv,C.nom_conv FROM participation P JOIN conversation C JOIN correspondance_pseudo_email CPE ON P.id_conv=C.id_conv AND P.email_auteur=CPE.email_auteur WHERE CPE.pseudo='$pseudo'";
         $conversations=$mysqli->query($SQL);
+        
         if($conversations->num_rows >0){
             $message.="<form action='messagerie.php' method='post'><table border='1' align='center' width='400'>";
             $message.="<tr> <th colspan='3'>Liste des conversations</th></tr>";
@@ -50,13 +51,20 @@ if(isset($_SESSION['ep'])){
                 $message.="<td>".$row['nom_conv']."</td>";
                 $message.="<td><button type='submit' name='valid_conv' value='".$row['id_conv']."'>Accéder à la conversation"."</td></tr>";
             }
+
             $message.="</table></form>";
         }
         else{
             $message.="Vous ne participez à aucune conversation.<br>";
         }
+        $message.="<br>Formulaire pour créer une conversation :<br>";
+        $message.="<form action='messagerie.php' method='post'><table border='1' align='center' width='400'>";
+        $message.="<tr><td>Nom de la conversation</td>";
+        $message.="<td><input type='text' name='nom_conv'></td>";
+        $message.="<td><button type='submit' name='creer_conv' value='creer_conv'>Créer la conversation</button></td></tr>";
+        $message.="</table></form>";
 
-        echo $message; 
+        //echo $message; 
     }
 
     $mysqli->close();
@@ -81,6 +89,26 @@ if(isset($_POST['valid_conv'])){
     */
     
     header("Location: chat.php");
+    exit();
+
+}
+
+if(isset($_POST['creer_conv'])){
+    $nom_conv=(isset($_POST['nom_conv']))?$_POST['nom_conv']:"";
+    if($nom_conv!=""){
+
+    }
+    else{
+
+    }
+
+    /*
+    $myfile = fopen($filepath, "a") or die("Impossible d'ouvrir le fichier " . $filepath);
+    fwrite($myfile, $message2);
+    fclose($myfile);
+    */
+    
+    header("Location: messagerie.php");
     exit();
 
 }
@@ -153,7 +181,7 @@ if(isset($_POST['valid_conv'])){
                 <br>
                 <?php  
                     echo $message;
-                    echo $message2;
+                    //echo $message2;
                 ?>
             </p>
         </div>
