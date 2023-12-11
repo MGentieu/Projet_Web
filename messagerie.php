@@ -70,12 +70,14 @@ else{
 if(isset($_POST['valid_conv'])){
     $myId = $_POST['valid_conv'];
     $message2 = "Bouton appuyé. Id de la conv = ".$myId."<br>";
-    $nameFile = $myId.".html";
-    $filepath = __DIR__ . "/test_log.html";  // Correction du chemin du fichier
+    $nameFile = "/".$myId.".html";
+    $filepath = __DIR__ . $nameFile;  // Correction du chemin du fichier
     $_SESSION['filepath']=$filepath;
     $myfile = fopen($filepath, "a") or die("Impossible d'ouvrir le fichier " . $filepath);
     fwrite($myfile, $message2);
     fclose($myfile);
+    header("Location : chat.php");
+    exit();
 
 }
 

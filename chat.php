@@ -8,7 +8,7 @@ if (isset($_GET['logout'])){
 	fclose($myfile); 
 	session_destroy(); 
 	sleep(1); 
-	header("Location: chat.php"); 
+	header("Location: messagerie.php"); 
 	//Rediriger l'utilisateur 
 } 
 
@@ -36,6 +36,7 @@ function loginForm() {
 </head> 
 
 <body> 
+
 	<?php 
 	if (!isset($_SESSION['name'])){ 
 		loginForm(); 

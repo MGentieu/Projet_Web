@@ -57,8 +57,6 @@ DROP TABLE IF EXISTS `amitie`;
 CREATE TABLE IF NOT EXISTS `amitie` (
   `email_ami_1` varchar(50) NOT NULL,
   `email_ami_2` varchar(50) NOT NULL,
-
-  PRIMARY KEY (`email_ami_1`,`email_ami_2`),
   KEY `FK2` (`email_ami_2`)
 ) ;
 
