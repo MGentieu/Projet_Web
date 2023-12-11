@@ -498,7 +498,8 @@ CREATE TABLE IF NOT EXISTS `partage_video` (
 --
 
 INSERT INTO `partage_video` (`id_video`, `email_auteur`, `date_partage`, `heure_partage`, `texte_partage`) VALUES
-(1, 'hergentieu98@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette vidéo d\'Hector car elle est amusante.');
+(1, 'hergentieu98@edu.ece.fr', '2023-10-05', '19:15:29', 'Je partage cette vidéo de Martin car c\'est impressionnant.'),
+(2, 'danae.collard@edu.ece.fr', '2023-11-21', '19:15:29', 'Je partage cette vidéo de Théo car le monde est fou.');
 
 -- --------------------------------------------------------
 
@@ -520,8 +521,14 @@ CREATE TABLE IF NOT EXISTS `participation` (
 
 INSERT INTO `participation` (`id_conv`, `email_auteur`) VALUES
 (1, 'hergentieu98@edu.ece.fr'),
-(1, 'hgentieu97@edu.ece.fr'),
-(2, 'hgentieu97@edu.ece.fr');
+(1, 'mgentieu02@edu.ece.fr'),
+(2, 'hergentieu98@edu.ece.fr'),
+(2, 'mgentieu02@edu.ece.fr'),
+(2, 'danae.collard@edu.ece.fr'),
+(2, 'theo.mettez@edu.ece.fr'),
+(3, 'mgentieu02@edu.ece.fr'),
+(3, 'danae.collard@edu.ece.fr'),
+(3, 'theo.mettez@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -574,7 +581,14 @@ CREATE TABLE IF NOT EXISTS `reaction_evenement` (
 --
 
 INSERT INTO `reaction_evenement` (`id_evenement`, `email_auteur`, `date_reaction`, `reac_positive`) VALUES
-(1, 'hergentieu98@edu.ece.fr', '2024-01-01', 1);
+(1, 'hergentieu98@edu.ece.fr', '2023-04-23', 1),
+(1, 'danae.collard@edu.ece.fr', '2023-04-27', 1),
+(2, 'theo.mettez@edu.ece.fr', '2023-06-27', 1),
+(2, 'mgentieu02@edu.ece.fr', '2023-06-25', 1),
+(3, 'danae.collard@edu.ece.fr', '2023-08-21', 1),
+(3, 'hergentieu98@edu.ece.fr', '2023-08-22', 1),
+(4, 'theo.mettez@edu.ece.fr', '2023-12-07', 1),
+(4, 'mgentieu02@edu.ece.fr', '2023-12-06', 1);
 
 -- --------------------------------------------------------
 
@@ -597,7 +611,14 @@ CREATE TABLE IF NOT EXISTS `reaction_photo` (
 --
 
 INSERT INTO `reaction_photo` (`id_photo`, `email_auteur`, `date_reaction`, `reac_positive`) VALUES
-(1, 'hergentieu98@edu.ece.fr', '2024-01-01', 1);
+(1, 'theo.mettez@edu.ece.fr', '2023-12-01', 1),
+(1, 'hergentieu98@edu.ece.fr', '2023-12-01', 1),
+(2, 'danae.collard@edu.ece.fr', '2023-12-01', 1),
+(2, 'mgentieu02@edu.ece.fr', '2023-12-01', 1),
+(3, 'hergentieu98@edu.ece.fr', '2023-12-01', 1),
+(3, 'danae.collard@edu.ece.fr', '2023-12-01', 1),
+(4, 'hergentieu98@edu.ece.fr', '2023-12-01', 1),
+(4, 'theo.mettez@edu.ece.fr', '2023-12-01', 1);
 
 -- --------------------------------------------------------
 
@@ -620,7 +641,12 @@ CREATE TABLE IF NOT EXISTS `reaction_video` (
 --
 
 INSERT INTO `reaction_video` (`id_video`, `email_auteur`, `date_reaction`, `reac_positive`) VALUES
-(1, 'hergentieu98@edu.ece.fr', '2024-01-01', 1);
+(1, 'theo.mettez@edu.ece.fr', '2023-12-01', 1),
+(1, 'hergentieu98@edu.ece.fr', '2023-12-01', 1),
+(1, 'danae.collard@edu.ece.fr', '2023-12-01', 1),
+(2, 'mgentieu02@edu.ece.fr', '2023-12-01', 1),
+(2, 'hergentieu98@edu.ece.fr', '2023-12-01', 1),
+(2, 'danae.collard@edu.ece.fr', '2023-12-01', 1);
 
 -- --------------------------------------------------------
 
@@ -648,7 +674,8 @@ CREATE TABLE IF NOT EXISTS `video` (
 --
 
 INSERT INTO `video` (`id_video`, `email_auteur`, `alt`, `url`, `date_prise`, `heure_prise`, `date_post`, `heure_post`, `texte_post`) VALUES
-(1, 'hgentieu97@edu.ece.fr', 'photo_sympa', 'machin.mov', '2023-11-15', '16:25:59', '2023-11-16', '19:25:59', 'Superbe video');
+(1, 'mgentieu02@edu.ece.fr', 'video1', 'quartier.mov', '2023-09-14', '16:25:59', '2023-10-03', '19:25:59', 'Je vous présente mon quartier'),
+(2, 'theo.mettez@edu.ece.fr', 'video2', 'monde.mov', '2023-11-15', '16:12:59', '2023-11-16', '19:25:59', 'Regardez ce monde!');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
