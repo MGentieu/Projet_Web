@@ -57,9 +57,8 @@ DROP TABLE IF EXISTS `amitie`;
 CREATE TABLE IF NOT EXISTS `amitie` (
   `email_ami_1` varchar(50) NOT NULL,
   `email_ami_2` varchar(50) NOT NULL,
-  `email_ami_3` varchar(50) NOT NULL,
-  `email_ami_3` varchar(50) NOT NULL,
-  PRIMARY KEY (`email_ami_1`,`email_ami_2`,`email_ami_3`,`email_ami_4`),
+
+  PRIMARY KEY (`email_ami_1`,`email_ami_2`),
   KEY `FK2` (`email_ami_2`)
 ) ;
 
@@ -67,11 +66,13 @@ CREATE TABLE IF NOT EXISTS `amitie` (
 -- Déchargement des données de la table `amitie`
 --
 
-INSERT INTO `amitie` (`email_ami_1`, `email_ami_2`,`email_ami_3`,`email_ami_4`) VALUES
-('danae.collard@edu.ece.fr', 'hergentieu98@edu.ece.fr','mgentieu02@edu.ece.fr','theo.mettez@edu.ece.fr'),
-('theo.mettez@edu.ece.fr', 'danae.collard@edu.ece.fr','hergentieu98@edu.ece.fr','mgentieu02@edu.ece.fr'),
-('mgentieu02@edu.ece.fr', 'theo.mettez@edu.ece.fr','danae.collard@edu.ece.fr','hergentieu98@edu.ece.fr'),
-('hergentieu98@edu.ece.fr', 'mgentieu02@edu.ece.fr','theo.mettez@edu.ece.fr','danae.collard@edu.ece.fr');
+INSERT INTO `amitie` (`email_ami_1`, `email_ami_2`) VALUES
+('danae.collard@edu.ece.fr', 'hergentieu98@edu.ece.fr'),
+('hergentieu98@edu.ece.fr','theo.mettez@edu.ece.fr'),
+('mgentieu02@edu.ece.fr','hergentieu98@edu.ece.fr'),
+('theo.mettez@edu.ece.fr','mgentieu02@edu.ece.fr'),
+('danae.collard@edu.ece.fr','mgentieu02@edu.ece.fr'),
+('theo.mettez@edu.ece.fr','danae.collard@edu.ece.fr');
 
 -- --------------------------------------------------------
 
