@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+//$_SESSION['idConv']=-1;
 
 function load_conv($el) { 
 
@@ -77,6 +78,7 @@ else{
 
 if(isset($_POST['valid_conv'])){
     $myId = $_POST['valid_conv'];
+    $_SESSION['idConv']=$myId;
     $message2 = "Bouton appuyé. Id de la conv = ".$myId."<br>";
     $nameFile = $myId.".html";
     $filepath = __DIR__ . "/".$nameFile;  // Correction du chemin du fichier

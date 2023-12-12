@@ -1,5 +1,6 @@
 <?php 
 session_start(); 
+//$_SESSION['idConv']=$_POST['id_Conv'];
 //$url="#";
 if (isset($_GET['logout'])){ 
 //Message de sortie simple 
