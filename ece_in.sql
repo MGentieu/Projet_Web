@@ -326,10 +326,10 @@ CREATE TABLE IF NOT EXISTS `evenement` (
 --
 
 INSERT INTO `evenement` (`id_evenement`, `email_auteur`, `alt`, `url`, `date_debut`, `heure_debut`, `date_fin`, `heure_fin`, `date_post`, `heure_post`, `texte_post`) VALUES
-(1, 'mgentieu02@edu.ece.fr', 'salon_entreprise', 'salon.jpg', '2023-05-15', '16:29:59', '2023-05-17', '18:29:59', '2023-04-20', '11:30:05', 'Venez assister au salon des entreprises.'),
-(2, 'hergentieu98@edu.ece.fr', 'remise_diplome', 'diplome.jpg', '2023-07-11', '18:29:59', '2023-07-11', '22:29:59', '2023-06-20', '11:30:05', 'Venez assister à la remise des diplomes.'),
-(3, 'theo.mettez@edu.ece.fr', 'information_rentrée', 'rentree.jpg', '2023-09-01', '13:59:59', '2023-09-01', '15:59:59', '2023-08-20', '11:30:05', 'Venez assister à l\'amphithéatre d\'information de rentrée.'),
-(4, 'danae.collard@edu.ece.fr', 'noël', 'noel.jpg', '2023-12-22', '18:29:59', '2023-12-22', '22:29:59', '2023-12-05', '11:30:05', 'Venez assister au repas de Noël de l\'école.');
+(1, 'mgentieu02@edu.ece.fr', 'salon_entreprise', 'salon.png', '2023-05-15', '16:29:59', '2023-05-17', '18:29:59', '2023-04-20', '11:30:05', 'Venez assister au salon des entreprises.'),
+(2, 'hergentieu98@edu.ece.fr', 'remise_diplome', 'diplome.png', '2023-07-11', '18:29:59', '2023-07-11', '22:29:59', '2023-06-20', '11:30:05', 'Venez assister à la remise des diplomes.'),
+(3, 'theo.mettez@edu.ece.fr', 'information_rentrée', 'rentree.png', '2023-09-01', '13:59:59', '2023-09-01', '15:59:59', '2023-08-20', '11:30:05', 'Venez assister à l\'amphithéatre d\'information de rentrée.'),
+(4, 'danae.collard@edu.ece.fr', 'noël', 'noel.png', '2023-12-22', '18:29:59', '2023-12-22', '22:29:59', '2023-12-05', '11:30:05', 'Venez assister au repas de Noël de l\'école.');
 
 -- --------------------------------------------------------
 
