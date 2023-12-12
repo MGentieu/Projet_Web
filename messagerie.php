@@ -58,7 +58,7 @@ if(isset($_SESSION['ep'])){
             $message.="Vous ne participez à aucune conversation.<br>";
         }
         $message.="<br>Formulaire pour créer une conversation :<br>";
-        $message.="<form action='messagerie.php' method='post'><table border='1' align='center' width='400'>";
+        $message.="<form action='Creer_conversation.php' method='post'><table border='1' align='center' width='400'>";
         $message.="<tr><td>Nom de la conversation</td>";
         $message.="<td><input type='text' name='nom_conv'></td>";
         $message.="<td><button type='submit' name='creer_conv' value='creer_conv'>Créer la conversation</button></td></tr>";
@@ -93,6 +93,7 @@ if(isset($_POST['valid_conv'])){
 
 }
 
+/*
 if(isset($_POST['creer_conv'])){
     $nom_conv=(isset($_POST['nom_conv']))?$_POST['nom_conv']:"";
     if($nom_conv!=""){
@@ -106,12 +107,14 @@ if(isset($_POST['creer_conv'])){
     $myfile = fopen($filepath, "a") or die("Impossible d'ouvrir le fichier " . $filepath);
     fwrite($myfile, $message2);
     fclose($myfile);
-    */
+    
     
     header("Location: messagerie.php");
     exit();
 
 }
+*/
+
 
 ?>
 <!DOCTYPE html>
