@@ -39,6 +39,11 @@ if(!isset($_SESSION['ep'])){
             });
         });
     </script>
+    <style type="text/css">
+        form {
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -95,8 +100,38 @@ if(!isset($_SESSION['ep'])){
             </ul>
             <!-- java  : une fois cliquer on va demander de remplir un formulaire et apres jquery ou php ca enregistre la donnée et ca la stoc pour venir la recuperer avec le h ref puisque on sotck par ordre chrono
             -->
-            <input type="button" name="ajoutformation" value ="Ajouter une formation">
-            
+            <form>
+                <table border="0.5" >
+                    <tr>
+                        <td>École : </td>
+                        <td> <input type = "text" name = "ecole"> </td>
+                    </tr>
+                    <tr>
+                        <td>Diplôme : </td>
+                        <td> <input type = "text" name = "diplome"> </td>
+                    </tr>
+                    <tr>
+                        <td>Domaine d'études : </td>
+                        <td> <input type = "text" name = "domaineDetudes"> </td>
+                    </tr>
+                    <tr>
+                        <td>Date de début : </td>
+                        <td> <input type = "date" name = "dateDebut"> </td>
+                    </tr>
+                    <tr>
+                        <td>Date de fin : </td>
+                        <td> <input type = "date" name = "dateFin"> </td>
+                    </tr>
+                    <tr>
+                        <td>Résultat obtenu : </td>
+                        <td> <input type = "text" name = "res"> </td>
+                    </tr>
+                    <tr >
+                        <td colspan ="2" > <input type="button" name="ajoutformation" value ="Ajouter une formation"> </td>
+                    </tr>
+                </table>
+                
+            </form>
         </div>
         
 
