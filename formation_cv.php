@@ -22,7 +22,7 @@ $db_found = mysqli_select_db($db_handle,$db);
 // Si on appuie sur le bouton ajouter on execute :
 
 if($ecole==""||$diplome==""||$domaineDetudes==""||$dateDebut==""||$dateFin==""||$res==""){
-	$validform=false;
+	$valid_form=false;
 }
 if($ecole==""){
 	$message.="Pas d'école mentionnée.<br>";
@@ -43,7 +43,7 @@ if($res==""){
 	$message.="Pas de res mentionné.<br>";
 }
 
-if($validform){
+if($valid_form){
 		if($db_found)
 		{
 			$sql = "INSERT INTO `formation`(`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`) VALUES ('$ecole','$diplome','$domaineDetudes','$dateDebut ','$dateFin','$res')";
