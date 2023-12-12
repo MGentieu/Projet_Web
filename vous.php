@@ -101,7 +101,7 @@ if(!isset($_SESSION['ep'])){
             <!-- java  : une fois cliquer on va demander de remplir un formulaire et apres jquery ou php ca enregistre la donnée et ca la stoc pour venir la recuperer avec le h ref puisque on sotck par ordre chrono
             -->
             <form>
-                <table border="0.5" >
+                <table border="0.5" action="formation_cv.php" method="post">
                     <tr>
                         <td>École : </td>
                         <td> <input type = "text" name = "ecole"> </td>
