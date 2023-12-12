@@ -25,6 +25,8 @@ if (isset($_POST['enter'])){
 } 
 */
 
+
+
 function loginForm() { 
 	echo '<div id="loginform"> <p>Veuillez saisir votre nom pour continuer!</p> <form action="chat.php" method="post"> <label for="name">Nom: </label> <input type="text" name="name" id="name" /> <input type="submit" name="enter" id="enter" value="Soumettre" /> </form> </div>'; 
 } 
@@ -49,10 +51,21 @@ function loginForm() {
 		//$url=$_SESSION['filepath'];
 		?> 
 		<div id="wrapper"> 
+			<p><center>
+				<form action="invitation.php" method="post">
+					<table width='600'>
+						<tr>
+							<td>Pseudo ou email</td>
+							<td><input type="text" name='pseudo_em'></td>
+							<td><input type="submit" name='inviter'></td>
+						</tr>
+					</table>
+				</form>
+			</center></p>
 			<div id="menu">
 				<p class="welcome">Bienvenue, <b><?php echo $_SESSION['ep']; ?></b></p> 
 				<p class="logout"><a id="exit" href="#">Quitter la conversation</a></p> 
-				<p class="ajout"><a id="ajouter" href="#">Inviter un ami</a></p> 
+				
 			</div> 
 			<div id="chatbox"> 
 				<?php 
