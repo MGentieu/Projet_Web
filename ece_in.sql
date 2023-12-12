@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `auteur` (
 INSERT INTO `auteur` (`email_auteur`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`, `Description`, `id_im_de_fond`) VALUES
 ('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 0695973078, 'Moi je suis Ingenieur Numérique', 145201),
 ('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 0648527954, 'Moi je suis Ingenieur Aeronautique', 145202),
-('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 0648527954, 'Moi je suis Ingenieur dans la Finance', 145203)
+('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 0648527954, 'Moi je suis Ingenieur dans la Finance', 145203),
 ('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 0671410348, 'Moi je suis Pilote de ligne', 145204);
 
 -- --------------------------------------------------------
@@ -122,9 +122,9 @@ CREATE TABLE IF NOT EXISTS `candidature` (
 
 INSERT INTO `candidature` (`reference_offre`, `email_auteur`, `date_candidature`) VALUES
 ('STG235-ECE', 'mgentieu02@edu.ece.fr', '2023-12-05'),
-('STG245-AIRBUS', 'hergentieu98@edu.ece.fr', '2023-10-07')
-('STG255-BNP', 'theo.mettez@edu.ece.fr', '2023-27-09')
-('STG265-AIRFRANCE', 'danae.collard@edu.ece.fr', '2023-11-10')
+('STG245-AIRBUS', 'hergentieu98@edu.ece.fr', '2023-10-07'),
+('STG255-BNP', 'theo.mettez@edu.ece.fr', '2023-27-09'),
+('STG265-AIRFRANCE', 'danae.collard@edu.ece.fr', '2023-11-10');
 
 -- --------------------------------------------------------
 
@@ -555,7 +555,7 @@ CREATE TABLE IF NOT EXISTS `photo` (
 --
 
 INSERT INTO `photo` (`id_photo`, `email_auteur`, `alt`, `url`, `date_prise`, `heure_prise`, `date_post`, `heure_post`, `texte_post`) VALUES
-(1, 'mgentieu02@edu.ece.fr', 'arc_de_triomphe', 'arctriomphe.png', '2023-07-14', '11:25:59', '2023-08-01', '19:25:59', 'l\'arc de Triomphe en bleu blanc rouge pour le 14 juillet.');
+(1, 'mgentieu02@edu.ece.fr', 'arc_de_triomphe', 'arctriomphe.png', '2023-07-14', '11:25:59', '2023-08-01', '19:25:59', 'l\'arc de Triomphe en bleu blanc rouge pour le 14 juillet.'),
 (2, 'hgentieu98@edu.ece.fr', 'sacre_coeur', 'sacrecoeur.png', '2023-08-22', '15:25:59', '2023-09-11', '19:25:59', 'Superbe photo du sacré coeur.'),
 (3, 'theo.mettez@edu.ece.fr', 'notre_dame', 'notredame.png', '2023-10-27', '17:25:59', '2023-11-16', '19:25:59', 'Photo prise le mois dernier.'),
 (4, 'danae.collard@edu.ece.fr', 'toureiffel', 'toureiffel.png', '2023-09-05', '14:25:59', '2023-09-05', '19:25:59', 'Petite visite de la Tour Eiffel aujourd\'hui!');
