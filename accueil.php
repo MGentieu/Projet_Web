@@ -144,16 +144,48 @@ if (isset($_POST['enter_auteur'])){
 }
 
 if (isset($_POST['enter_admin'])){ 
-    
-    
-    if($_POST['ep'] != ""){ 
-        $_SESSION['ep'] = $_POST['ep']; 
+    $admin=(isset($_POST['em_admin']))?$_POST['em_admin']:"";
+    $mdp=isset($_POST["mdp"])? $_POST["mdp"] : "";
+    if($admin!=""&&$mdp!=""){ 
+        //$_SESSION['ep'] = $_POST['ep']; 
         //$_SESSION['name'] = "Yolo";
+        $user = 'root';
+        $serveur='localhost';
+        $password = isset($_POST["mdp_bdd"])? $_POST["mdp_bdd"] : "";
+        $_SESSION['mdp_bdd']=$password;
+        //$password = 'root'; 
+        $port = NULL; //Default must be NULL to use default port
+        //$valid_form=false;
+        //$verif_email=false;
+        //$verif_pseudo=false;
+        //$verif_connexion=false;
+        $message="";
+        $database = 'ECE_IN';
+        $mysqli = new mysqli($serveur, $user, $password, $database, $port);
+
+        if ($mysqli->connect_error) {
+            echo "Erreur de connexion à la base de données.<br>";
+            die('Connect Error (' . $mysqli->connect_errno . ') '
+                    . $mysqli->connect_error);
+        }
+        else{
+            $match=$mysqli->query("select * from administrateur where email_admin='$admin' and mot_de_passe='$mdp'");
+            if($match->num_rows>0){
+                $row=$match->fetch_assoc();
+                $_SESSION['prenom_admin']=$row['prenom'];
+                $_SESSION['nom_admin']=$row['nom'];
+                $_SESSION['mail_admin']=$row['email_admin'];
+                header("Location: pages_des_admin.php");
+                $mysqli->close();
+                exit();
+            }
+            
+        }
+        
     } 
-    else{ 
-        echo '<span class="error">Veuillez saisir votre mail</span>'; 
-    } 
-    
+    $mysqli->close();
+    header("Location: accueil.php");
+    exit();      
 }
 
 function loginForm() { 
