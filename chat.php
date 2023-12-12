@@ -52,6 +52,7 @@ function loginForm() {
 			<div id="menu">
 				<p class="welcome">Bienvenue, <b><?php echo $_SESSION['ep']; ?></b></p> 
 				<p class="logout"><a id="exit" href="#">Quitter la conversation</a></p> 
+				<p class="ajout"><a id="ajouter" href="#">Inviter un ami</a></p> 
 			</div> 
 			<div id="chatbox"> 
 				<?php 
