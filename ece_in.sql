@@ -3,13 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 04 déc. 2023 à 16:59
+-- Généré le : mar. 12 déc. 2023 à 21:34
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -42,10 +40,11 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
 --
 
 INSERT INTO `administrateur` (`email_admin`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`) VALUES
-('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 0695973078),
-('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 0671410348),
-('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 0648527954),
-('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 0648527954);
+('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 695973078),
+('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 671410348),
+('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 648527954),
+('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 648527954),
+('maxime.schneider@ece.prof.fr', 'electros', 'Schneider', 'Maxime', 705542413);
 
 -- --------------------------------------------------------
 
@@ -66,11 +65,11 @@ CREATE TABLE IF NOT EXISTS `amitie` (
 
 INSERT INTO `amitie` (`email_ami_1`, `email_ami_2`) VALUES
 ('danae.collard@edu.ece.fr', 'hergentieu98@edu.ece.fr'),
-('hergentieu98@edu.ece.fr','theo.mettez@edu.ece.fr'),
-('mgentieu02@edu.ece.fr','hergentieu98@edu.ece.fr'),
-('theo.mettez@edu.ece.fr','mgentieu02@edu.ece.fr'),
-('danae.collard@edu.ece.fr','mgentieu02@edu.ece.fr'),
-('theo.mettez@edu.ece.fr','danae.collard@edu.ece.fr');
+('hergentieu98@edu.ece.fr', 'theo.mettez@edu.ece.fr'),
+('mgentieu02@edu.ece.fr', 'hergentieu98@edu.ece.fr'),
+('theo.mettez@edu.ece.fr', 'mgentieu02@edu.ece.fr'),
+('danae.collard@edu.ece.fr', 'mgentieu02@edu.ece.fr'),
+('theo.mettez@edu.ece.fr', 'danae.collard@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -87,19 +86,24 @@ CREATE TABLE IF NOT EXISTS `auteur` (
   `num_telephone` decimal(10,0) NOT NULL,
   `Description` varchar(300) DEFAULT NULL,
   `id_im_de_fond` decimal(6,0) DEFAULT NULL,
+  `est_dans_le_reseau` tinyint(1) NOT NULL,
   PRIMARY KEY (`email_auteur`),
   KEY `FK1` (`id_im_de_fond`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `auteur`
 --
 
-INSERT INTO `auteur` (`email_auteur`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`, `Description`, `id_im_de_fond`) VALUES
-('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 0695973078, 'Moi je suis Ingenieur Numérique', 145201),
-('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 0648527954, 'Moi je suis Ingenieur Aeronautique', 145202),
-('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 0648527954, 'Moi je suis Ingenieur dans la Finance', 145203),
-('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 0671410348, 'Moi je suis Pilote de ligne', 145204);
+INSERT INTO `auteur` (`email_auteur`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`, `Description`, `id_im_de_fond`, `est_dans_le_reseau`) VALUES
+('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 695973078, 'Moi je suis Ingenieur Numérique', 145201, 1),
+('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 648527954, 'Moi je suis Ingenieur Aeronautique', 145202, 1),
+('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 648527954, 'Moi je suis Ingenieur dans la Finance', 145203, 1),
+('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 671410348, 'Moi je suis Pilote de ligne', 145204, 1),
+('hector.gentieu@edu.ece.fr', 'nullos', 'Gentieu', 'Hector', 652347841, 'Je suis un gros escroc!', 145204, 0),
+('valere.delin@edu.ece.fr', 'WeshWesh', 'Delin', 'Valere', 105058464, 'Je prévois de travailler dans la finance.', 145204, 1),
+('franklin.pinto@edu.ece.fr', 'shrek', 'Pinto', 'Franklin', 798683215, 'Je souhaite travailler dans le  big data.', 145204, 1),
+('arthur.gervais@edu.ece.fr', 'gaming', 'Gervais', 'Arthur', 652858874, 'Je travaille dans la cybersécurité.', 145204, 1);
 
 -- --------------------------------------------------------
 
@@ -114,7 +118,7 @@ CREATE TABLE IF NOT EXISTS `candidature` (
   `date_candidature` date NOT NULL,
   PRIMARY KEY (`reference_offre`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `candidature`
@@ -123,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `candidature` (
 INSERT INTO `candidature` (`reference_offre`, `email_auteur`, `date_candidature`) VALUES
 ('STG235-ECE', 'mgentieu02@edu.ece.fr', '2023-12-05'),
 ('STG245-AIRBUS', 'hergentieu98@edu.ece.fr', '2023-10-07'),
-('STG255-BNP', 'theo.mettez@edu.ece.fr', '2023-27-09'),
+('STG255-BNP', 'theo.mettez@edu.ece.fr', '0000-00-00'),
 ('STG265-AIRFRANCE', 'danae.collard@edu.ece.fr', '2023-11-10');
 
 -- --------------------------------------------------------
@@ -141,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `commentaire_evenement` (
   `texte_commentaire` varchar(150) NOT NULL,
   PRIMARY KEY (`id_evenement`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `commentaire_evenement`
@@ -172,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `commentaire_photo` (
   `texte_commentaire` varchar(150) NOT NULL,
   PRIMARY KEY (`id_photo`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `commentaire_photo`
@@ -199,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `commentaire_video` (
   `texte_commentaire` varchar(150) NOT NULL,
   PRIMARY KEY (`id_video`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `commentaire_video`
@@ -211,7 +215,6 @@ INSERT INTO `commentaire_video` (`id_video`, `email_auteur`, `date_commentaire`,
 (1, 'theo.mettez@edu.ece.fr', '2023-09-09', '20:16:32', 'Sur cette vidéo la ressemblance est frappante!'),
 (1, 'danae.collard@edu.ece.fr', '2023-08-09', '18:33:52', 'Le paysage est superbe.');
 
-
 -- --------------------------------------------------------
 
 --
@@ -220,11 +223,11 @@ INSERT INTO `commentaire_video` (`id_video`, `email_auteur`, `date_commentaire`,
 
 DROP TABLE IF EXISTS `conversation`;
 CREATE TABLE IF NOT EXISTS `conversation` (
-  `id_conv` decimal(6,0) NOT NULL,
+  `id_conv` int NOT NULL AUTO_INCREMENT,
   `date_creation` date NOT NULL,
   `nom_conv` varchar(40) NOT NULL,
   PRIMARY KEY (`id_conv`)
-) ;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `conversation`
@@ -247,7 +250,7 @@ CREATE TABLE IF NOT EXISTS `correspondance_pseudo_email` (
   `email_auteur` varchar(50) NOT NULL,
   PRIMARY KEY (`pseudo`),
   KEY `FK1` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `correspondance_pseudo_email`
@@ -257,7 +260,11 @@ INSERT INTO `correspondance_pseudo_email` (`pseudo`, `email_auteur`) VALUES
 ('MGentieu', 'mgentieu02@edu.ece.fr'),
 ('HerGentily', 'hergentieu98@edu.ece.fr'),
 ('Théooo', 'theo.mettez@edu.ece.fr'),
-('Danao', 'danae.collard@edu.ece.fr');
+('Danao', 'danae.collard@edu.ece.fr'),
+('HGentieu', 'hector.gentieu@edu.ece.fr'),
+('Valeres actuelles', 'valere.delin@edu.ece.fr'),
+('Shrek lover', 'franklin.pinto@edu.ece.fr'),
+('AGervais', 'arthur.gervais@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -271,7 +278,7 @@ CREATE TABLE IF NOT EXISTS `demande_ami` (
   `email_ami_2` varchar(50) NOT NULL,
   PRIMARY KEY (`email_ami_1`,`email_ami_2`),
   KEY `FK2` (`email_ami_2`)
-) ;
+);
 
 -- --------------------------------------------------------
 
@@ -286,7 +293,7 @@ CREATE TABLE IF NOT EXISTS `entite` (
   `type_entite` varchar(40) NOT NULL,
   `lieu_siege` varchar(40) NOT NULL,
   PRIMARY KEY (`siret`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `entite`
@@ -319,17 +326,17 @@ CREATE TABLE IF NOT EXISTS `evenement` (
   `texte_post` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_evenement`),
   KEY `FK1` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `evenement`
 --
 
 INSERT INTO `evenement` (`id_evenement`, `email_auteur`, `alt`, `url`, `date_debut`, `heure_debut`, `date_fin`, `heure_fin`, `date_post`, `heure_post`, `texte_post`) VALUES
-(1, 'mgentieu02@edu.ece.fr', 'salon_entreprise', 'salon.png', '2023-05-15', '16:29:59', '2023-05-17', '18:29:59', '2023-04-20', '11:30:05', 'Venez assister au salon des entreprises.'),
-(2, 'hergentieu98@edu.ece.fr', 'remise_diplome', 'diplome.png', '2023-07-11', '18:29:59', '2023-07-11', '22:29:59', '2023-06-20', '11:30:05', 'Venez assister à la remise des diplomes.'),
-(3, 'theo.mettez@edu.ece.fr', 'information_rentrée', 'rentree.png', '2023-09-01', '13:59:59', '2023-09-01', '15:59:59', '2023-08-20', '11:30:05', 'Venez assister à l\'amphithéatre d\'information de rentrée.'),
-(4, 'danae.collard@edu.ece.fr', 'noël', 'noel.png', '2023-12-22', '18:29:59', '2023-12-22', '22:29:59', '2023-12-05', '11:30:05', 'Venez assister au repas de Noël de l\'école.');
+(1, 'mgentieu02@edu.ece.fr', 'salon_entreprise', 'salon.jpg', '2023-05-15', '16:29:59', '2023-05-17', '18:29:59', '2023-04-20', '11:30:05', 'Venez assister au salon des entreprises.'),
+(2, 'hergentieu98@edu.ece.fr', 'remise_diplome', 'diplome.jpg', '2023-07-11', '18:29:59', '2023-07-11', '22:29:59', '2023-06-20', '11:30:05', 'Venez assister à la remise des diplomes.'),
+(3, 'theo.mettez@edu.ece.fr', 'information_rentrée', 'rentree.jpg', '2023-09-01', '13:59:59', '2023-09-01', '15:59:59', '2023-08-20', '11:30:05', 'Venez assister à l\'amphithéatre d\'information de rentrée.'),
+(4, 'danae.collard@edu.ece.fr', 'noël', 'noel.jpg', '2023-12-22', '18:29:59', '2023-12-22', '22:29:59', '2023-12-05', '11:30:05', 'Venez assister au repas de Noël de l\'école.');
 
 -- --------------------------------------------------------
 
@@ -343,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `image_de_fond` (
   `alt` varchar(40) DEFAULT NULL,
   `url` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_im_de_fond`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `image_de_fond`
@@ -354,7 +361,6 @@ INSERT INTO `image_de_fond` (`id_im_de_fond`, `alt`, `url`) VALUES
 (145202, 'Image d\'aéronautique', 'aeronautique.png'),
 (145203, 'Image d\'argent', 'finance.png'),
 (145204, 'Image de AirFrance', 'airfrance.png');
-
 
 -- --------------------------------------------------------
 
@@ -372,7 +378,7 @@ CREATE TABLE IF NOT EXISTS `message` (
   `Contenu` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_conv`,`email_auteur`,`numero`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `message`
@@ -404,7 +410,7 @@ CREATE TABLE IF NOT EXISTS `offre_emploi` (
   `siret` decimal(14,0) NOT NULL,
   PRIMARY KEY (`reference_offre`),
   KEY `FK1` (`siret`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `offre_emploi`
@@ -412,10 +418,9 @@ CREATE TABLE IF NOT EXISTS `offre_emploi` (
 
 INSERT INTO `offre_emploi` (`reference_offre`, `nom_offre`, `duree`, `date_debut`, `remuneration`, `Description`, `siret`) VALUES
 ('STG235-ECE', 'Developpeur informatique', '4 mois', '2024-04-01', 2000, 'Poste de developpeur informatique sur le campus Eiffel 1', 11122233300015),
-('STG245-AIRBUS', 'Ingenieur en maintenance aeronautique' , '3 mois', '2024-01-01', 1500, 'Poste d\'ingenieur en maintenance aeronautique à Toulouse.', 11122233300016),
+('STG245-AIRBUS', 'Ingenieur en maintenance aeronautique', '3 mois', '2024-01-01', 1500, 'Poste d\'ingenieur en maintenance aeronautique à Toulouse.', 11122233300016),
 ('STG255-BNP', 'Conseiller bancaire', '2 mois', '2024-02-01', 1600, 'Poste de Conseiller bancaire à la BNP de Bir Hakeim', 11122233300017),
 ('STG265-AIRFRANCE', 'Personnel Complémentaire de bord', '3 mois', '2024-07-01', 1700, 'Poste de Personnel Complémentaire de bord basé à l\'aeroport de Roissy CDG', 11122233300018);
-
 
 -- --------------------------------------------------------
 
@@ -432,7 +437,7 @@ CREATE TABLE IF NOT EXISTS `partage_evenement` (
   `texte_partage` varchar(150) NOT NULL,
   PRIMARY KEY (`id_evenement`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `partage_evenement`
@@ -444,6 +449,7 @@ INSERT INTO `partage_evenement` (`id_evenement`, `email_auteur`, `date_partage`,
 (3, 'danae.collard@edu.ece.fr', '2023-08-27', '19:15:29', 'Toutes les informations dont vous avez besoin seront abordées lors de cet evênement.'),
 (4, 'hergentieu98@edu.ece.fr', '2023-12-09', '19:15:29', 'Rejoignez-nous au repas de Noel!'),
 (4, 'theo.mettez@edu.ece.fr', '2023-12-10', '19:15:29', 'Encore une belle occasion de faire la fête!');
+
 -- --------------------------------------------------------
 
 --
@@ -459,7 +465,7 @@ CREATE TABLE IF NOT EXISTS `partage_photo` (
   `texte_partage` varchar(150) NOT NULL,
   PRIMARY KEY (`id_photo`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `partage_photo`
@@ -473,7 +479,6 @@ INSERT INTO `partage_photo` (`id_photo`, `email_auteur`, `date_partage`, `heure_
 (3, 'hergentieu98@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo de Théo car elle est superbe.'),
 (4, 'mgentieu02@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo de Danaé car elle est superbe.'),
 (4, 'theo.mettez@edu.ece.fr', '2023-12-22', '19:15:29', 'Je partage cette photo dde Danaé car elle est superbe.');
-
 
 -- --------------------------------------------------------
 
@@ -490,7 +495,7 @@ CREATE TABLE IF NOT EXISTS `partage_video` (
   `texte_partage` varchar(150) NOT NULL,
   PRIMARY KEY (`id_video`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `partage_video`
@@ -512,7 +517,7 @@ CREATE TABLE IF NOT EXISTS `participation` (
   `email_auteur` varchar(50) NOT NULL,
   PRIMARY KEY (`id_conv`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `participation`
@@ -521,12 +526,12 @@ CREATE TABLE IF NOT EXISTS `participation` (
 INSERT INTO `participation` (`id_conv`, `email_auteur`) VALUES
 (1, 'hergentieu98@edu.ece.fr'),
 (1, 'mgentieu02@edu.ece.fr'),
+(2, 'danae.collard@edu.ece.fr'),
 (2, 'hergentieu98@edu.ece.fr'),
 (2, 'mgentieu02@edu.ece.fr'),
-(2, 'danae.collard@edu.ece.fr'),
 (2, 'theo.mettez@edu.ece.fr'),
-(3, 'mgentieu02@edu.ece.fr'),
 (3, 'danae.collard@edu.ece.fr'),
+(3, 'mgentieu02@edu.ece.fr'),
 (3, 'theo.mettez@edu.ece.fr');
 
 -- --------------------------------------------------------
@@ -548,7 +553,7 @@ CREATE TABLE IF NOT EXISTS `photo` (
   `texte_post` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_photo`),
   KEY `FK1` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `photo`
@@ -559,6 +564,7 @@ INSERT INTO `photo` (`id_photo`, `email_auteur`, `alt`, `url`, `date_prise`, `he
 (2, 'hgentieu98@edu.ece.fr', 'sacre_coeur', 'sacrecoeur.png', '2023-08-22', '15:25:59', '2023-09-11', '19:25:59', 'Superbe photo du sacré coeur.'),
 (3, 'theo.mettez@edu.ece.fr', 'notre_dame', 'notredame.png', '2023-10-27', '17:25:59', '2023-11-16', '19:25:59', 'Photo prise le mois dernier.'),
 (4, 'danae.collard@edu.ece.fr', 'toureiffel', 'toureiffel.png', '2023-09-05', '14:25:59', '2023-09-05', '19:25:59', 'Petite visite de la Tour Eiffel aujourd\'hui!');
+
 -- --------------------------------------------------------
 
 --
@@ -573,7 +579,7 @@ CREATE TABLE IF NOT EXISTS `reaction_evenement` (
   `reac_positive` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_evenement`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `reaction_evenement`
@@ -603,7 +609,7 @@ CREATE TABLE IF NOT EXISTS `reaction_photo` (
   `reac_positive` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_photo`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `reaction_photo`
@@ -633,7 +639,7 @@ CREATE TABLE IF NOT EXISTS `reaction_video` (
   `reac_positive` tinyint(1) NOT NULL,
   PRIMARY KEY (`id_video`,`email_auteur`),
   KEY `FK2` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `reaction_video`
@@ -666,7 +672,7 @@ CREATE TABLE IF NOT EXISTS `video` (
   `texte_post` varchar(150) DEFAULT NULL,
   PRIMARY KEY (`id_video`),
   KEY `FK1` (`email_auteur`)
-) ;
+);
 
 --
 -- Déchargement des données de la table `video`
@@ -680,3 +686,22 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+DROP TABLE IF EXISTS `formation`;
+CREATE TABLE `formation` (
+  `Ecole` varchar(255) NOT NULL,
+  `Diplome` varchar(255) NOT NULL,
+  `DomaineEtudes` varchar(255) NOT NULL,
+  `DataDebut` date NOT NULL,
+  `DateFin` date NOT NULL,
+  `Resultat` varchar(255) NOT NULL
+);
+
+--
+-- Déchargement des données de la table `formation`
+--
+
+INSERT INTO `formation` (`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`) VALUES
+('Centre International de Valbonne', 'CPGE PC (Bac +2)', '1', '2020-09-13', '2023-06-30', 'Niveau : Intégration ECE'),
+('Centre International de Valbonne', 'CPGE PC (Bac +2)', '1', '2020-09-13', '2023-06-30', 'Niveau : Intégration ECE');
+COMMIT;
