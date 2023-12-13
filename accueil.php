@@ -88,6 +88,7 @@ if (isset($_POST['enter_auteur'])){
                             $mypseudo=$pseudo->fetch_assoc();
                             //$message.= "L'utilisateur est maintenant connecté! " ."<br>";
                             $_SESSION['ep']=$mypseudo['pseudo'];
+                            $_SESSION['emailauteur']=$email_pseudo;
                             header("Location: accueil.php");
                             exit();
                         }
@@ -112,7 +113,8 @@ if (isset($_POST['enter_auteur'])){
                     if($passw->num_rows > 0){
                         $message.= "L'utilisateur est maintenant connecté! " ."<br>";
                         $_SESSION['ep']=$row2['pseudo'];
-                        //session_start();
+                        $_SESSION['emailauteur']=$email_correspondant;
+                                                //session_s]tart();
                         //$_SESSION['info'] = "Ceci est une information depuis PHP";
                         header("Location: accueil.php");
                         $mysqli->close();
