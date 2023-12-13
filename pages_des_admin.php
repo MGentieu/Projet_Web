@@ -52,6 +52,31 @@ else{
 		$message.="Il n'y a aucun utilisateur enregistré dans la base.<br>";
 	}
 }
+$mysqli->close();
+
+if(isset($_POST['ajout_auteur'])){
+    $email_ajout=$_POST['ajout_auteur'];
+    $user = 'root';
+    $serveur='localhost';
+    $password = isset($_POST["mdp_bdd"])? $_POST["mdp_bdd"] : "";
+    $_SESSION['mdp_bdd']=$password;
+    $port = NULL; //Default must be NULL to use default port
+    $database = 'ECE_IN';
+    $mysqli = new mysqli($serveur, $user, $password, $database, $port);
+
+    if ($mysqli->connect_error) {
+        echo "Erreur de connexion à la base de données.<br>";
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+                . $mysqli->connect_error);
+    }
+    else{
+        $SQL="UPDATE auteur set est_dans_le_reseau=1 where email_auteur='$email_ajout'";
+        $mysqli->query($SQL);
+    }
+    $mysqli->close();
+    header("Location: pages_des_admin.php");
+    exit();
+}
 
 ?>
 
