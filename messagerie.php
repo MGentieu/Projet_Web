@@ -44,13 +44,13 @@ if(isset($_SESSION['ep'])){
         $conversations=$mysqli->query($SQL);
         
         if($conversations->num_rows >0){
-            $message.="<form action='messagerie.php' method='post' bgColor='lightcyan'><table border='5px' bgColor='lightcyan' align='center' width='400'>";
-            $message.="<tr> <th colspan='3'>Liste des conversations</th></tr>";
+            $message.="<form action='messagerie.php' method='post' bgColor='cadetblue'><table  bgColor='cadetblue' align='center' style='color: black;' width='400'>";
+            $message.="<tr> <th colspan='3' style='color: white;'>Liste des conversations</th></tr>";
             while($row = $conversations->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
-                $message.="<tr bgColor='cadetblue'><td name='Conv_Id'>".$row['id_conv']."</td>";
+                $message.="<tr bgColor='lightcyan'><td name='Conv_Id'>".$row['id_conv']."</td>";
                 $message.="<td>".$row['nom_conv']."</td>";
-                $message.="<td><button type='submit' name='valid_conv' value='".$row['id_conv']."'>Accéder à la conversation"."</td></tr>";
+                $message.="<td><button type='submit' bgColor='green' name='valid_conv' value='".$row['id_conv']."'>Accéder à la conversation"."</td></tr>";
             }
 
             $message.="</table></form>";
