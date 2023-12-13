@@ -30,9 +30,9 @@ else{
 				$message.="<tr id='ligne_verte' bgColor='#55FF55'>";
 				$message.="<td width='20%'>".$row['pseudo']."</td>";
 				$message.="<td width='30%'>".$row['email_auteur']."</td>";
-				$message.="<td width='19%'>".$row['nom']."</td>";
-				$message.="<td width='19%'>".$row['prenom']."</td>";
-				$message.="<td width='12%'><button type='submit' name='ajout_auteur' value='".$row['email_auteur']."'>Supprimer du réseau"."</td></tr>";
+				$message.="<td width='18%'>".$row['nom']."</td>";
+				$message.="<td width='18%'>".$row['prenom']."</td>";
+				$message.="<td align='center' width='20%' ><button type='submit' name='ajout_auteur' value='".$row['email_auteur']."'>Supprimer du réseau"."</td></tr>";
 				$message.="</tr>";
 			}	
 			else{
@@ -42,7 +42,7 @@ else{
 				$message.="<td>".$row['nom']."</td>";
 				$message.="<td>".$row['prenom']."</td>";
 
-				$message.="<td><button type='submit' name='suppr_auteur' value='".$row['email_auteur']."'>Ajouter au réseau"."</td></tr>";
+				$message.="<td align='center'><button type='submit' name='suppr_auteur' value='".$row['email_auteur']."'>Ajouter au réseau"."</td></tr>";
 				$message.="</tr>";
 			}
 		}
@@ -94,7 +94,13 @@ else{
         
         </div>
         
-        <div class="admins" id="liste_auteurs">
+        <div style="border: 1px solid black;
+    float: left; /* Fait flotter la colonne vers la gauche */
+    width: 80%; /* Largeur de la colonne gauche */
+    height: 450px;
+    background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
+
+    margin: 15px 0;">
         	<p><center>
         	<?php 
 				echo $message;
@@ -102,7 +108,14 @@ else{
 			</center></p>
         </div>
 
-        <div class="rightestcolumn">
+        <div style="border: 1px solid black;
+    width: auto
+    float: left;
+    height: 450px;
+    display: block;
+    margin: 15px 0; /* Marge en haut et en bas pour les liens dans la colonne droite */
+    text-decoration: none;
+    color: #003300;">
             
             <p class="logout"><a id="exit" href="#" class="action-button animate red">Quitter</a></p>
         </div>

@@ -110,7 +110,7 @@ font-family: Arial, Helvetica, sans-serif; }
     border: 1px solid black;
     float: left; /* Fait flotter la colonne vers la gauche */
     width: 70%; /* Largeur de la colonne gauche */
-    height: 400px;
+    height: 650px;
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
 
     margin: 15px 0;
@@ -135,6 +135,18 @@ font-family: Arial, Helvetica, sans-serif; }
     width: auto
     float: left;
     height: 400px;
+    display: block;
+    margin: 15px 0; /* Marge en haut et en bas pour les liens dans la colonne droite */
+    text-decoration: none;
+    color: #003300;
+    
+}
+
+#droite_page_admins {
+    border: 1px solid black;
+    width: auto
+    float: left;
+    height: 650px;
     display: block;
     margin: 15px 0; /* Marge en haut et en bas pour les liens dans la colonne droite */
     text-decoration: none;
@@ -238,5 +250,5 @@ img{
 }
 
 #liste_auteurs tr{
-    height: 100px;
+    
 }

@@ -48,7 +48,7 @@ if(isset($_SESSION['ep'])){
             $message.="<tr> <th colspan='3'>Liste des conversations</th></tr>";
             while($row = $conversations->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
-                $message.="<tr><td name='Conv_Id'>".$row['id_conv']."</td>";
+                $message.="<tr bgColor='#BB5555'><td name='Conv_Id'>".$row['id_conv']."</td>";
                 $message.="<td>".$row['nom_conv']."</td>";
                 $message.="<td><button type='submit' name='valid_conv' value='".$row['id_conv']."'>Accéder à la conversation"."</td></tr>";
             }
