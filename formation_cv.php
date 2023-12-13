@@ -21,25 +21,32 @@ $db_handle = mysqli_connect('localhost','root',$password);
 $db_found = mysqli_select_db($db_handle,$db);
 // Si on appuie sur le bouton ajouter on execute :
 
-if($ecole==""||$diplome==""||$domaineDetudes==""||$dateDebut==""||$dateFin==""||$res==""){
+if($ecole==""/*||$diplome==""||$domaineDetudes==""*/||$dateDebut==""||$dateFin==""/*||$res==""*/)
+{
 	$valid_form=false;
 }
-if($ecole==""){
+if($ecole=="")
+{
 	$message.="Pas d'école mentionnée.<br>";
 }
-if($diplome==""){
+if($diplome=="")
+{
 	$message.="Pas de diplôme mentionné.<br>";
 }
-if($domaineDetudes==""){
+if($domaineDetudes=="")
+{
 	$message.="Pas de domaine d'études mentionné.<br>";
 }
-if($dateDebut==""){
+if($dateDebut=="")
+{
 	$message.="Pas de date de début mentionnée.<br>";
 }
-if($dateFin==""){
+if($dateFin=="")
+{
 	$message.="Pas de date de fin mentionnée.<br>";
 }
-if($res==""){
+if($res=="")
+{
 	$message.="Pas de res mentionné.<br>";
 }
 

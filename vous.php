@@ -98,8 +98,7 @@ if(!isset($_SESSION['ep'])){
                     <a img="#">
                 </li>
             </ul>
-            <!-- java  : une fois cliquer on va demander de remplir un formulaire et apres jquery ou php ca enregistre la donnée et ca la stoc pour venir la recuperer avec le h ref puisque on sotck par ordre chrono
-            -->
+            
             <form action="formation_cv.php" method="post">
                 <table border="0.5" >
                     <tr>
