@@ -44,13 +44,13 @@ if(isset($_SESSION['ep'])){
         $conversations=$mysqli->query($SQL);
         
         if($conversations->num_rows >0){
-            $message.="<form action='messagerie.php' method='post' bgColor='cadetblue'><table  bgColor='cadetblue' align='center' style='color: black;' width='400'>";
+            $message.="<form action='messagerie.php' method='post' bgColor='teal'><table bgColor='teal' align='center' style='color: black;' width='400'>";
             $message.="<tr> <th colspan='3' style='color: white;'>Liste des conversations</th></tr>";
             while($row = $conversations->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
                 $message.="<tr bgColor='lightcyan'><td name='Conv_Id'>".$row['id_conv']."</td>";
                 $message.="<td>".$row['nom_conv']."</td>";
-                $message.="<td><button type='submit' bgColor='green' name='valid_conv' value='".$row['id_conv']."'>Accéder à la conversation"."</td></tr>";
+                $message.="<td><button type='submit' name='valid_conv' value='".$row['id_conv']."' class='button-style'>Accéder à la conversation"."</td></tr>";
             }
 
             $message.="</table></form>";
@@ -58,11 +58,12 @@ if(isset($_SESSION['ep'])){
         else{
             $message.="Vous ne participez à aucune conversation.<br>";
         }
-        $message.="<br>Formulaire pour créer une conversation :<br>";
-        $message.="<form action='Creer_conversation.php' method='post'><table border='1' align='center' width='400'>";
-        $message.="<tr><td>Nom de la conversation</td>";
+        $message.="<br><br>";
+        $message.="<form action='Creer_conversation.php' method='post' bgColor='teal'><table bgColor='teal' align='center' style='color: black;' width='400'>";
+        $message.="<tr> <th colspan='3' style='color: white;'>Creer une conversation :</th></tr>";
+        $message.="<tr bgColor='lightcyan'><td>Nom de la conversation</td>";
         $message.="<td><input type='text' name='nom_conv'></td>";
-        $message.="<td><button type='submit' name='creer_conv' value='creer_conv'>Créer la conversation</button></td></tr>";
+        $message.="<td><button type='submit' name='creer_conv' value='creer_conv' class='button-style'>Créer la conversation</button></td></tr>";
         $message.="</table></form>";
 
         //echo $message; 
@@ -141,6 +142,17 @@ if(isset($_POST['creer_conv'])){
         
 
     </script>
+
+    <style type="text/css">
+        
+        .button-style {
+    color: white;
+    border-radius: 5px;
+    background-color: #20B2AA;
+    border-bottom: 3px solid #008B8B;
+}
+
+    </style>
 </head>
 <body>
     <div class="wrapper">

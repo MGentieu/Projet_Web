@@ -327,7 +327,7 @@ function loginForm() {
     <div class="wrapper">
 
 
-        <div class="gauche">
+        <div class="gauche" style="color: teal;">
             <h1>ECE In: Social Media Professionel <br> 
                 <br> de l'ECE Paris</h1>
         </div>

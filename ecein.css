@@ -8,7 +8,7 @@ font-family: Arial, Helvetica, sans-serif; }
     width: 90%; /* Largeur du wrapper */
     line-height: 100%;
     min-width: 90%; /* Largeur minimum du wrapper */
-    color: cadetblue; /* Couleur du texte dans le wrapper */
+    color: teal; /* Couleur du texte dans le wrapper */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -51,8 +51,8 @@ font-family: Arial, Helvetica, sans-serif; }
             text-shadow: 0px -2px #BD3E31;
         }
         .green{
-            background-color: #0FB24D;
-            border-bottom: 5px solid #0E833A;
+            background-color: #20B2AA;
+            border-bottom: 5px solid #008B8B;
             text-shadow: 0px -2px #0E833A;
         }
 
@@ -209,12 +209,12 @@ font-family: Arial, Helvetica, sans-serif; }
         transform: translateY(-50%);
         right: 50px; 
         color: white;
-        background-color: slateblue;
+        background-color: teal;
     }
 
 #prev {
         color: white;
-        background-color: slateblue;
+        background-color: teal;
         right: 50px;
     }
 
