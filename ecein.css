@@ -105,11 +105,22 @@ font-family: Arial, Helvetica, sans-serif; }
     margin: 15px 0;
     
 }
+.admins {
+    border: 1px solid black;
+    float: left; /* Fait flotter la colonne vers la gauche */
+    width: 70%; /* Largeur de la colonne gauche */
+    height: 400px;
+    background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
+
+    margin: 15px 0;
+    
+}
+
 
 
 .rightcolumn {
     border: 1px solid black;
-    width: 60%;
+    width: 50%;
     float: left;
     height: 400px;
     display: block;
@@ -225,3 +236,6 @@ img{
 	border: none;
 }
 
+#liste_auteurs tr{
+    height: 100px;
+}
