@@ -64,6 +64,7 @@ if(isset($_POST["ajoutformation"]))
 }
     }
 
+
     
     else
     {
@@ -96,6 +97,7 @@ if(isset($_POST["ajoutformation"]))
             $message.="Pas de emailauteur mentionné.<br>";
         }
     }
+
     
 }
 // ferme la connexion
@@ -169,11 +171,11 @@ mysqli_close($db_handle)
             <ul>
                 <!-- Rendre cliquable les formation pour les supprimer -->
                 <li>
-                    <a
+                    <a>
                         <?php 
 
                             //obligé pour lier les php de cette page ou sinon rien ne s'affiche
-                            session_start();
+                            //session_start();
                             echo"<meta charset='utf-8'>";
 
                             //essayer de l'afficher avec un alerte
@@ -186,14 +188,17 @@ mysqli_close($db_handle)
 
                             // On va trouver la BD au bon endroit (serveur)à l'aide des deux variables definie précèdement et on le definie comme suit
                             $db_found = mysqli_select_db($db_handle,$db);
-                            $sql = "SELECT Ecole,dateDebut,dateFin FROM formation WHERE Ecole LIKE '%CIV%'";
-                            $result = mysqli_query($db_handle, $sql);
-                            $data = mysqli_fetch_assoc($result);
-                            /* Plus tard on remplacera par un code qui s'écrir lui meme a partir de php et on appliquara la bonne requete sql pour tout afficher de l'utilisateur*/
-                            echo "École : " . $data['Ecole'] /* photo si temps*/."<br>";
-                            echo "Date de début : " .$data['DateDebut'] ."Date de fin :" .$data['DateFin']. "<br>";
+                            $SQL="select Ecole, DataDebut, DateFin from formation where Ecole LIKE '%"."CIV"."%"."'";
+                            //$sql = "SELECT Ecole,dateDebut,dateFin FROM formation WHERE Ecole LIKE '%CIV%'";
+                            $result = mysqli_query($db_handle, $SQL);
+                            if($result->num_rows>0){
+                                $data = mysqli_fetch_assoc($result);
+                                /* Plus tard on remplacera par un code qui s'écrir lui meme a partir de php et on appliquara la bonne requete sql pour tout afficher de l'utilisateur*/
+                                echo "École : " . $data['Ecole'] /* photo si temps*/."<br>";
+                                echo "Date de début : " .$data['DateDebut'] ."Date de fin :" .$data['DateFin']. "<br>";
+                            }
                         ?>
-                    >
+                    </a>
                 </li>
                 <li>
                     <a img="#">
