@@ -169,7 +169,7 @@ mysqli_close($db_handle)
             <ul>
                 <!-- Rendre cliquable les formation pour les supprimer -->
                 <li>
-                    <a
+                    <a>
                         <?php 
 
                             //obligé pour lier les php de cette page ou sinon rien ne s'affiche
@@ -193,7 +193,7 @@ mysqli_close($db_handle)
                             echo "École : " . $data['Ecole'] /* photo si temps*/."<br>";
                             echo "Date de début : " .$data['DateDebut'] ."Date de fin :" .$data['DateFin']. "<br>";
                         ?>
-                    >
+                    </a>
                 </li>
                 <li>
                     <a img="#">
