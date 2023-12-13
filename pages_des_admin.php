@@ -14,6 +14,48 @@ $verif_pseudo=false;
 //$verif_connexion=false;
 //$message="";
 $database = 'ECE_IN';
+if(isset($_POST['ajout_auteur'])){
+    $email_ajout=$_POST['ajout_auteur'];
+    $message.="Votre email est : ".$email_ajout.".<br>";
+    $mysqli = new mysqli($serveur, $user, $password, $database, $port);
+
+    if ($mysqli->connect_error) {
+        echo "Erreur de connexion à la base de données.<br>";
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+                . $mysqli->connect_error);
+    }
+    else{
+        $sql="update auteur set est_dans_le_reseau=1 where email_auteur='$email_ajout'";
+        //$SQL="UPDATE auteur set est_dans_le_reseau=1 where email_auteur='$email_ajout'";
+        $mysqli->query($sql);
+    }
+    $mysqli->close();
+    header("Location: pages_des_admin.php");
+    exit();
+}
+
+if(isset($_POST['suppr_auteur'])){
+    $email_ajout=$_POST['suppr_auteur'];
+    $message.="Votre email est : ".$email_ajout.".<br>";
+    $mysqli = new mysqli($serveur, $user, $password, $database, $port);
+
+    if ($mysqli->connect_error) {
+        echo "Erreur de connexion à la base de données.<br>";
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+                . $mysqli->connect_error);
+    }
+    else{
+        $sql="update auteur set est_dans_le_reseau=0 where email_auteur='$email_ajout'";
+        //$SQL="UPDATE auteur set est_dans_le_reseau=1 where email_auteur='$email_ajout'";
+        $mysqli->query($sql);
+    }
+    $mysqli->close();
+    header("Location: pages_des_admin.php");
+    exit();
+}
+
+
+
 $mysqli = new mysqli($serveur, $user, $password, $database, $port);
 
 if ($mysqli->connect_error) {
@@ -24,15 +66,18 @@ if ($mysqli->connect_error) {
 else{
 	$auteurs=$mysqli->query("select * from auteur A join correspondance_pseudo_email C on A.email_auteur=C.email_auteur ");
 	if($auteurs->num_rows>0){
+        $message.="<form action='pages_des_admin.php' method='post'>";
 		$message.="<table border='1'>";
 		while($row=$auteurs->fetch_assoc()){
 			if($row['est_dans_le_reseau']==1){
 				$message.="<tr id='ligne_verte' bgColor='#55FF55'>";
 				$message.="<td width='20%'>".$row['pseudo']."</td>";
 				$message.="<td width='30%'>".$row['email_auteur']."</td>";
+                
 				$message.="<td width='18%'>".$row['nom']."</td>";
 				$message.="<td width='18%'>".$row['prenom']."</td>";
-				$message.="<td align='center' width='20%' ><button type='submit' name='ajout_auteur' value='".$row['email_auteur']."'>Supprimer du réseau"."</td></tr>";
+				$message.="<td align='center'><button type='submit' name='suppr_auteur' value='".$row['email_auteur']."'>Supprimer du réseau</button></td></tr>";
+
 				$message.="</tr>";
 			}	
 			else{
@@ -41,12 +86,14 @@ else{
 				$message.="<td>".$row['email_auteur']."</td>";
 				$message.="<td>".$row['nom']."</td>";
 				$message.="<td>".$row['prenom']."</td>";
+                
+                $message.="<td align='center' width='20%'><button type='submit' name='ajout_auteur' value='".$row['email_auteur']."'>Ajouter au réseau</button></td></tr>";
+				
 
-				$message.="<td align='center'><button type='submit' name='suppr_auteur' value='".$row['email_auteur']."'>Ajouter au réseau"."</td></tr>";
 				$message.="</tr>";
 			}
 		}
-		$message.="</table>";
+		$message.="</table></form>";
 	}
 	else{
 		$message.="Il n'y a aucun utilisateur enregistré dans la base.<br>";
@@ -54,29 +101,7 @@ else{
 }
 $mysqli->close();
 
-if(isset($_POST['ajout_auteur'])){
-    $email_ajout=$_POST['ajout_auteur'];
-    $user = 'root';
-    $serveur='localhost';
-    $password = isset($_POST["mdp_bdd"])? $_POST["mdp_bdd"] : "";
-    $_SESSION['mdp_bdd']=$password;
-    $port = NULL; //Default must be NULL to use default port
-    $database = 'ECE_IN';
-    $mysqli = new mysqli($serveur, $user, $password, $database, $port);
 
-    if ($mysqli->connect_error) {
-        echo "Erreur de connexion à la base de données.<br>";
-        die('Connect Error (' . $mysqli->connect_errno . ') '
-                . $mysqli->connect_error);
-    }
-    else{
-        $SQL="UPDATE auteur set est_dans_le_reseau=1 where email_auteur='$email_ajout'";
-        $mysqli->query($SQL);
-    }
-    $mysqli->close();
-    header("Location: pages_des_admin.php");
-    exit();
-}
 
 ?>
 

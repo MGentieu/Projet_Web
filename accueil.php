@@ -71,7 +71,7 @@ if (isset($_POST['enter_auteur'])){
         
         if($valid_form){
 
-            $result1=$mysqli->query("select email_auteur from auteur where email_auteur='$email_pseudo'");
+            $result1=$mysqli->query("select email_auteur,est_dans_le_reseau from auteur where email_auteur='$email_pseudo'");
             $result2=$mysqli->query("select * from correspondance_pseudo_email where pseudo='$email_pseudo'");
             $verif_email=($result1->num_rows > 0)? true:false;
             $verif_pseudo=($result2->num_rows > 0)? true:false;
@@ -82,11 +82,12 @@ if (isset($_POST['enter_auteur'])){
                     $row1 = $result1->fetch_assoc();
                     $message.= "email " . $row1["email_auteur"]."<br>";
                     $passw=$mysqli->query("select mot_de_passe from auteur where email_auteur='$email_pseudo' and mot_de_passe='$mdp'");
-                    if($passw->num_rows >0){
+                    if($passw->num_rows >0&&$row1['est_dans_le_reseau']==1){
                         $pseudo=$mysqli->query("select * from correspondance_pseudo_email where email_auteur='$email_pseudo'");
                         if($pseudo->num_rows > 0){
                             $mypseudo=$pseudo->fetch_assoc();
                             //$message.= "L'utilisateur est maintenant connecté! " ."<br>";
+
                             $_SESSION['ep']=$mypseudo['pseudo'];
                             $_SESSION['emailauteur']=$email_pseudo;
                             header("Location: accueil.php");
@@ -100,7 +101,7 @@ if (isset($_POST['enter_auteur'])){
                         exit();
                     }
                     else{
-                        $message.= "Mauvais mot de passe! " ."<br>";
+                        $message.= "Mauvais mot de passe! Ou l'utilisateur n'est pas dans le réseau." ."<br>";
                     }
 
                 }
@@ -109,13 +110,20 @@ if (isset($_POST['enter_auteur'])){
                     $row2 = $result2->fetch_assoc();
                     $message.="pseudo " . $row2["pseudo"]." - email " . $row2["email_auteur"]. "<br>";
                     $email_correspondant=$row2["email_auteur"];
-                    $passw=$mysqli->query("select mot_de_passe from auteur where email_auteur='$email_correspondant' and mot_de_passe='$mdp'");
+                    $passw=$mysqli->query("select mot_de_passe,est_dans_le_reseau from auteur where email_auteur='$email_correspondant' and mot_de_passe='$mdp'");
                     if($passw->num_rows > 0){
                         $message.= "L'utilisateur est maintenant connecté! " ."<br>";
-                        $_SESSION['ep']=$row2['pseudo'];
-                        $_SESSION['emailauteur']=$email_correspondant;
+                        $row3=$passw->fetch_assoc();
+                        if($row3['est_dans_le_reseau']==1){
+                            $_SESSION['ep']=$row2['pseudo'];
+                            $_SESSION['emailauteur']=$email_correspondant;
                                                 //session_s]tart();
                         //$_SESSION['info'] = "Ceci est une information depuis PHP";
+                        }
+                        else{
+                            $message.="L'utilisateur n'a pas le droit d'accéder au réseau.<br>";
+                        }
+                        
                         header("Location: accueil.php");
                         $mysqli->close();
                         exit();
