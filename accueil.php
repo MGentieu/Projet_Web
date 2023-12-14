@@ -221,6 +221,7 @@ function loginForm() {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Accueil</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="ecein.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
    
@@ -336,8 +337,8 @@ function loginForm() {
 
 
         <div class="gauche" style="color: teal;">
-            <h1>ECE In: Social Media Professionel <br> 
-                <br> de l'ECE Paris</h1>
+            <h2>ECE In: Social Media Professionel <br> 
+                 de l'ECE Paris</h2>
         </div>
 
         <div class="droite">
@@ -353,12 +354,14 @@ function loginForm() {
                 
             
             <div id="logo">
-                <a href="accueil.php" class="action-button animate green" id="ref1">Accueil</a>
-                <a href="monreseau.php" class="action-button animate blue">Réseau</a>
-                <a href="vous.php" class="action-button animate blue">Vous</a>
-                <a href="notification.php" class="action-button animate blue">Notification</a>
-                <a href="messagerie.php" class="action-button animate blue">Messagerie</a>
-                <a href="emploi.php" class="action-button animate blue">Emploi</a>
+                <p style="text-align: center;">
+                <a href="accueil.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #20B2AA;">Accueil</button></a> 
+                <a href="monreseau.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Mon réseau</button></a>
+                <a href="vous.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Vous</button></a>
+                <a href="notification.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Notification</button></a>
+                <a href="messagerie.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Messagerie</button></a>
+                <a href="emploi.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Emploi</button>
+                </p></a>
             </div>
 
         </div>
