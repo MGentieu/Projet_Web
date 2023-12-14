@@ -17,7 +17,7 @@ if (isset($_GET['logout'])){
 $message="";
 $message2="";
 if(isset($_SESSION['ep'])){
-    $message.="<br>Salut ".$_SESSION['ep']."<br>";
+    $message.="<p><br><strong>Bonjour ".$_SESSION['ep'].", voici la liste de vos amis :</strong></p><br>";
     $user = 'root';
     $serveur='localhost';
     $password=(isset($_SESSION['mdp_bdd']))?$_SESSION['mdp_bdd']:'';
@@ -41,22 +41,22 @@ if(isset($_SESSION['ep'])){
 
         if($amitie->num_rows >0){
             $message.="<form action='monreseau.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
-            $message.="<tr> <th colspan='3' align='center' style='color: black;'>Liste des amis</th></tr>";
+            $message.="<tr bgColor='teal' style='color: white;' align='center'> <td colspan='3' align='center' style='color: white;'>Liste des amis</td></tr>";
             while($row = $amitie->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
-                $message.="<tr bgColor='lightcyan'><td name='emailami'>".$row['email_ami_2']."</td>";
-                $message.="<td>".$row['email_ami_2']."</td>";
-                $message.="<td><button type='submit' name='valid_ami' value='".$row['email_ami_2']."' class='button-style'>Accéder à la photo"."</td></tr>";
+                $message.="<tr bgColor='lightcyan'><td name='emailami'>".$row['prenom']."</td>";
+                $message.="<td>".$row['nom']."</td>";
+                $message.="<td><a href='#' type='submit' name='valid_ami' value='".$row['id_im_de_fond']."' class='button-style'>Accéder à la photo"."</a></td></tr>";
             }
 
             $message.="</table></form>";
         }
         else{
-            $message.="Vous n'avez aucun ami<br>";
+            $message.="Vous n'avez aucuns amis<br>";
         }
         $message.="<br><br>";
         $message.="<form action='Creer_conversation.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
-        $message.="<tr> <th colspan='3' align='center' style='color: black;'>Trouver des</th></tr>";
+        $message.="<tr bgColor='teal' style='color: white;'> <td colspan='3' align='center' style='color: white;'>Trouver des amis</td></tr>";
         $message.="<tr bgColor='lightcyan'><td>Nom d'une personne</td>";
         $message.="<td><input type='text' name='nom_ami'></td>";
         $message.="<td><button type='submit' name='creer_amitie' value='creer_amitie' class='button-style'>Créer l'amitie</button></td></tr>";

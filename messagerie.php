@@ -24,7 +24,7 @@ if (isset($_GET['logout'])){
 $message="";
 $message2="";
 if(isset($_SESSION['ep'])){
-    $message.="<br>Salut ".$_SESSION['ep']."<br>";
+    $message.="<p><br><strong>Bonjour ".$_SESSION['ep'].", voici vos conversations :</strong></p><br>";
     $user = 'root';
     $serveur='localhost';
     $password=(isset($_SESSION['mdp_bdd']))?$_SESSION['mdp_bdd']:'';
@@ -45,7 +45,7 @@ if(isset($_SESSION['ep'])){
         
         if($conversations->num_rows >0){
             $message.="<form action='messagerie.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
-            $message.="<tr> <th colspan='3' align='center' style='color: black;'>Liste des conversations</th></tr>";
+            $message.="<tr bgColor='teal' style='color: white;'> <th colspan='3' align='center' style='color: white;'>Liste des conversations</th></tr>";
             while($row = $conversations->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
                 $message.="<tr bgColor='lightcyan'><td name='Conv_Id'>".$row['id_conv']."</td>";
@@ -60,7 +60,7 @@ if(isset($_SESSION['ep'])){
         }
         $message.="<br><br>";
         $message.="<form action='Creer_conversation.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
-        $message.="<tr> <th colspan='3' align='center' style='color: black;'>Creer une conversation :</th></tr>";
+        $message.="<tr bgColor='teal' style='color: white;'> <th colspan='3' align='center' style='color: white;'>Creer une conversation :</th></tr>";
         $message.="<tr bgColor='lightcyan'><td>Nom de la conversation</td>";
         $message.="<td><input type='text' name='nom_conv'></td>";
         $message.="<td><button type='submit' name='creer_conv' value='creer_conv' class='button-style'>Créer la conversation</button></td></tr>";
