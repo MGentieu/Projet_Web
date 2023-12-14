@@ -1,5 +1,8 @@
 <?php  
 
+session_start();
+echo "<meta charset='utf-8'>";
+
 $user = 'root';
 $password = ''; 
 $port = 3306; // Utiliser le port par défaut (par exemple, 3306 pour MySQL)
