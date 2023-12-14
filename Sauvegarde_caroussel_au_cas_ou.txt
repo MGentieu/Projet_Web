@@ -1,0 +1,88 @@
+var $carrousel = $('#carrousel'), 
+        $img = $('#carrousel img'), 
+        indexImg = $img.length - 1, 
+        i = 0, 
+        k = indexImg,
+        j = i + 1,
+        $currentImg = $img.eq(i),
+        $prevImg = $img.eq(k),
+        $nextImg = $img.eq(j);
+
+    $img.css('display', 'none');
+    //$prevImg.css('display', 'block');
+    $currentImg.css('display', 'block');
+    //$nextImg.css('display', 'block'); 
+    
+    $('#next').click(function(){ 
+        i++; 
+        j++;
+        k++;
+        if (i > indexImg) {
+            i = 0;
+        }
+        if (k > indexImg) {
+            k = 0;
+        }
+        if (j > indexImg) {
+            j = 0;
+        }
+        
+        $img.css('display', 'none'); 
+        //$prevImg = $img.eq(k); 
+        //$prevImg.css('display', 'block');
+        $currentImg = $img.eq(i); 
+        $currentImg.css('display', 'block');
+        //$nextImg = $img.eq(j); 
+        //$nextImg.css('display', 'block');
+    });
+
+    $('#prev').click(function(){ // image précédente
+        i--;
+        k--;
+        j--;
+        if (i < 0) {
+            i = indexImg;
+        }
+        if (k < 0) {
+            k = indexImg;
+        }
+        if (j < 0) {
+            j = indexImg;
+        }
+        
+        $img.css('display', 'none');
+        //$prevImg = $img.eq(k); 
+        //$prevImg.css('display', 'block');
+        $currentImg = $img.eq(i); 
+        $currentImg.css('display', 'block');
+        //$nextImg = $img.eq(j); 
+        //$nextImg.css('display', 'block');
+    });
+
+
+function slideImg(){
+        setTimeout(function(){ 
+            i++; 
+            j++;
+            k++;
+            if (i > indexImg) {
+                i = 0;
+            }
+            if (k > indexImg) {
+                k = 0;
+            }
+            if (j > indexImg) {
+                j = 0;
+            }
+            $img.css('display', 'none');
+            //$prevImg = $img.eq(k); 
+            //$prevImg.css('display', 'block');
+            $currentImg = $img.eq(i); 
+            $currentImg.css('display', 'block');
+            //$nextImg = $img.eq(j); 
+            //$nextImg.css('display', 'block');
+            slideImg(); 
+        }, 3000); 
+    } 
+
+    slideImg(); 

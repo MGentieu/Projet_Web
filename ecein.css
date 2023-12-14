@@ -100,6 +100,7 @@ font-family: Arial, Helvetica, sans-serif; }
     float: left; /* Fait flotter la colonne vers la gauche */
     min-width: 20%; /* Largeur de la colonne gauche */
     width: auto;
+    max-width: 30%;
     height: 400px;
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
     margin: 15px 0;
@@ -131,7 +132,7 @@ font-family: Arial, Helvetica, sans-serif; }
     
 }
 .rightestcolumn {
-    
+
     border: 1px solid black;
     width: auto
     float: left;
