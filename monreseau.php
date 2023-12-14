@@ -28,6 +28,11 @@ if(!isset($_SESSION['ep'])){
 	<title>Mon réseau</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> 
     <link href="ecein.css" rel="stylesheet" type="text/css" />
+    <!-- Bibliothèque jQuery --> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
+        
+    </script> <!-- Dernier JavaScript compilé --> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
@@ -78,9 +83,51 @@ if(!isset($_SESSION['ep'])){
         
 
         <div class="leftcolumn">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+            <!-- Indicators --> 
+            <ol class="carousel-indicators"> 
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li> 
+                <li data-target="#myCarousel" data-slide-to="1"></li> 
+                <li data-target="#myCarousel" data-slide-to="2"></li> 
+                <li data-target="#myCarousel" data-slide-to="3"></li> 
+            </ol> 
 
+            <!-- Wrapper pour les images --> 
+            <div class="carousel-inner"> 
+                <div class="item active"> 
+                    <img src="images/france1.jpg" alt="Paris" style="width:100px; height: 100px;"> 
+                    <div class="carousel-caption"> 
+                        <h3>Paris</h3> 
+                        <p>La ville lumière!</p> 
+                    </div> 
+                </div> 
+                <div class="item">
+                    <img src="images/france2.jpg" style="width:100px; height:100px">
+                    <div class="carousel-caption">
+                        <h3>Berlin</h3>
+                        <p>La ville grise</p>       
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="images/france3.jpg" style="width:100px; height:100px">
+                    <div class="carousel-caption">
+                        <h3>Rome</h3>
+                        <p>La ville romaine</p>     
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="images/france4.jpg" style="width:100px; height:100px">
+                    <div class="carousel-caption">
+                        <h3>Prague</h3>
+                        <p>La ville des racistes</p>        
+                    </div>
+                </div>
+            </div>
             
     	</div>
+        </div>
         
 
         <div class="rightcolumn" style="overflow:scroll;">
