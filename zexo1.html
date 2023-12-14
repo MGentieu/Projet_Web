@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Réservation </title>
+</head>
+<body>
+		<form action="z1traitement.php" method="post">
+			<table border="1">
+
+				<tr><h1>Résevation Airbnb Marseille</h1></tr>
+
+				<tr>
+					<td>
+						Nom :
+					</td>
+					<td>
+						<input type="text" name="nom">
+					</td>
+				</tr>
+
+				<tr>
+				<td>
+						Date d'arrivé :
+					</td>
+					<td>
+						<input type="Date" name="dateArrive">
+					</td>
+				</tr>
+
+				<tr>
+				<td>
+						Date de départ :
+					</td>
+					<td>
+						<input type="Date" name="dateDepart">
+					</td>
+				</tr>
+
+				<tr>
+				<td>
+						Nombre d'adultes :
+					</td>
+					<td>
+						<input type="number" name="nombreAdultes">
+					</td>
+				</tr>
+
+				<tr>
+				<td>
+						Nombre d'enfants :
+					</td>
+					<td>
+						<input type="number" name="nombreEnfants">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Type d'hébergement :
+					</td>
+					<td>
+					<input type="radio" name="Th" value="Economie">Economie<br>
+					<input type="radio" name="Th" value="Spécial">Spécial<br>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Petit déjeuner :
+					</td>
+					<td>
+						<input type="radio" name="Pd" value="Petitdéjeuner">
+						Avec petit déjeuner<br>
+						<input type="radio" name="Pd" value="Petitdéjeuner">
+						Sans petit déjeuner<br>
+					</td>
+				</tr>
+
+					<tr>
+						<td>
+							Fidélité :
+						</td>
+						<td>
+							<input type="radio" name="F" value="Régulier">
+							Régulier<br>
+							<input type="radio" name="F" value="CarteFidélite">
+							Carte fidélité<br>
+							<input type="radio" name="F" value="CarteVip">
+							Carte VIP<br>
+						</td>
+				    </tr>
+					<tr>
+						<td colspan="2" align="center">
+						<input type="submit" name="button1" value="Soumettre">
+						</td>
+					</tr>
+			</table>
+		</form>
+</body>
+</html>
