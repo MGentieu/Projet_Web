@@ -241,7 +241,20 @@ function loginForm() {
             position: relative;
             background-color: lightcyan; 
 }
-         
+
+         #carrousel {
+        position: relative;
+       align-items: center;
+    }
+        #carrousel ul{
+    list-style: none;
+}
+    #carrousel ul li{
+    position: absolute;
+    top: 0;
+    left: 0;
+}   
+
     </style>
 
     <script type="text/javascript">
@@ -390,13 +403,13 @@ function loginForm() {
 
             
                 <ul>
-                    <li><img src="images/france1.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france2.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france3.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france4.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france5.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france6.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france7.jpg" width="200" height="200" /></li>
+                    <li><img src="images/france1.jpg" width="210" height="380" /></li>
+                    <li><img src="images/france2.jpg" width="210" height="380" /></li>
+                    <li><img src="images/france3.jpg" width="210" height="380" /></li>
+                    <li><img src="images/france4.jpg" width="210" height="380" /></li>
+                    <li><img src="images/france5.jpg" width="210" height="380" /></li>
+                    <li><img src="images/france6.jpg" width="210" height="380" /></li>
+                    <li><img src="images/france7.jpg" width="210" height="380" /></li>
                 </ul>
                 <input type="button" id="prev" value="Précédent">
                 <input type="button" id="next" value="Suivant">

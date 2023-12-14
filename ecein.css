@@ -168,6 +168,7 @@ font-family: Arial, Helvetica, sans-serif; }
             z-index: 0; /* Indique que cet élément doit être en arrière-plan */
 
         }
+        
 
 #carrousel {
         position: relative;
@@ -180,12 +181,6 @@ font-family: Arial, Helvetica, sans-serif; }
     top: 0;
     left: 0;
 }    
-
-#titre {
-        left: 220px;
-        position: relative;
-        color: midnightblue;
-    }
 
 
 #next {
