@@ -98,11 +98,12 @@ font-family: Arial, Helvetica, sans-serif; }
 .leftcolumn {
     border: 1px solid black;
     float: left; /* Fait flotter la colonne vers la gauche */
-    width: 20%; /* Largeur de la colonne gauche */
+    min-width: 20%; /* Largeur de la colonne gauche */
+    width: auto;
     height: 400px;
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
     margin: 15px 0;
-    
+    padding: 5px;
 }
 
 .admins {
@@ -120,7 +121,7 @@ font-family: Arial, Helvetica, sans-serif; }
 
 .rightcolumn {
     border: 1px solid black;
-    width: 50%;
+    width: 60%;
     float: left;
     height: 400px;
     display: block;

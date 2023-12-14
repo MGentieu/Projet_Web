@@ -44,8 +44,8 @@ if(isset($_SESSION['ep'])){
         $conversations=$mysqli->query($SQL);
         
         if($conversations->num_rows >0){
-            $message.="<form action='messagerie.php' method='post' bgColor='teal'><table bgColor='teal' align='center' style='color: black;' width='400'>";
-            $message.="<tr> <th colspan='3' style='color: white;'>Liste des conversations</th></tr>";
+            $message.="<form action='messagerie.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
+            $message.="<tr> <th colspan='3' align='center' style='color: black;'>Liste des conversations</th></tr>";
             while($row = $conversations->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
                 $message.="<tr bgColor='lightcyan'><td name='Conv_Id'>".$row['id_conv']."</td>";
@@ -59,8 +59,8 @@ if(isset($_SESSION['ep'])){
             $message.="Vous ne participez à aucune conversation.<br>";
         }
         $message.="<br><br>";
-        $message.="<form action='Creer_conversation.php' method='post' bgColor='teal'><table bgColor='teal' align='center' style='color: black;' width='400'>";
-        $message.="<tr> <th colspan='3' style='color: white;'>Creer une conversation :</th></tr>";
+        $message.="<form action='Creer_conversation.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
+        $message.="<tr> <th colspan='3' align='center' style='color: black;'>Creer une conversation :</th></tr>";
         $message.="<tr bgColor='lightcyan'><td>Nom de la conversation</td>";
         $message.="<td><input type='text' name='nom_conv'></td>";
         $message.="<td><button type='submit' name='creer_conv' value='creer_conv' class='button-style'>Créer la conversation</button></td></tr>";
@@ -197,8 +197,7 @@ if(isset($_POST['creer_conv'])){
         
 
         <div class="rightcolumn">
-            <p>ECE In est une platforme de réseau social...
-                <br>
+            <p>
                 <?php  
                     echo $message;
                     //echo $message2;
