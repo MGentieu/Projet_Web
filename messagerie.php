@@ -191,8 +191,10 @@ if(isset($_POST['creer_conv'])){
         
 
         <div class="leftcolumn">
-
-            
+            <br><br><br>
+            <p style="text-align:center">
+                <a href="#"><img src="images/teams.png" height='200' width='200'></a>
+            </p>
     	</div>
         
 
