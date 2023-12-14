@@ -4,18 +4,22 @@
 
 session_start();
 echo"<meta charset='utf-8'>";
+$emailauteur="";
+
 
 if (isset($_GET['logout'])){ 
-//Message de sortie simple 
+
+    //Message de sortie simple 
     $logout_message = "On a quitté<br>";
     $myfile = fopen(__DIR__ . "/currentUser.html", "w") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/currentUser.html"); 
     fwrite($myfile, $logout_message); 
     fclose($myfile); 
     session_destroy(); 
     sleep(1); 
+
+    //Rediriger l'utilisateur 
     header("Location: accueil.php"); 
     exit();
-    //Rediriger l'utilisateur 
 }
 
 if(!isset($_SESSION['ep'])){
@@ -25,6 +29,7 @@ if(!isset($_SESSION['ep'])){
 }
 
 // Déclaration des varibales
+$emailauteur="";
 $message="";
 $password=$_SESSION['mdp_bdd'];
 $valid_form=true;
@@ -53,15 +58,16 @@ if(isset($_POST["ajoutformation"]))
     // Regarde si les données essentiels sont bien saisis et si oui les ajoutes
     if($ecole!=""&&$diplome!=""&&$domaineDetudes!=""&&$dateDebut!=""&&$dateFin!=""&&$res!="")
     {
-    // Insert dans la base de donnée ece_in et dans la relation formation ce qui à été remplis dans le formulaire 
-    /*$sql = "INSERT INTO `formation`(`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`) VALUES ('$ecole','$diplome','$domaineDetudes','$dateDebut','$dateFin','$res')";
-    $result = mysqli_query($db_handle, $sql);*/
-    
-    $sql = "INSERT INTO `formation`(`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`, `mailusers`) VALUES ('$ecole', '$diplome', '$domaineDetudes', '$dateDebut', '$dateFin', '$res', '$emailauteur')";
-    $result = mysqli_query($db_handle, $sql);
-    if (!$result) {
-    echo "Erreur: " . mysqli_error($db_handle);
-}
+        // Insert dans la base de donnée ece_in et dans la relation formation ce qui à été remplis dans le formulaire 
+        /*$sql = "INSERT INTO `formation`(`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`) VALUES ('$ecole','$diplome','$domaineDetudes','$dateDebut','$dateFin','$res')";
+        $result = mysqli_query($db_handle, $sql);*/
+        
+        $sql = "INSERT INTO `formation`(`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`, `mailusers`) VALUES ('$ecole', '$diplome', '$domaineDetudes', '$dateDebut', '$dateFin', '$res', '$emailauteur')";
+        $result = mysqli_query($db_handle, $sql);
+        if (!$result) 
+        {
+        echo "Erreur: " . mysqli_error($db_handle);
+        }
     }
 
 
@@ -92,17 +98,13 @@ if(isset($_POST["ajoutformation"]))
         {
             $message.="Pas de res mentionné.<br>";
         }
-        if($_SESSION['emailauteur']=="")
-        {
-            $message.="Pas de emailauteur mentionné.<br>";
-        }
     }
 
     
 }
+
 // ferme la connexion
 mysqli_close($db_handle)
-
 
 ?>
 
@@ -125,7 +127,8 @@ mysqli_close($db_handle)
         });
     </script>
     <style type="text/css">
-        form {
+        form 
+        {
             text-align: left;
         }
     </style>
@@ -172,39 +175,8 @@ mysqli_close($db_handle)
                 <!-- Rendre cliquable les formation pour les supprimer -->
                 <li>
                     <a>
-                        <?php 
-
-                            //obligé pour lier les php de cette page ou sinon rien ne s'affiche
-                            //session_start();
-                            echo"<meta charset='utf-8'>";
-
-                            //essayer de l'afficher avec un alerte
-                            /*echo $message;*/
-                            // Définie la base de donnée
-                            $db = "ece_in";
-
-                            // Définie la connexion à la base de donnée
-                            $db_handle = mysqli_connect('localhost','root',$password);
-
-                            // On va trouver la BD au bon endroit (serveur)à l'aide des deux variables definie précèdement et on le definie comme suit
-                            $db_found = mysqli_select_db($db_handle,$db);
-                            $SQL="select Ecole, DataDebut, DateFin from formation where Ecole LIKE '%"."CIV"."%"."'";
-                            //$sql = "SELECT Ecole,dateDebut,dateFin FROM formation WHERE Ecole LIKE '%CIV%'";
-                            $result = mysqli_query($db_handle, $SQL);
-                            if($result->num_rows>0){
-                                $data = mysqli_fetch_assoc($result);
-                                /* Plus tard on remplacera par un code qui s'écrir lui meme a partir de php et on appliquara la bonne requete sql pour tout afficher de l'utilisateur*/
-                                echo "École : " . $data['Ecole'] /* photo si temps*/."<br>";
-                                echo "Date de début : " .$data['DateDebut'] ."Date de fin :" .$data['DateFin']. "<br>";
-                            }
-                        ?>
+                        
                     </a>
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-                <li>
-                    <a img="#">
                 </li>
                 <li>
                     <a img="#">
@@ -238,7 +210,8 @@ mysqli_close($db_handle)
                         <td> <input type = "text" name = "res"> </td>
                     </tr>
                     <tr >
-                        <td colspan ="2" > <input type="submit" name = "ajoutformation" value = "Ajouter une formation"> </td>
+                        <td> <input type="submit" name = "ajoutformation" value = "Ajouter une formation"> </td>
+                        <td><input type="submit" name="consulterformation" value="Consulter vos formation"></td>
                     </tr>
                 </table>
                 
@@ -246,9 +219,34 @@ mysqli_close($db_handle)
         </div>
  
         <div class="rightcolumn">
-            <p>ECE In est une platforme de réseau social...
+            <p>Vos formation :
                 <br>
             </p>
+            <?php 
+
+                            //obligé pour lier les php de cette page ou sinon rien ne s'affiche
+                            //session_start();
+                            echo"<meta charset='utf-8'>";
+
+                            //essayer de l'afficher avec un alerte
+                            /*echo $message;*/
+                            // Définie la base de donnée
+                            $db = "ece_in";
+
+                            // Définie la connexion à la base de donnée
+                            $db_handle = mysqli_connect('localhost','root',$password);
+
+                            // On va trouver la BD au bon endroit (serveur)à l'aide des deux variables definie précèdement et on le definie comme suit
+                            $db_found = mysqli_select_db($db_handle,$db);
+                            $SQL="SELECT Ecole, DataDebut, DateFin FROM formation WHERE Ecole LIKE '%"."CIV"."%"."'";
+
+                            //$sql = "SELECT Ecole,dateDebut,dateFin FROM formation WHERE Ecole LIKE '%CIV%'";
+                            $result = mysqli_query($db_handle, $SQL);
+                            $data = mysqli_fetch_assoc($result);
+                            /* Plus tard on remplacera par un code qui s'écrir lui meme a partir de php et on appliquara la bonne requete sql pour tout afficher de l'utilisateur*/
+                            echo "École : " . $data['Ecole'] /* photo si temps*/."<br>";
+                            echo "Date de début : " .$data['DateDebut'] ."Date de fin :" .$data['DateFin']. "<br>";
+                        ?>
         </div>
         <div class="rightestcolumn">
             
