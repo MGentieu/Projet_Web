@@ -228,53 +228,18 @@ mysqli_close($db_handle)
                             $SQL="SELECT Ecole, DataDebut, DateFin FROM formation WHERE mailusers LIKE '%"."$emailauteur"."%"."'";
                             //Requete sql qui compte le nombre de foramtion de l'auteur 
                             //Une boucle for pour afficher le bon nombre de formation
-                            //$sql = "SELECT Ecole,dateDebut,dateFin FROM formation WHERE Ecole LIKE '%CIV%'";
                             $result = mysqli_query($db_handle, $SQL);
-                            $data = mysqli_fetch_assoc($result);
+                            // Le bloc de code à l'intérieur de la boucle s'exécute pour chaque ligne de résultat
+                            while ($data = mysqli_fetch_assoc($result)) 
+                            {
+                            //$sql = "SELECT Ecole,dateDebut,dateFin FROM formation WHERE Ecole LIKE '%CIV%'";
                             /* Plus tard on remplacera par un code qui s'écrir lui meme a partir de php et on appliquara la bonne requete sql pour tout afficher de l'utilisateur*/
 
                             $message2.="<li>". "École : " . $data['Ecole'] /* photo si temps*/."<br>";
                             $message2.= "Date de début : " .$data['DataDebut']."<br>" ."Date de fin :" .$data['DateFin']. "<br>"."</li>";
                             echo $message2;
-                        ?>
-                <li>
-
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-
-                <li>
-                    <a img="#">
-                </li>
-                <li>
-                    <a img="#">
-                </li>
-
-            </ul>
-            
-            
+                            }
+                        ?>        
         </div>
         <div class="rightcolumn" style="overflow:scroll;">
             <div id = "titrecolmid">
