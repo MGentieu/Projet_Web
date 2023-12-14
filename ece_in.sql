@@ -339,7 +339,31 @@ INSERT INTO `evenement` (`id_evenement`, `email_auteur`, `alt`, `url`, `date_deb
 (4, 'danae.collard@edu.ece.fr', 'noël', 'noel.jpg', '2023-12-22', '18:29:59', '2023-12-22', '22:29:59', '2023-12-05', '11:30:05', 'Venez assister au repas de Noël de l\'école.');
 
 -- --------------------------------------------------------
+DROP TABLE IF EXISTS `formation`;
+CREATE TABLE `formation` (
+  `Ecole` varchar(255) NOT NULL,
+  `Diplome` varchar(255) NOT NULL,
+  `DomaineEtudes` varchar(255) NOT NULL,
+  `DataDebut` date NOT NULL,
+  `DateFin` date NOT NULL,
+  `Resultat` varchar(255) NOT NULL,
+  `mailusers` varchar(100) NOT NULL PRIMARY KEY
+);
 
+--
+-- Déchargement des données de la table `formation`
+--
+
+INSERT INTO `formation` (`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`, `mailusers`) VALUES
+('rrnjefnerreg', 'gregr', 'rggre', '2023-12-05', '2023-12-07', 'rege', 'theo.mettez@edu.ece.fr');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `formation`
+--
 --
 -- Structure de la table `image_de_fond`
 --
@@ -687,21 +711,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
-DROP TABLE IF EXISTS `formation`;
-CREATE TABLE `formation` (
-  `Ecole` varchar(255) NOT NULL,
-  `Diplome` varchar(255) NOT NULL,
-  `DomaineEtudes` varchar(255) NOT NULL,
-  `DataDebut` date NOT NULL,
-  `DateFin` date NOT NULL,
-  `Resultat` varchar(255) NOT NULL
-);
-
---
--- Déchargement des données de la table `formation`
---
-
-INSERT INTO `formation` (`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`) VALUES
-('Centre International de Valbonne', 'CPGE PC (Bac +2)', '1', '2020-09-13', '2023-06-30', 'Niveau : Intégration ECE'),
-('Centre International de Valbonne', 'CPGE PC (Bac +2)', '1', '2020-09-13', '2023-06-30', 'Niveau : Intégration ECE');
-COMMIT;
