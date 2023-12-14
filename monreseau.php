@@ -14,10 +14,82 @@ if (isset($_GET['logout'])){
     //Rediriger l'utilisateur 
 }
 
-if(!isset($_SESSION['ep'])){
+$message="";
+$message2="";
+if(isset($_SESSION['ep'])){
+    $message.="<br>Salut ".$_SESSION['ep']."<br>";
+    $user = 'root';
+    $serveur='localhost';
+    $password=(isset($_SESSION['mdp_bdd']))?$_SESSION['mdp_bdd']:'';
+    $port = NULL;
+
+    $database = 'ECE_IN';
+    $mysqli = new mysqli($serveur, $user, $password, $database, $port);
+
+    if ($mysqli->connect_error) {
+        echo "Erreur de connexion à la base de données.<br>";
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+                . $mysqli->connect_error);
+    }
+
+
+    else{
+        $email_pseudo=$_SESSION['emailauteur']; 
+        $SQL="SELECT AF.nom,AF.prenom,AF.id_im_de_fond FROM auteur AF WHERE AF.email_auteur IN(SELECT DISTINCT A.email_auteur FROM auteur A WHERE A.email_auteur IN(SELECT A1.email_ami_1 FROM amitie A1 WHERE A1.email_ami_2='$email_pseudo') or A.email_auteur IN(SELECT A2.email_ami_2 FROM amitie A2 WHERE A2.email_ami_1='$email_pseudo'))";
+        $amitie=$mysqli->query($SQL);
+
+
+        if($amitie->num_rows >0){
+            $message.="<form action='monreseau.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
+            $message.="<tr> <th colspan='3' align='center' style='color: black;'>Liste des amis</th></tr>";
+            while($row = $amitie->fetch_assoc()){
+                //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
+                $message.="<tr bgColor='lightcyan'><td name='emailami'>".$row['email_ami_2']."</td>";
+                $message.="<td>".$row['email_ami_2']."</td>";
+                $message.="<td><button type='submit' name='valid_ami' value='".$row['email_ami_2']."' class='button-style'>Accéder à la photo"."</td></tr>";
+            }
+
+            $message.="</table></form>";
+        }
+        else{
+            $message.="Vous n'avez aucun ami<br>";
+        }
+        $message.="<br><br>";
+        $message.="<form action='Creer_conversation.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
+        $message.="<tr> <th colspan='3' align='center' style='color: black;'>Trouver des</th></tr>";
+        $message.="<tr bgColor='lightcyan'><td>Nom d'une personne</td>";
+        $message.="<td><input type='text' name='nom_ami'></td>";
+        $message.="<td><button type='submit' name='creer_amitie' value='creer_amitie' class='button-style'>Créer l'amitie</button></td></tr>";
+        $message.="</table></form>";
+
+        //echo $message; 
+    }
+
+    $mysqli->close();
+}
+else{
     session_destroy();
     header("Location: accueil.php");
     exit();
+}
+
+if(isset($_POST['valid_ami'])){
+    $myId = $_POST['valid_ami'];
+    $_SESSION['idConv']=$myId;
+    $message2 = "Bouton appuyé. Id de la conv = ".$myId."<br>";
+    $nameFile = $myId.".html";
+    $filepath = __DIR__ . "/".$nameFile;  // Correction du chemin du fichier
+    $_SESSION['namefile']=$nameFile;
+    $_SESSION['filepath']=$filepath;
+    /*
+    $myfile = fopen($filepath, "a") or die("Impossible d'ouvrir le fichier " . $filepath);
+    fwrite($myfile, $message2);
+    fclose($myfile);
+    */
+    
+    header("Location: chat.php");
+    exit();
+
 }
 ?>
 <!DOCTYPE html>
