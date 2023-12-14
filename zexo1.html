@@ -6,10 +6,11 @@
 	<title> Réservation </title>
 </head>
 <body>
-	<div class ="wrapper">
-		<form>
-			<table>
+		<form action="z1traitement.php" method="post">
+			<table border="1">
+
 				<tr><h1>Résevation Airbnb Marseille</h1></tr>
+
 				<tr>
 					<td>
 						Nom :
@@ -18,6 +19,7 @@
 						<input type="text" name="nom">
 					</td>
 				</tr>
+
 				<tr>
 				<td>
 						Date d'arrivé :
@@ -26,6 +28,7 @@
 						<input type="Date" name="dateArrive">
 					</td>
 				</tr>
+
 				<tr>
 				<td>
 						Date de départ :
@@ -34,6 +37,7 @@
 						<input type="Date" name="dateDepart">
 					</td>
 				</tr>
+
 				<tr>
 				<td>
 						Nombre d'adultes :
@@ -42,6 +46,7 @@
 						<input type="number" name="nombreAdultes">
 					</td>
 				</tr>
+
 				<tr>
 				<td>
 						Nombre d'enfants :
@@ -50,56 +55,48 @@
 						<input type="number" name="nombreEnfants">
 					</td>
 				</tr>
+
 				<tr>
 					<td>
 						Type d'hébergement :
 					</td>
 					<td>
-					<input type="radio" name="" value="">
-					MasterCard<br>
-					<input type="radio" name="" value="">
-					Visa<br>
-					<input type="radio" name="" value="">
-					American Express <br>
-					<input type="radio" name="" value="">
-					PayPal<br>
-					<input type="radio" name="" value="">
-				</td>
+					<input type="radio" name="Th" value="Economie">Economie<br>
+					<input type="radio" name="Th" value="Spécial">Spécial<br>
+					</td>
 				</tr>
+
 				<tr>
 					<td>
 						Petit déjeuner :
 					</td>
 					<td>
-					<input type="radio" name="" value="">
-					MasterCard<br>
-					<input type="radio" name="" value="">
-					Visa<br>
-					<input type="radio" name="" value="">
-					American Express <br>
-					<input type="radio" name="" value="">
-					PayPal<br>
-					<input type="radio" name="" value="">
-				</td>
-				</tr>
-				<tr>
-					<td>
-						Fidélité :
+						<input type="radio" name="Pd" value="Petitdéjeuner">
+						Avec petit déjeuner<br>
+						<input type="radio" name="Pd" value="Petitdéjeuner">
+						Sans petit déjeuner<br>
 					</td>
-					<td>
-					<input type="radio" name="" value="">
-					MasterCard<br>
-					<input type="radio" name="" value="">
-					Visa<br>
-					<input type="radio" name="" value="">
-					American Express <br>
-					<input type="radio" name="" value="">
-					PayPal<br>
-					<input type="radio" name="" value="">
-				</td>
 				</tr>
+
+					<tr>
+						<td>
+							Fidélité :
+						</td>
+						<td>
+							<input type="radio" name="F" value="Régulier">
+							Régulier<br>
+							<input type="radio" name="F" value="CarteFidélite">
+							Carte fidélité<br>
+							<input type="radio" name="F" value="CarteVip">
+							Carte VIP<br>
+						</td>
+				    </tr>
+					<tr>
+						<td colspan="2" align="center">
+						<input type="submit" name="button1" value="Soumettre">
+						</td>
+					</tr>
 			</table>
 		</form>
-	</div>
 </body>
 </html>
