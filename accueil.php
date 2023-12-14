@@ -286,7 +286,7 @@ function loginForm() {
 <body>
     
     
-    <div class="wrapper">
+    <div class="wrapper" style="overflow:scroll;">
 
 
         <div class="gauche" style="color: teal;">
@@ -369,9 +369,41 @@ function loginForm() {
         
 
         <div class="rightcolumn" style="overflow:scroll;">
-            <p>ECE In est une platforme de réseau social...
+            <p style="text-align:center">ECE In est une platforme de réseau social...
                 <br>
             </p>
+            <div class="row">
+                <div class="col-md-4"> 
+                    <div class="thumbnail"> 
+                        <a href="images/arctriomphe.png" target="_blank"> 
+                            <img src="images/arctriomphe.png" alt="Arc de triomphe" style="width:100%"> 
+                            <div class="caption"> 
+                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p> 
+                            </div> 
+                        </a> 
+                    </div> 
+                </div>
+                <div class="col-md-4"> 
+                    <div class="thumbnail"> 
+                        <a href="images/sacrecoeur.png" target="_blank"> 
+                            <img src="images/sacrecoeur.png" alt="Sacre cœur" style="width:100%"> 
+                            <div class="caption"> 
+                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p> 
+                            </div> 
+                        </a> 
+                    </div> 
+                </div>
+                <div class="col-md-4"> 
+                    <div class="thumbnail"> 
+                        <a href="images/notredame.png" target="_blank"> 
+                            <img src="images/notredame.png" alt="Notre Dame" style="width:100%"> 
+                            <div class="caption"> 
+                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p> 
+                            </div> 
+                        </a> 
+                    </div> 
+                </div>
+            </div>
         </div>
         <div class="rightestcolumn">
            

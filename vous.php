@@ -132,7 +132,7 @@ mysqli_close($db_handle)
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" style="overflow:scroll;">
 
 
         <div class="gauche">
@@ -166,7 +166,7 @@ mysqli_close($db_handle)
         </div>
         
 
-        <div class="leftcolumn">
+        <div class="leftcolumn" style="overflow:scroll;width: 20%;">
             <div >
                 <img id ="photoProfil"src ="images/france1.jpg" alt = "Photo de profil" height="70" width="70">
             </div>

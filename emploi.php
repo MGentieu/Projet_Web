@@ -55,7 +55,7 @@ if(!isset($_SESSION['ep'])){
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" style="overflow:scroll;">
 
 
         <div class="gauche">

@@ -41,7 +41,9 @@ if(isset($_SESSION['ep'])){
 
         if($amitie->num_rows >0){
             $message.="<form action='monreseau.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
+
             $message.="<tr bgColor='teal' style='color: white;' align='center'> <td colspan='3' align='center' style='color: white;'>Liste des amis</td></tr>";
+
             while($row = $amitie->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
                 $message.="<tr bgColor='lightcyan'><td name='emailami'>".$row['prenom']."</td>";
@@ -119,7 +121,7 @@ if(isset($_POST['valid_ami'])){
     </script>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" style="overflow:scroll;">
 
 
         <div class="gauche" >
@@ -161,7 +163,7 @@ if(isset($_POST['valid_ami'])){
 
         <div class="rightcolumn" style="overflow:scroll;">
             <p style="text-align:center;">        
-            <?php echo $message; ?>    
+                <?php echo $message; ?>    
             </p>
         </div>
         <div class="rightestcolumn">

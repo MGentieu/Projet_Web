@@ -98,9 +98,8 @@ font-family: Arial, Helvetica, sans-serif; }
 .leftcolumn {
     border: 1px solid black;
     float: left; /* Fait flotter la colonne vers la gauche */
-    min-width: 20%; /* Largeur de la colonne gauche */
-    width: auto;
-    max-width: 30%;
+    width: 20%; /* Largeur de la colonne gauche */
+    
     height: 400px;
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
     margin: 15px 0;
