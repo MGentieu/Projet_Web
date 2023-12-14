@@ -132,6 +132,16 @@ mysqli_close($db_handle)
         {
             text-align: left;
         }
+        #titrecolmid
+        {
+            width: auto;
+            height: 33px;
+            background-color: #188385;
+            text-align: center;
+            color:white;
+            padding: 9px;
+
+        }
     </style>
 </head>
 <body>
@@ -184,10 +194,52 @@ mysqli_close($db_handle)
                 <li>
                     <a img="#">
                 </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+
+                <li>
+                    <a img="#">
+                </li>
+                <li>
+                    <a img="#">
+                </li>
+
             </ul>
             
+            
+        </div>
+        <div class="rightcolumn" style="overflow:scroll;">
+            <div id = "titrecolmid">
+                <!--Pour ecrire en gars balise <b<>-->
+            <p><b>Ajoutez vos formations, vos projet et créer votre CV automatiquement avec ECE in !</b></p> 
+            </div>
             <form action="" method="post">
-                <table border="0.5" >
+                <table border="0.3" border radius ="10px" >
                     <tr>
                         <td>École : </td>
                         <td> <input type = "text" name = "ecole"> </td>
@@ -214,17 +266,11 @@ mysqli_close($db_handle)
                     </tr>
                     <tr >
                         <td> <input type="submit" name = "ajoutformation" value = "Ajouter une formation"> </td>
-                        <td><input type="submit" name="consulterformation" value="Consulter vos formation"></td>
+                        <td><input type="submit" name="consulterformation" value="Générer un CV"></td>
                     </tr>
                 </table>
                 
             </form>
-        </div>
-        <div class="rightcolumn" style="overflow:scroll;">
-            <p>ECE In est une platforme de réseau social...
-
-                <br>
-            </p>
             <?php 
 
                             //obligé pour lier les php de cette page ou sinon rien ne s'affiche
