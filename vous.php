@@ -132,7 +132,7 @@ mysqli_close($db_handle)
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" style="overflow:scroll;">
 
 
         <div class="gauche">

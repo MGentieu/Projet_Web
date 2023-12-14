@@ -119,7 +119,7 @@ if(isset($_POST['valid_ami'])){
     </script>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" style="overflow:scroll;">
 
 
         <div class="gauche" >
