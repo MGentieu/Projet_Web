@@ -40,6 +40,18 @@ if(!isset($_SESSION['ep'])){
             });
         });
     </script>
+
+    <style type="text/css">
+        
+        #footer {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightcyan;
+        }
+        
+    </style>
 </head>
 <body>
     <div class="wrapper">

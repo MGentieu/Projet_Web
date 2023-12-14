@@ -223,7 +223,25 @@ function loginForm() {
     <title>Accueil</title>
     <link href="ecein.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-   
+
+    <style type="text/css">
+        
+        #footer {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightcyan;
+        }
+        #map {  
+            width: auto
+            float: right;
+            height: 90px;
+            position: relative;
+            background-color: lightcyan; 
+}
+         
+    </style>
 
     <script type="text/javascript">
         
@@ -318,7 +336,7 @@ function loginForm() {
             //$nextImg = $img.eq(j); 
             //$nextImg.css('display', 'block');
             slideImg(); 
-        }, 1000); 
+        }, 3000); 
     } 
 
     slideImg();   
@@ -377,8 +395,8 @@ function loginForm() {
                     <li><img src="images/france6.jpg" width="200" height="200" /></li>
                     <li><img src="images/france7.jpg" width="200" height="200" /></li>
                 </ul>
-                <input type="button" id="prev" value="Précédent" onclick="change_color1()">
-                <input type="button" id="next" value="Suivant" onclick="change_color1()">
+                <input type="button" id="prev" value="Précédent">
+                <input type="button" id="next" value="Suivant">
             
         </div>
         </div>
@@ -396,18 +414,14 @@ function loginForm() {
 
         <div id="footer">
 
-            
-            <footer>
-             <strong> ECE In <br> 75015 Paris </strong>  
-                 
-            </footer> 
-            
+             <strong align='center'> ECE In <br> 75015 Paris </strong> 
+    
         </div>
         
        <div  id="map">
         
             <a href="https://www.google.com/maps/place/6+Rue+Sextius+Michel,+75015+Paris/@48.8533916,2.2818063,15z/data=!4m6!3m5!1s0x47e6701b461cfb0b:0x826182e3c9eae061!8m2!3d48.85132!4d2.2886082!16s%2Fg%2F11tgf3tdc9?entry=ttu" target="_blank">
-            <img src="map.jpg" alt="map" height="90px" width="190px">
+            <img src="map.jpg" alt="map" height="90px" width="190px" float="right">
             </a>
         
         </div>

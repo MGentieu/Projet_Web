@@ -101,7 +101,6 @@ font-family: Arial, Helvetica, sans-serif; }
     width: 20%; /* Largeur de la colonne gauche */
     height: 400px;
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
-
     margin: 15px 0;
     
 }
@@ -171,29 +170,16 @@ font-family: Arial, Helvetica, sans-serif; }
         }
 
 #carrousel {
-        height: 100%; /* Set the height of the carousel to 100% of its container */
-        overflow: hidden; /* Hide the overflow to create a vertical scroll effect */
+        position: relative;
     }
-
-    #carrousel ul {
-        list-style-type: none; /* Remove list styling */
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column; /* Arrange list items vertically */
-        transition: transform 0.5s ease; /* Add smooth transition for animation */
-    }
-
-    #carrousel ul li {
-        margin-bottom: 10px; /* Add margin between list items */
-    }
-
-    #carrousel ul li img {
-        align-items: center;
-        width: 100px;
-        height: 100px;
-        display: block;
-    }
+#carrousel ul{
+    list-style: none;
+}
+#carrousel ul li{
+    position: absolute;
+    top: 0;
+    left: 0;
+}    
 
 #titre {
         left: 220px;
@@ -202,12 +188,11 @@ font-family: Arial, Helvetica, sans-serif; }
     }
 
 
-
 #next {
         position: absolute;
-        top: 100%;
+        top: 50%;
         transform: translateY(-50%);
-        right: 50px; 
+        right: 100px; 
         color: white;
         background-color: teal;
     }
@@ -222,21 +207,17 @@ font-family: Arial, Helvetica, sans-serif; }
     width: auto
     float: left;
     height: 90px;
-    border:1px solid black;
     position: relative;
+    background-color: lightcyan;
     
 }
-
-
-
 #footer {
-    float: left;
-    height: 90px;
-    width: 82%;
-    border: 1px solid black;
-    margin-bottom: 10px;
-}
-
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightcyan;
+        }
 
         
 header{
