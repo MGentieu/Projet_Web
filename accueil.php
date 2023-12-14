@@ -378,7 +378,7 @@ function loginForm() {
                         <a href="images/arctriomphe.png" target="_blank"> 
                             <img src="images/arctriomphe.png" alt="Arc de triomphe" style="width:100%"> 
                             <div class="caption"> 
-                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p> 
+                                <p>Beau séjour à Paris!</p> 
                             </div> 
                         </a> 
                     </div> 
@@ -388,7 +388,7 @@ function loginForm() {
                         <a href="images/sacrecoeur.png" target="_blank"> 
                             <img src="images/sacrecoeur.png" alt="Sacre cœur" style="width:100%"> 
                             <div class="caption"> 
-                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p> 
+                                <p>Connaissez-vous l'histoire du Sacre Cœur?</p> 
                             </div> 
                         </a> 
                     </div> 
@@ -398,7 +398,7 @@ function loginForm() {
                         <a href="images/notredame.png" target="_blank"> 
                             <img src="images/notredame.png" alt="Notre Dame" style="width:100%"> 
                             <div class="caption"> 
-                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p> 
+                                <p>Des nouvelles quant aux avances des rénovations de la cathédrale de Notre Dame?</p> 
                             </div> 
                         </a> 
                     </div> 
@@ -410,6 +410,13 @@ function loginForm() {
             <p class="logout" style="text-align: center;"><br>
                 <a id="exit" href="#" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #E74C3C; font-size: 2em;">Quitter</button></a>
             </p>
+            <p style="text-align: center;"><br>
+                <a id="publi_photo" href="#" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px; background-color: teal; font-size: 1em;">Publier une photo</button></a>
+            </p>
+            <p style="text-align: center;"><br>
+                <a id="publi_video" href="#" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px; background-color: teal; font-size: 1em;">Publier une vidéo</button></a>
+            </p>
+            
         </div>
 
         <div id="footer">

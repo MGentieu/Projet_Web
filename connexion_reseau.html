@@ -23,18 +23,19 @@
 			background-color: white; 
 		}
 	</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script type="text/javascript">
 		
 		function form_etu(){
-			var contenu_html="";
+			var contenu_html="<br><br><div class='container'>";
 			contenu_html+="<p><center>"; 
 			contenu_html+="<form action = 'accueil.php' method='post'>";
-			contenu_html+="<table border='1'>";
-			contenu_html+="<tr><td>Identifiant (Mail ou pseudo) : </td><td> <input type = 'text' name = 'ep'></td></tr>";
-			contenu_html+="<tr><td>Mot de passe : </td><td> <input type = 'password' name = 'mdp'></td></tr>";
-			contenu_html+="<tr><td>Mdp de la BDD : </td><td> <input type = 'password' name = 'mdp_bdd'></td></tr>";
+			contenu_html+="<table border='1' class='table'>";
+			contenu_html+="<tr bgColor='teal' style='color: white;'><td>Identifiant (Mail ou pseudo) : </td><td> <input type = 'text' name = 'ep'></td></tr>";
+			contenu_html+="<tr bgColor='teal' style='color: white;'><td>Mot de passe : </td><td> <input type = 'password' name = 'mdp'></td></tr>";
+			contenu_html+="<tr bgColor='teal' style='color: white;'><td>Mdp de la BDD : </td><td> <input type = 'password' name = 'mdp_bdd'></td></tr>";
 			contenu_html+="</table><input type='submit' name='enter_auteur' value='Connexion'></form>";
-			contenu_html+="</center></p>";
+			contenu_html+="</center></p></div>";
 			document.body.innerHTML=contenu_html;
 
 		}
@@ -58,7 +59,7 @@
 	
 </head>
 <body>
-	
+	<br><br>
 	<p> 
 		<center> 
 			<button type="button" class="button" onclick="form_etu()"> Je suis un utilisateur</button> 

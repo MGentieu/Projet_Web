@@ -58,7 +58,7 @@ function loginForm() {
 						<tr>
 							<td>Pseudo ou email</td>
 							<td><input type="text" name='pseudo_em'></td>
-							<td><input type="submit" name='inviter'></td>
+							<td><input type="submit" name='inviter' value="Inviter à la conversation"></td>
 						</tr>
 					</table>
 				</form>
