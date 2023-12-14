@@ -221,73 +221,52 @@ function loginForm() {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Accueil</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
     <link href="ecein.css" rel="stylesheet" type="text/css" />
+    <!-- Bibliothèque jQuery --> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
+        
+    </script> <!-- Dernier JavaScript compilé --> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-   
+
+    <style type="text/css">
+        
+        #footer {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightcyan;
+        }
+        #map {  
+            width: auto
+            float: right;
+            height: 90px;
+            position: relative;
+            background-color: lightcyan; 
+}
+
+         #carrousel {
+        position: relative;
+       align-items: center;
+    }
+        #carrousel ul{
+    list-style: none;
+}
+    #carrousel ul li{
+    position: absolute;
+    top: 0;
+    left: 0;
+}   
+
+    </style>
 
     <script type="text/javascript">
         
         $(document).ready(function() {
-    var $carrousel = $('#carrousel'), 
-        $img = $('#carrousel img'), 
-        indexImg = $img.length - 1, 
-        i = 0, 
-        k = indexImg,
-        j = i + 1,
-        $currentImg = $img.eq(i),
-        $prevImg = $img.eq(k),
-        $nextImg = $img.eq(j);
-
-    $img.css('display', 'none');
-    //$prevImg.css('display', 'block');
-    $currentImg.css('display', 'block');
-    //$nextImg.css('display', 'block'); 
     
-    $('#next').click(function(){ 
-        i++; 
-        j++;
-        k++;
-        if (i > indexImg) {
-            i = 0;
-        }
-        if (k > indexImg) {
-            k = 0;
-        }
-        if (j > indexImg) {
-            j = 0;
-        }
-        
-        $img.css('display', 'none'); 
-        //$prevImg = $img.eq(k); 
-        //$prevImg.css('display', 'block');
-        $currentImg = $img.eq(i); 
-        $currentImg.css('display', 'block');
-        //$nextImg = $img.eq(j); 
-        //$nextImg.css('display', 'block');
-    });
-
-    $('#prev').click(function(){ // image précédente
-        i--;
-        k--;
-        j--;
-        if (i < 0) {
-            i = indexImg;
-        }
-        if (k < 0) {
-            k = indexImg;
-        }
-        if (j < 0) {
-            j = indexImg;
-        }
-        
-        $img.css('display', 'none');
-        //$prevImg = $img.eq(k); 
-        //$prevImg.css('display', 'block');
-        $currentImg = $img.eq(i); 
-        $currentImg.css('display', 'block');
-        //$nextImg = $img.eq(j); 
-        //$nextImg.css('display', 'block');
-    });
 
     $("#exit").click(function () { 
         var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
@@ -296,32 +275,7 @@ function loginForm() {
         } 
     });
 
-    function slideImg(){
-        setTimeout(function(){ 
-            i++; 
-            j++;
-            k++;
-            if (i > indexImg) {
-                i = 0;
-            }
-            if (k > indexImg) {
-                k = 0;
-            }
-            if (j > indexImg) {
-                j = 0;
-            }
-            $img.css('display', 'none');
-            //$prevImg = $img.eq(k); 
-            //$prevImg.css('display', 'block');
-            $currentImg = $img.eq(i); 
-            $currentImg.css('display', 'block');
-            //$nextImg = $img.eq(j); 
-            //$nextImg.css('display', 'block');
-            slideImg(); 
-        }, 1000); 
-    } 
-
-    slideImg();   
+      
 });
 
 
@@ -332,12 +286,12 @@ function loginForm() {
 <body>
     
     
-    <div class="wrapper">
+    <div class="wrapper" style="overflow:scroll;">
 
 
         <div class="gauche" style="color: teal;">
-            <h1>ECE In: Social Media Professionel <br> 
-                <br> de l'ECE Paris</h1>
+            <h2>ECE In: Social Media Professionel <br> 
+                 de l'ECE Paris</h2>
         </div>
 
         <div class="droite">
@@ -353,61 +307,121 @@ function loginForm() {
                 
             
             <div id="logo">
-                <a href="accueil.php" class="action-button animate green" id="ref1">Accueil</a>
-                <a href="monreseau.php" class="action-button animate blue">Réseau</a>
-                <a href="vous.php" class="action-button animate blue">Vous</a>
-                <a href="notification.php" class="action-button animate blue">Notification</a>
-                <a href="messagerie.php" class="action-button animate blue">Messagerie</a>
-                <a href="emploi.php" class="action-button animate blue">Emploi</a>
+                <p style="text-align: center;">
+                <a href="accueil.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #20B2AA;">Accueil</button></a> 
+                <a href="monreseau.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Mon réseau</button></a>
+                <a href="vous.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Vous</button></a>
+                <a href="notification.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Notification</button></a>
+                <a href="messagerie.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Messagerie</button></a>
+                <a href="emploi.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Emploi</button>
+                </p></a>
             </div>
 
         </div>
         
 
         <div class="leftcolumn">
-            <div id="carrousel">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+            <!-- Indicators --> 
+            <ol class="carousel-indicators"> 
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li> 
+                <li data-target="#myCarousel" data-slide-to="1"></li> 
+                <li data-target="#myCarousel" data-slide-to="2"></li> 
+                <li data-target="#myCarousel" data-slide-to="3"></li> 
+            </ol> 
 
-            
-                <ul>
-                    <li><img src="images/france1.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france2.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france3.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france4.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france5.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france6.jpg" width="200" height="200" /></li>
-                    <li><img src="images/france7.jpg" width="200" height="200" /></li>
-                </ul>
-                <input type="button" id="prev" value="Précédent" onclick="change_color1()">
-                <input type="button" id="next" value="Suivant" onclick="change_color1()">
+            <!-- Wrapper pour les images --> 
+            <div class="carousel-inner"> 
+                <div class="item active"> 
+                    <img src="images/france1.jpg" alt="Paris" style="width:250px; height:250px ;"> 
+                    <div class="carousel-caption"> 
+                        <h3>Paris</h3> 
+                        <p>La ville lumière!</p> 
+                    </div> 
+                </div> 
+                <div class="item">
+                    <img src="images/france2.jpg" style="width:250px; height:250px">
+                    <div class="carousel-caption">
+                        <h3>Berlin</h3>
+                        <p>La ville grise</p>       
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="images/france3.jpg" style="width:250px; height:250px">
+                    <div class="carousel-caption">
+                        <h3>Rome</h3>
+                        <p>La ville romaine</p>     
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="images/france4.jpg" style="width:250px; height:250px">
+                    <div class="carousel-caption">
+                        <h3>Prague</h3>
+                        <p>La ville de Tchéquie</p>        
+                    </div>
+                </div>
+            </div>
             
         </div>
         </div>
         
 
-        <div class="rightcolumn">
-            <p>ECE In est une platforme de réseau social...
+        <div class="rightcolumn" style="overflow:scroll;">
+            <p style="text-align:center">ECE In est une platforme de réseau social...
                 <br>
             </p>
+            <div class="row">
+                <div class="col-md-4"> 
+                    <div class="thumbnail"> 
+                        <a href="images/arctriomphe.png" target="_blank"> 
+                            <img src="images/arctriomphe.png" alt="Arc de triomphe" style="width:100%"> 
+                            <div class="caption"> 
+                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p> 
+                            </div> 
+                        </a> 
+                    </div> 
+                </div>
+                <div class="col-md-4"> 
+                    <div class="thumbnail"> 
+                        <a href="images/sacrecoeur.png" target="_blank"> 
+                            <img src="images/sacrecoeur.png" alt="Sacre cœur" style="width:100%"> 
+                            <div class="caption"> 
+                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p> 
+                            </div> 
+                        </a> 
+                    </div> 
+                </div>
+                <div class="col-md-4"> 
+                    <div class="thumbnail"> 
+                        <a href="images/notredame.png" target="_blank"> 
+                            <img src="images/notredame.png" alt="Notre Dame" style="width:100%"> 
+                            <div class="caption"> 
+                                <p>Lorem ipsum donec id elit non mi porta gravida at eget metus.</p> 
+                            </div> 
+                        </a> 
+                    </div> 
+                </div>
+            </div>
         </div>
         <div class="rightestcolumn">
-            
-            <p class="logout"><a id="exit" href="#" class="action-button animate red">Quitter</a></p>
+           
+            <p class="logout" style="text-align: center;"><br>
+                <a id="exit" href="#" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #E74C3C; font-size: 2em;">Quitter</button></a>
+            </p>
         </div>
 
         <div id="footer">
 
-            
-            <footer>
-             <strong> ECE In <br> 75015 Paris </strong>  
-                 
-            </footer> 
-            
+             <strong align='center'> ECE In <br> 75015 Paris </strong> 
+    
         </div>
         
        <div  id="map">
         
             <a href="https://www.google.com/maps/place/6+Rue+Sextius+Michel,+75015+Paris/@48.8533916,2.2818063,15z/data=!4m6!3m5!1s0x47e6701b461cfb0b:0x826182e3c9eae061!8m2!3d48.85132!4d2.2886082!16s%2Fg%2F11tgf3tdc9?entry=ttu" target="_blank">
-            <img src="map.jpg" alt="map" height="90px" width="190px">
+            <img src="map.jpg" alt="map" height="90px" width="190px" float="right">
             </a>
         
         </div>

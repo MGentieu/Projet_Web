@@ -24,7 +24,7 @@ if (isset($_GET['logout'])){
 $message="";
 $message2="";
 if(isset($_SESSION['ep'])){
-    $message.="<br>Salut ".$_SESSION['ep']."<br>";
+    $message.="<p><br><strong>Bonjour ".$_SESSION['ep'].", voici vos conversations :</strong></p><br>";
     $user = 'root';
     $serveur='localhost';
     $password=(isset($_SESSION['mdp_bdd']))?$_SESSION['mdp_bdd']:'';
@@ -44,8 +44,8 @@ if(isset($_SESSION['ep'])){
         $conversations=$mysqli->query($SQL);
         
         if($conversations->num_rows >0){
-            $message.="<form action='messagerie.php' method='post' bgColor='teal'><table bgColor='teal' align='center' style='color: black;' width='400'>";
-            $message.="<tr> <th colspan='3' style='color: white;'>Liste des conversations</th></tr>";
+            $message.="<form action='messagerie.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
+            $message.="<tr bgColor='teal' style='color: white;'> <th colspan='3' align='center' style='color: white;'>Liste des conversations</th></tr>";
             while($row = $conversations->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
                 $message.="<tr bgColor='lightcyan'><td name='Conv_Id'>".$row['id_conv']."</td>";
@@ -59,8 +59,8 @@ if(isset($_SESSION['ep'])){
             $message.="Vous ne participez à aucune conversation.<br>";
         }
         $message.="<br><br>";
-        $message.="<form action='Creer_conversation.php' method='post' bgColor='teal'><table bgColor='teal' align='center' style='color: black;' width='400'>";
-        $message.="<tr> <th colspan='3' style='color: white;'>Creer une conversation :</th></tr>";
+        $message.="<form action='Creer_conversation.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
+        $message.="<tr bgColor='teal' style='color: white;'> <th colspan='3' align='center' style='color: white;'>Creer une conversation :</th></tr>";
         $message.="<tr bgColor='lightcyan'><td>Nom de la conversation</td>";
         $message.="<td><input type='text' name='nom_conv'></td>";
         $message.="<td><button type='submit' name='creer_conv' value='creer_conv' class='button-style'>Créer la conversation</button></td></tr>";
@@ -126,6 +126,7 @@ if(isset($_POST['creer_conv'])){
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Messagerie</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="ecein.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
@@ -155,12 +156,12 @@ if(isset($_POST['creer_conv'])){
     </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" style="overflow:scroll;">
 
 
         <div class="gauche">
-            <h1>ECE In: Social Media Professionel <br> 
-                <br> de l'ECE Paris</h1>
+            <h2>ECE In: Social Media Professionel <br> 
+                 de l'ECE Paris</h2>
         </div>
 
         <div class="droite">
@@ -176,12 +177,14 @@ if(isset($_POST['creer_conv'])){
                 
             
             <div id="logo">
-                <a href="accueil.php" class="action-button animate blue">Accueil</a>
-                <a href="monreseau.php" class="action-button animate blue">Réseau</a>
-                <a href="vous.php" class="action-button animate blue">Vous</a>
-                <a href="notification.php" class="action-button animate blue">Notification</a>
-                <a href="messagerie.php" class="action-button animate green">Messagerie</a>
-                <a href="emploi.php" class="action-button animate blue">Emploi</a>
+                <p style="text-align: center;">
+                <a href="accueil.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Accueil</button></a> 
+                <a href="monreseau.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Mon réseau</button></a>
+                <a href="vous.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Vous</button></a>
+                <a href="notification.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Notification</button></a>
+                <a href="messagerie.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #20B2AA;">Messagerie</button></a>
+                <a href="emploi.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Emploi</button>
+                </p></a>
             </div>
 
         </div>
@@ -193,9 +196,8 @@ if(isset($_POST['creer_conv'])){
     	</div>
         
 
-        <div class="rightcolumn">
-            <p>ECE In est une platforme de réseau social...
-                <br>
+        <div class="rightcolumn" style="overflow:scroll;">
+            <p>
                 <?php  
                     echo $message;
                     //echo $message2;
@@ -203,7 +205,9 @@ if(isset($_POST['creer_conv'])){
             </p>
         </div>
         <div class="rightestcolumn">
-            <p class="logout"><a id="exit" href="#" class="action-button animate red">Quitter</a></p>
+            <p class="logout" style="text-align: center;"><br>
+                <a id="exit" href="#" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #E74C3C; font-size: 2em;">Quitter</button></a>
+            </p>
             
         </div>
 

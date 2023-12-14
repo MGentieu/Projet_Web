@@ -28,6 +28,7 @@ if(!isset($_SESSION['ep'])){
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Emploi</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link href="ecein.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
@@ -40,14 +41,26 @@ if(!isset($_SESSION['ep'])){
             });
         });
     </script>
+
+    <style type="text/css">
+        
+        #footer {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightcyan;
+        }
+        
+    </style>
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper" style="overflow:scroll;">
 
 
         <div class="gauche">
-            <h1>ECE In: Social Media Professionel <br> 
-                <br> de l'ECE Paris</h1>
+            <h2>ECE In: Social Media Professionel <br> 
+                 de l'ECE Paris</h2>
         </div>
 
         <div class="droite">
@@ -63,12 +76,14 @@ if(!isset($_SESSION['ep'])){
                 
             
             <div id="logo">
-                <a href="accueil.php" class="action-button animate blue">Accueil</a>
-                <a href="monreseau.php" class="action-button animate blue">Réseau</a>
-                <a href="vous.php" class="action-button animate blue">Vous</a>
-                <a href="notification.php" class="action-button animate blue">Notification</a>
-                <a href="messagerie.php" class="action-button animate blue">Messagerie</a>
-                <a href="emploi.php" class="action-button animate green">Emploi</a>
+                <p style="text-align: center;">
+                <a href="accueil.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Accueil</button></a> 
+                <a href="monreseau.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Mon réseau</button></a>
+                <a href="vous.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Vous</button></a>
+                <a href="notification.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Notification</button></a>
+                <a href="messagerie.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #188385;">Messagerie</button></a>
+                <a href="emploi.php" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #20B2AA;">Emploi</button>
+                </p></a>
             </div>
 
         </div>
@@ -80,14 +95,16 @@ if(!isset($_SESSION['ep'])){
     	</div>
         
 
-        <div class="rightcolumn">
+        <div class="rightcolumn" style="overflow:scroll;">
             <p>ECE In est une platforme de réseau social...
                 <br>
             </p>
         </div>
         <div class="rightestcolumn">
             
-            <p class="logout"><a id="exit" href="#" class="action-button animate red">Quitter</a></p>
+            <p class="logout" style="text-align: center;"><br>
+                <a id="exit" href="#" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #E74C3C; font-size: 2em;">Quitter</button></a>
+            </p>
         </div>
 
         <div id="footer">

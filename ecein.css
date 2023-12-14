@@ -59,7 +59,7 @@ font-family: Arial, Helvetica, sans-serif; }
 
 .gauche {
     float: left;
-    height: 80px;
+    height: 100px;
     width: 80%;
     border: 1px solid black;
     
@@ -69,7 +69,7 @@ font-family: Arial, Helvetica, sans-serif; }
 .droite {
     width: auto
     float: left;
-    height: 80px;
+    height: 100px;
     border:1px solid black;
     
 
@@ -99,11 +99,11 @@ font-family: Arial, Helvetica, sans-serif; }
     border: 1px solid black;
     float: left; /* Fait flotter la colonne vers la gauche */
     width: 20%; /* Largeur de la colonne gauche */
+    
     height: 400px;
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
-
     margin: 15px 0;
-    
+    padding: 5px;
 }
 
 .admins {
@@ -121,7 +121,7 @@ font-family: Arial, Helvetica, sans-serif; }
 
 .rightcolumn {
     border: 1px solid black;
-    width: 50%;
+    width: 60%;
     float: left;
     height: 400px;
     display: block;
@@ -131,6 +131,7 @@ font-family: Arial, Helvetica, sans-serif; }
     
 }
 .rightestcolumn {
+
     border: 1px solid black;
     width: auto
     float: left;
@@ -169,45 +170,26 @@ font-family: Arial, Helvetica, sans-serif; }
             z-index: 0; /* Indique que cet élément doit être en arrière-plan */
 
         }
+        
 
 #carrousel {
-        height: 100%; /* Set the height of the carousel to 100% of its container */
-        overflow: hidden; /* Hide the overflow to create a vertical scroll effect */
-    }
-
-    #carrousel ul {
-        list-style-type: none; /* Remove list styling */
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column; /* Arrange list items vertically */
-        transition: transform 0.5s ease; /* Add smooth transition for animation */
-    }
-
-    #carrousel ul li {
-        margin-bottom: 10px; /* Add margin between list items */
-    }
-
-    #carrousel ul li img {
-        align-items: center;
-        width: 100px;
-        height: 100px;
-        display: block;
-    }
-
-#titre {
-        left: 220px;
         position: relative;
-        color: midnightblue;
     }
-
+#carrousel ul{
+    list-style: none;
+}
+#carrousel ul li{
+    position: absolute;
+    top: 0;
+    left: 0;
+}    
 
 
 #next {
         position: absolute;
-        top: 100%;
+        top: 50%;
         transform: translateY(-50%);
-        right: 50px; 
+        right: 100px; 
         color: white;
         background-color: teal;
     }
@@ -222,21 +204,17 @@ font-family: Arial, Helvetica, sans-serif; }
     width: auto
     float: left;
     height: 90px;
-    border:1px solid black;
     position: relative;
+    background-color: lightcyan;
     
 }
-
-
-
 #footer {
-    float: left;
-    height: 90px;
-    width: 82%;
-    border: 1px solid black;
-    margin-bottom: 10px;
-}
-
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: lightcyan;
+        }
 
         
 header{
