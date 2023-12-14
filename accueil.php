@@ -222,8 +222,13 @@ function loginForm() {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Accueil</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    
+
     <link href="ecein.css" rel="stylesheet" type="text/css" />
+    <!-- Bibliothèque jQuery --> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js">
+        
+    </script> <!-- Dernier JavaScript compilé --> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
     <style type="text/css">
@@ -261,66 +266,7 @@ function loginForm() {
     <script type="text/javascript">
         
         $(document).ready(function() {
-    var $carrousel = $('#carrousel'), 
-        $img = $('#carrousel img'), 
-        indexImg = $img.length - 1, 
-        i = 0, 
-        k = indexImg,
-        j = i + 1,
-        $currentImg = $img.eq(i),
-        $prevImg = $img.eq(k),
-        $nextImg = $img.eq(j);
-
-    $img.css('display', 'none');
-    //$prevImg.css('display', 'block');
-    $currentImg.css('display', 'block');
-    //$nextImg.css('display', 'block'); 
     
-    $('#next').click(function(){ 
-        i++; 
-        j++;
-        k++;
-        if (i > indexImg) {
-            i = 0;
-        }
-        if (k > indexImg) {
-            k = 0;
-        }
-        if (j > indexImg) {
-            j = 0;
-        }
-        
-        $img.css('display', 'none'); 
-        //$prevImg = $img.eq(k); 
-        //$prevImg.css('display', 'block');
-        $currentImg = $img.eq(i); 
-        $currentImg.css('display', 'block');
-        //$nextImg = $img.eq(j); 
-        //$nextImg.css('display', 'block');
-    });
-
-    $('#prev').click(function(){ // image précédente
-        i--;
-        k--;
-        j--;
-        if (i < 0) {
-            i = indexImg;
-        }
-        if (k < 0) {
-            k = indexImg;
-        }
-        if (j < 0) {
-            j = indexImg;
-        }
-        
-        $img.css('display', 'none');
-        //$prevImg = $img.eq(k); 
-        //$prevImg.css('display', 'block');
-        $currentImg = $img.eq(i); 
-        $currentImg.css('display', 'block');
-        //$nextImg = $img.eq(j); 
-        //$nextImg.css('display', 'block');
-    });
 
     $("#exit").click(function () { 
         var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
@@ -329,32 +275,7 @@ function loginForm() {
         } 
     });
 
-    function slideImg(){
-        setTimeout(function(){ 
-            i++; 
-            j++;
-            k++;
-            if (i > indexImg) {
-                i = 0;
-            }
-            if (k > indexImg) {
-                k = 0;
-            }
-            if (j > indexImg) {
-                j = 0;
-            }
-            $img.css('display', 'none');
-            //$prevImg = $img.eq(k); 
-            //$prevImg.css('display', 'block');
-            $currentImg = $img.eq(i); 
-            $currentImg.css('display', 'block');
-            //$nextImg = $img.eq(j); 
-            //$nextImg.css('display', 'block');
-            slideImg(); 
-        }, 3000); 
-    } 
-
-    slideImg();   
+      
 });
 
 
@@ -400,20 +321,48 @@ function loginForm() {
         
 
         <div class="leftcolumn">
-            <div id="carrousel">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel"> 
+            <!-- Indicators --> 
+            <ol class="carousel-indicators"> 
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li> 
+                <li data-target="#myCarousel" data-slide-to="1"></li> 
+                <li data-target="#myCarousel" data-slide-to="2"></li> 
+                <li data-target="#myCarousel" data-slide-to="3"></li> 
+            </ol> 
 
-            
-                <ul>
-                    <li><img src="images/france1.jpg" width="210" height="380" /></li>
-                    <li><img src="images/france2.jpg" width="210" height="380" /></li>
-                    <li><img src="images/france3.jpg" width="210" height="380" /></li>
-                    <li><img src="images/france4.jpg" width="210" height="380" /></li>
-                    <li><img src="images/france5.jpg" width="210" height="380" /></li>
-                    <li><img src="images/france6.jpg" width="210" height="380" /></li>
-                    <li><img src="images/france7.jpg" width="210" height="380" /></li>
-                </ul>
-                <input type="button" id="prev" value="Précédent">
-                <input type="button" id="next" value="Suivant">
+            <!-- Wrapper pour les images --> 
+            <div class="carousel-inner"> 
+                <div class="item active"> 
+                    <img src="images/france1.jpg" alt="Paris" style="width:250px; height:250px ;"> 
+                    <div class="carousel-caption"> 
+                        <h3>Paris</h3> 
+                        <p>La ville lumière!</p> 
+                    </div> 
+                </div> 
+                <div class="item">
+                    <img src="images/france2.jpg" style="width:250px; height:250px">
+                    <div class="carousel-caption">
+                        <h3>Berlin</h3>
+                        <p>La ville grise</p>       
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="images/france3.jpg" style="width:250px; height:250px">
+                    <div class="carousel-caption">
+                        <h3>Rome</h3>
+                        <p>La ville romaine</p>     
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="images/france4.jpg" style="width:250px; height:250px">
+                    <div class="carousel-caption">
+                        <h3>Prague</h3>
+                        <p>La ville de Tchéquie</p>        
+                    </div>
+                </div>
+            </div>
             
         </div>
         </div>
