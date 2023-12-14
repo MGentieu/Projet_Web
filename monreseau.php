@@ -160,8 +160,8 @@ if(isset($_POST['valid_ami'])){
         
 
         <div class="rightcolumn" style="overflow:scroll;">
-            <p>ECE In est une platforme de réseau social...
-                <br>
+            <p style="text-align:center;">        
+            <?php echo $message; ?>    
             </p>
         </div>
         <div class="rightestcolumn">
