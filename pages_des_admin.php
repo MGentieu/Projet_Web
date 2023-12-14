@@ -67,10 +67,10 @@ else{
 	$auteurs=$mysqli->query("select * from auteur A join correspondance_pseudo_email C on A.email_auteur=C.email_auteur ");
 	if($auteurs->num_rows>0){
         $message.="<form action='pages_des_admin.php' method='post'>";
-		$message.="<table border='1'>";
+		$message.="<table border='1' class='table'>";
 		while($row=$auteurs->fetch_assoc()){
 			if($row['est_dans_le_reseau']==1){
-				$message.="<tr id='ligne_verte' bgColor='#55FF55'>";
+				$message.="<tr id='ligne_verte' class='success'>";
 				$message.="<td width='20%'>".$row['pseudo']."</td>";
 				$message.="<td width='30%'>".$row['email_auteur']."</td>";
                 
@@ -81,7 +81,7 @@ else{
 				$message.="</tr>";
 			}	
 			else{
-				$message.="<tr id='ligne_rouge' bgColor='#BB1212'>";
+				$message.="<tr id='ligne_rouge' class='danger'>";
 				$message.="<td>".$row['pseudo']."</td>";
 				$message.="<td>".$row['email_auteur']."</td>";
 				$message.="<td>".$row['nom']."</td>";
@@ -113,6 +113,7 @@ $mysqli->close();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Page des admins</title>
     <link href="ecein.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
@@ -135,8 +136,8 @@ $mysqli->close();
 
 
         <div class="gauche">
-            <h1>ECE In: Social Media Professionel <br> 
-                <br> de l'ECE Paris</h1>
+            <h2>ECE In: Social Media Professionel <br> 
+                 de l'ECE Paris</h2>
         </div>
 
         <div class="droite">
@@ -150,7 +151,7 @@ $mysqli->close();
     height: 450px;
     background-color: white; /* Couleur de fond de la colonne gauche (exemple) */
 
-    margin: 15px 0;">
+    margin: 15px 0;overflow:scroll;">
         	<p><center>
         	<?php 
 				echo $message;
@@ -167,7 +168,9 @@ $mysqli->close();
     text-decoration: none;
     color: #003300;">
             
-            <p class="logout"><a id="exit" href="#" class="action-button animate red">Quitter</a></p>
+            <p class="logout" style="text-align: center;"><br>
+                <a id="exit" href="#" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #E74C3C; font-size: 2em;">Quitter</button></a>
+            </p>
         </div>
         
         

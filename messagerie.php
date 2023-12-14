@@ -196,7 +196,7 @@ if(isset($_POST['creer_conv'])){
     	</div>
         
 
-        <div class="rightcolumn">
+        <div class="rightcolumn" style="overflow:scroll;">
             <p>
                 <?php  
                     echo $message;
@@ -205,7 +205,9 @@ if(isset($_POST['creer_conv'])){
             </p>
         </div>
         <div class="rightestcolumn">
-            <p class="logout"><a id="exit" href="#" class="action-button animate red">Quitter</a></p>
+            <p class="logout" style="text-align: center;"><br>
+                <a id="exit" href="#" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #E74C3C; font-size: 2em;">Quitter</button></a>
+            </p>
             
         </div>
 
