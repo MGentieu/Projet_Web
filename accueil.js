@@ -3,26 +3,35 @@
 function jaime(el){
         var id=el.id;
         var val=el.value;
+        var span_id=el.name;
+        var span_el=document.getElementById(el.name);
+        var span_value=span_el.innerHTML;
+        var cookie_name="";
+        
+        if(span_id==1){
+                //el.innerHTML=span_value;
+                cookie_name="test1";
+        }
+        if(span_id==2){
+                //el.innerHTML=span_value;
+                cookie_name="test2";
+        }
         if(val==0){
                 el.value=1;
-                
-                //el.name=id;
-                //el.innerHTML=id;
-                
-                
+                span_value++;
                 var new_id="2"+id.substring(1);
                 var new_el= document.getElementById(new_id);
                 new_el.value=0;
                 new_el.style.backgroundColor="white";
                 el.style.backgroundColor="blue";
-                //el.innerHTML=id;
         }
         else{
                 el.value=0;
-                //el.name=id;
+                span_value--;
                 el.style.backgroundColor="white";
         }
-        //el.innerHTML="name : "+name;
+        document.cookie = cookie_name+"="+span_value+"; expires=" + new Date(new Date().getTime() + 3600 * 1000).toUTCString() + "; path=/";
+
 }
 
 function jaimepas(el){
@@ -30,21 +39,17 @@ function jaimepas(el){
         var val=el.value;
         if(val==0){
                 el.value=1;
-                //el.name=id;
-                
-                
+                span_value--;
                 var new_id="1"+id.substring(1);
                 var new_el= document.getElementById(new_id);
                 new_el.value=0;
                 new_el.style.backgroundColor="white";
-                
-                //el.innerHTML=new_id;
                 el.style.backgroundColor="blue";
         }
         else{
                 el.value=0;
-                //el.name=id;
+                span_value++;
                 el.style.backgroundColor="white";
         }
-        //el.innerHTML="name : "+name;
+        document.cookie = cookie_name+"="+span_value+"; expires=" + new Date(new Date().getTime() + 3600 * 1000).toUTCString() + "; path=/";
 }

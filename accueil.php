@@ -1,7 +1,7 @@
 <?php
 session_start();
-setcookie("test1",0,time()+3600,"/");
-setcookie("test2",0,time()+3600,"/");
+setcookie("test1",3,time()+3600,"/");
+setcookie("test2",3,time()+3600,"/");
 $m3="";
 if (isset($_GET['logout'])){ 
 //Message de sortie simple 
@@ -270,7 +270,7 @@ function loginForm() {
                 $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>J'aime</button>";
                     
                 $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Je n'aime pas</button>";
-                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test1']."</span>"; 
+                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test2']."</span>"; 
                 $m3.='</div>';
             }
         }

@@ -191,7 +191,9 @@ if(isset($_POST['creer_conv'])){
         
 
         <div class="leftcolumn">
-            
+            <?php
+            echo $_COOKIE['test1'].'<br>'.$_COOKIE['test2'];
+            ?>
             <br><br><br>
             <p style="text-align:center">
                 <a href="#"><img src="images/teams.png" height='200' width='200'></a>
