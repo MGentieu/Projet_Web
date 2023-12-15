@@ -1,5 +1,6 @@
 <?php
 session_start();
+$m3="";
 if (isset($_GET['logout'])){ 
 //Message de sortie simple 
     $logout_message = "On a quitté<br>";
@@ -213,7 +214,39 @@ function loginForm() {
     if(!isset($_SESSION['ep'])){
         loginForm();
     }
-    else{?>
+    else{
+
+         $user = 'root';
+        $serveur='localhost';
+        $password = $_SESSION['mdp_bdd'];
+        $port = NULL;
+        $database = 'ECE_IN';
+        $mysqli = new mysqli($serveur, $user, $password, $database, $port);
+
+        if ($mysqli->connect_error) {
+            echo "Erreur de connexion à la base de données.<br>";
+            die('Connect Error (' . $mysqli->connect_errno . ') '
+                    . $mysqli->connect_error);
+        }
+        else{
+            $sql="SELECT * FROM `photo` P WHERE P.email_auteur in (SELECT AF.email_auteur FROM auteur AF WHERE AF.email_auteur in(SELECT DISTINCT A.email_auteur FROM auteur A WHERE A.email_auteur IN(SELECT A1.email_ami_1 FROM `amitie` A1 WHERE A1.email_ami_2='mgentieu02@edu.ece.fr') or A.email_auteur IN(SELECT A2.email_ami_2 FROM `amitie` A2 WHERE A2.email_ami_1='mgentieu02@edu.ece.fr'))) ORDER BY RAND() LIMIT 1";
+            $postAmi=$mysqli->query($sql);
+            if($postAmi->num_rows>0){
+                
+                $row=$postAmi->fetch_assoc();
+                $m3.='<div class="col-md-4"> 
+                    <div class="thumbnail"> 
+                        <a href="'.$row['url'].'" target="_blank"> 
+                            <img src="'.$row['url'].'" alt="'.$row['alt'].'" style="width:100%"> 
+                            <div class="caption"> 
+                                <p>'.$row['texte_post'].'</p> 
+                            </div> 
+                        </a> 
+                    </div> 
+                </div>';
+            }
+        }
+        ?>
 
 <!DOCTYPE html>
 <html>
@@ -373,16 +406,9 @@ function loginForm() {
                 <br>
             </p>
             <div class="row">
-                <div class="col-md-4"> 
-                    <div class="thumbnail"> 
-                        <a href="images/arctriomphe.png" target="_blank"> 
-                            <img src="images/arctriomphe.png" alt="Arc de triomphe" style="width:100%"> 
-                            <div class="caption"> 
-                                <p>Beau séjour à Paris!</p> 
-                            </div> 
-                        </a> 
-                    </div> 
-                </div>
+                <?php  
+                echo $m3;
+                ?>
                 <div class="col-md-4"> 
                     <div class="thumbnail"> 
                         <a href="images/sacrecoeur.png" target="_blank"> 
@@ -404,6 +430,8 @@ function loginForm() {
                     </div> 
                 </div>
             </div>
+
+            <div class="row"></div>
         </div>
         <div class="rightestcolumn">
            
