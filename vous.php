@@ -251,7 +251,6 @@ mysqli_close($db_handle)
                             $message2.= "Date de début : " .$data['DataDebut']."<br>" ."Date de fin :" .$data['DateFin']. "<br>"."</li><br>";
                             echo $message2;
                             }
-                            mysqli_close($db_handle);
                         ?>        
         </div>
         <div class="rightcolumn" style="overflow:scroll;">
@@ -287,7 +286,9 @@ mysqli_close($db_handle)
                         <td> <input type = "text" name = "res"> </td>
                     </tr>
                     <tr >
+
                         <td> <input id="ajoutformation" type="submit" name = "ajoutformation" value = "Ajouter une formation"> </td>
+
                         <td><input type="submit" name="consulterformation" value="Générer un CV"></td>
                     </tr>
                 </table>
