@@ -121,7 +121,19 @@ mysqli_close($db_handle)
                     window.location = "accueil.php?logout=true"; 
                 } 
             });
+            $("#ajoutformation").click(function () {
+                $("li").empty(); // Cette ligne supprime le contenu de l'élément <a>
+            });
         });
+    </script>
+</head>
+<body>
+    <h1>ECE Paris Ecole d'Ingénieurs</h1>
+    <a>helo</a>
+    <br><br>
+    <button id="button4">Basculer l'image</button>
+</body>
+</html>
     </script>
     <style type="text/css">
         form 
@@ -223,6 +235,7 @@ mysqli_close($db_handle)
                             // Définie la connexion à la base de donnée
                             $db_handle = mysqli_connect('localhost','root',$password);
 
+
                             // On va trouver la BD au bon endroit (serveur)à l'aide des deux variables definie précèdement et on le definie comme suit
                             $db_found = mysqli_select_db($db_handle,$db);
                             /*$SQL="SELECT Ecole, DataDebut, DateFin FROM formation WHERE mailusers LIKE '%"."$emailauteur"."%"."'";*/
@@ -274,6 +287,7 @@ mysqli_close($db_handle)
                         <td> <input type = "text" name = "res"> </td>
                     </tr>
                     <tr >
+                        <td> <input id="ajoutformation" type="submit" name = "ajoutformation" value = "Ajouter une formation"> </td>
                         <td><input type="submit" name="consulterformation" value="Générer un CV"></td>
                     </tr>
                 </table>
