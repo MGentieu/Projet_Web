@@ -1,6 +1,7 @@
 <?php
 session_start();
-$m3="";
+setcookie("test1",2,time()+3600,"/");
+$m3=$_COOKIE['test1']."<br>";
 if (isset($_GET['logout'])){ 
 //Message de sortie simple 
     $logout_message = "On a quitté<br>";
@@ -233,6 +234,7 @@ function loginForm() {
             $sql="SELECT * FROM `photo` WHERE email_auteur='mgentieu02@edu.ece.fr' ORDER BY RAND() LIMIT 1";
             $postAuteur=$mysqli->query($sql);
             if($postAuteur->num_rows>0){
+
                 $row=$postAuteur->fetch_assoc();
                 $m3.='<div class="col-sm-6"> 
                     <div class="thumbnail"> 
@@ -242,8 +244,12 @@ function loginForm() {
                                 <p>'.$row['texte_post'].'</p> 
                             </div> 
                         </a> 
-                    </div> 
-                </div>';
+                    </div>';
+                $m3.="<button type='button' value=".$row['id_photo']." onclick=jaime(this)>J'aime</button>";
+                    
+                $m3.="<button type='button' value=".$row['id_photo']." onclick=jaimepas(this)>Je n'aime pas</button>"; 
+                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>";   
+                $m3.='</div>';
             }
             //Post d'un ami :
             $sql="SELECT * FROM `photo` P WHERE P.email_auteur in (SELECT AF.email_auteur FROM auteur AF WHERE AF.email_auteur in(SELECT DISTINCT A.email_auteur FROM auteur A WHERE A.email_auteur IN(SELECT A1.email_ami_1 FROM `amitie` A1 WHERE A1.email_ami_2='mgentieu02@edu.ece.fr') or A.email_auteur IN(SELECT A2.email_ami_2 FROM `amitie` A2 WHERE A2.email_ami_1='mgentieu02@edu.ece.fr'))) ORDER BY RAND() LIMIT 1";
@@ -259,8 +265,12 @@ function loginForm() {
                                 <p>'.$row['texte_post'].'</p> 
                             </div> 
                         </a> 
-                    </div> 
-                </div>';
+                    </div>'; 
+                $m3.="<button type='button' value=".$row['id_photo']." onclick=jaime(this)>J'aime</button>";
+                    
+                $m3.="<button type='button' value=".$row['id_photo']." onclick=jaimepas(this)>Je n'aime pas</button>"; 
+                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>";
+                $m3.='</div>';
             }
         }
         ?>
