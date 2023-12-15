@@ -1,7 +1,8 @@
 <?php
 session_start();
-setcookie("test1",2,time()+3600,"/");
-$m3=$_COOKIE['test1']."<br>";
+setcookie("test1",0,time()+3600,"/");
+setcookie("test2",0,time()+3600,"/");
+$m3="";
 if (isset($_GET['logout'])){ 
 //Message de sortie simple 
     $logout_message = "On a quitté<br>";
@@ -245,10 +246,10 @@ function loginForm() {
                             </div> 
                         </a> 
                     </div>';
-                $m3.="<button type='button' value=".$row['id_photo']." onclick=jaime(this)>J'aime</button>";
+                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>J'aime</button>";
                     
-                $m3.="<button type='button' value=".$row['id_photo']." onclick=jaimepas(this)>Je n'aime pas</button>"; 
-                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>";   
+                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Je n'aime pas</button>";
+                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test1']."</span>";   
                 $m3.='</div>';
             }
             //Post d'un ami :
@@ -266,10 +267,10 @@ function loginForm() {
                             </div> 
                         </a> 
                     </div>'; 
-                $m3.="<button type='button' value=".$row['id_photo']." onclick=jaime(this)>J'aime</button>";
+                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>J'aime</button>";
                     
-                $m3.="<button type='button' value=".$row['id_photo']." onclick=jaimepas(this)>Je n'aime pas</button>"; 
-                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>";
+                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Je n'aime pas</button>";
+                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test1']."</span>"; 
                 $m3.='</div>';
             }
         }
@@ -290,7 +291,7 @@ function loginForm() {
     </script> <!-- Dernier JavaScript compilé --> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
+    <script type="text/javascript" src="accueil.js"></script>
     <style type="text/css">
         
         #footer {
