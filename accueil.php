@@ -229,15 +229,32 @@ function loginForm() {
                     . $mysqli->connect_error);
         }
         else{
+            //Post de l'auteur
+            $sql="SELECT * FROM `photo` WHERE email_auteur='mgentieu02@edu.ece.fr' ORDER BY RAND() LIMIT 1";
+            $postAuteur=$mysqli->query($sql);
+            if($postAuteur->num_rows>0){
+                $row=$postAuteur->fetch_assoc();
+                $m3.='<div class="col-sm-6"> 
+                    <div class="thumbnail"> 
+                        <a href="'.$row['url'].'" target="_blank"> 
+                            <img src="'.$row['url'].'" alt="'.$row['alt'].'" style="width:50%"> 
+                            <div class="caption"> 
+                                <p>'.$row['texte_post'].'</p> 
+                            </div> 
+                        </a> 
+                    </div> 
+                </div>';
+            }
+            //Post d'un ami :
             $sql="SELECT * FROM `photo` P WHERE P.email_auteur in (SELECT AF.email_auteur FROM auteur AF WHERE AF.email_auteur in(SELECT DISTINCT A.email_auteur FROM auteur A WHERE A.email_auteur IN(SELECT A1.email_ami_1 FROM `amitie` A1 WHERE A1.email_ami_2='mgentieu02@edu.ece.fr') or A.email_auteur IN(SELECT A2.email_ami_2 FROM `amitie` A2 WHERE A2.email_ami_1='mgentieu02@edu.ece.fr'))) ORDER BY RAND() LIMIT 1";
             $postAmi=$mysqli->query($sql);
             if($postAmi->num_rows>0){
                 
                 $row=$postAmi->fetch_assoc();
-                $m3.='<div class="col-md-4"> 
+                $m3.='<div class="col-sm-6"> 
                     <div class="thumbnail"> 
                         <a href="'.$row['url'].'" target="_blank"> 
-                            <img src="'.$row['url'].'" alt="'.$row['alt'].'" style="width:100%"> 
+                            <img src="'.$row['url'].'" alt="'.$row['alt'].'" style="width:50%"> 
                             <div class="caption"> 
                                 <p>'.$row['texte_post'].'</p> 
                             </div> 
@@ -409,26 +426,7 @@ function loginForm() {
                 <?php  
                 echo $m3;
                 ?>
-                <div class="col-md-4"> 
-                    <div class="thumbnail"> 
-                        <a href="images/sacrecoeur.png" target="_blank"> 
-                            <img src="images/sacrecoeur.png" alt="Sacre cœur" style="width:100%"> 
-                            <div class="caption"> 
-                                <p>Connaissez-vous l'histoire du Sacre Cœur?</p> 
-                            </div> 
-                        </a> 
-                    </div> 
-                </div>
-                <div class="col-md-4"> 
-                    <div class="thumbnail"> 
-                        <a href="images/notredame.png" target="_blank"> 
-                            <img src="images/notredame.png" alt="Notre Dame" style="width:100%"> 
-                            <div class="caption"> 
-                                <p>Des nouvelles quant aux avances des rénovations de la cathédrale de Notre Dame?</p> 
-                            </div> 
-                        </a> 
-                    </div> 
-                </div>
+                
             </div>
 
             <div class="row"></div>
