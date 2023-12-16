@@ -100,10 +100,10 @@ INSERT INTO `auteur` (`email_auteur`, `mot_de_passe`, `nom`, `prenom`, `num_tele
 ('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 648527954, 'Moi je suis Ingenieur Aeronautique', 145202, 1),
 ('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 648527954, 'Moi je suis Ingenieur dans la Finance', 145203, 1),
 ('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 671410348, 'Moi je suis Pilote de ligne', 145204, 1),
-('hector.gentieu@edu.ece.fr', 'nullos', 'Gentieu', 'Hector', 652347841, 'Je suis un gros escroc!', 145204, 0),
-('valere.delin@edu.ece.fr', 'WeshWesh', 'Delin', 'Valere', 105058464, 'Je prévois de travailler dans la finance.', 145204, 1),
-('franklin.pinto@edu.ece.fr', 'shrek', 'Pinto', 'Franklin', 798683215, 'Je souhaite travailler dans le  big data.', 145204, 1),
-('arthur.gervais@edu.ece.fr', 'gaming', 'Gervais', 'Arthur', 652858874, 'Je travaille dans la cybersécurité.', 145204, 1);
+('hector.gentieu@edu.ece.fr', 'nullos', 'Gentieu', 'Hector', 652347841, 'Je suis un gros escroc!', 145205, 0),
+('valere.delin@edu.ece.fr', 'WeshWesh', 'Delin', 'Valere', 105058464, 'Je prévois de travailler dans les energies renouvelables.', 145206, 1),
+('franklin.pinto@edu.ece.fr', 'shrek', 'Pinto', 'Franklin', 798683215, 'Je souhaite travailler dans le  big data.', 145207, 1),
+('arthur.gervais@edu.ece.fr', 'gaming', 'Gervais', 'Arthur', 652858874, 'Je travaille dans la cybersécurité.', 145208, 1);
 
 -- --------------------------------------------------------
 
@@ -384,7 +384,12 @@ INSERT INTO `image_de_fond` (`id_im_de_fond`, `alt`, `url`) VALUES
 (145201, 'Image d\'informatique', 'numerique.png'),
 (145202, 'Image d\'aéronautique', 'aeronautique.png'),
 (145203, 'Image d\'argent', 'finance.png'),
-(145204, 'Image de AirFrance', 'airfrance.png');
+(145204, 'Image de AirFrance', 'airfrance.png'),
+(145205, 'Image de Escroc', 'escroc.png'),
+(145206, 'Image de Energies renouvelables', 'energies.png'),
+(145207, 'Image de Big Data', 'bigdata.png'),
+(145208, 'Image de Cibersecurité', 'cibersecurite.png');
+
 
 -- --------------------------------------------------------
 
