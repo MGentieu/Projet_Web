@@ -8,7 +8,59 @@ if(!isset($_SESSION['ep'])){
     header("Location: accueil.php");
     exit();
 }
+else{
+    $m1="";
+    $user = 'root';
+    $serveur='localhost';
+    $password = $_SESSION['mdp_bdd'];
+    $port = NULL;
+    $database = 'ECE_IN';
+    $mysqli = new mysqli($serveur, $user, $password, $database, $port);
 
+    if ($mysqli->connect_error) {
+        echo "Erreur de connexion à la base de données.<br>";
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+                . $mysqli->connect_error);
+    }
+    else{
+        $myEmail=$_SESSION['emailauteur'];
+        $sql="SELECT * from auteur where email_auteur='$myEmail'";
+        $result=$mysqli->query($sql);
+        $domaine="null";
+        if($result->num_rows>0){
+            $row=$result->fetch_assoc();
+            $domaine=$row['domaine'];
+        }
+        $sql="SELECT * from offre_emploi O where O.domaine='$domaine'";
+        $result=$mysqli->query($sql);
+        
+
+        if($result->num_rows>0){
+            $row=$result->fetch_assoc();
+            $url=$row['url'];
+            $descr=$row['Description'];
+            $nom_offre=$row['nom_offre'];
+            $ref_offre=$row['reference_offre'];
+            $m1.='
+                <div class="row">
+                    <div class="col-sm-3" style="background-color: #96D8E8; height: 190px;">
+                        <p style="text-align:center">
+                            <a href="#"><img src="'.$url.'" height="190" width="190"></a>
+                        </p>
+                    </div>
+                    <div class="col-sm-3" style="background-color: #96D8E8; height: 190px;">
+                        <h3 style="color: black; text-align: left;">'.$nom_offre.'</h3>
+                        <p style="color: black; text-align: left;">
+                            '.$descr.'
+                        </p>
+                        <button id="stage1" value='.$ref_offre.'>Candidater</button>
+                    </div>
+                </div>';
+        }
+        else{
+            $m1.="Un problème...";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -78,27 +130,9 @@ if(!isset($_SESSION['ep'])){
         </div>
         <div class="row" style="margin: 15px 0; padding: 5px;">
             <div class="col-sm-10" style="height:400px; overflow:scroll; float:left; border: 1px solid black;">
-                <div class="row">
-                    <div class="col-sm-6" style="background-color: #96D8E8; height: 190px;">
-                        <p style="text-align:center">
-                            <a href="#"><img src="images/google-logo.png" height="190" width="390"></a>
-                        </p>
-                    </div>
-                    <div class="col-sm-6" style="background-color: #96D8E8; height: 190px;">
-                        <p style="color: black; text-align: left; margin: 10px;">
-                            Stage de 6 mois chez Google :<br>
-                            Développement de sites web pour faire valoir l'entreprise.<br>
-                            <ul>
-                                <li style="text-align:left">Connaissances appronfondies en développement fullstack</li>
-                                <li style="text-align:left">Minimum 3 ans d'expérience</li>
-                                <li style="text-align:left">Sait gérer une équipe de projet</li>
-                            </ul>
-                            <form action="emploi.php" method="post">
-                                <button type="submit" name="candidater" value="Google">Candidater</button>
-                            </form>
-                        </p>
-                    </div>
-                </div>
+                <?php 
+                    echo $m1;
+                ?>
             </div>
             <div class="col-sm-2" style="height:400px;width :auto float:left; border: 1px solid black;">
                 
@@ -126,3 +160,6 @@ if(!isset($_SESSION['ep'])){
 
 </body>
 </html>
+<?php
+}
+?>
