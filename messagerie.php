@@ -192,7 +192,7 @@ if(isset($_POST['creer_conv'])){
 
         <div class="leftcolumn">
             <?php
-            echo $_COOKIE['test1'].'<br>'.$_COOKIE['test2'];
+            echo $_COOKIE['post1'].'<br>'.$_COOKIE['post2'];
             ?>
             <br><br><br>
             <p style="text-align:center">

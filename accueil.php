@@ -1,7 +1,6 @@
 <?php
 session_start();
-setcookie("test1",3,time()+3600,"/");
-setcookie("test2",3,time()+3600,"/");
+
 $m3="";
 if (isset($_GET['logout'])){ 
 //Message de sortie simple 
@@ -214,11 +213,13 @@ function loginForm() {
 
 <?php  
     if(!isset($_SESSION['ep'])){
+        setcookie("post1",3,time()+3600,"/");
+        setcookie("post2",3,time()+3600,"/");
         loginForm();
     }
     else{
 
-         $user = 'root';
+        $user = 'root';
         $serveur='localhost';
         $password = $_SESSION['mdp_bdd'];
         $port = NULL;
@@ -231,12 +232,22 @@ function loginForm() {
                     . $mysqli->connect_error);
         }
         else{
+            $myEmail=$_SESSION['emailauteur'];
+
+
             //Post de l'auteur
-            $sql="SELECT * FROM `photo` WHERE email_auteur='mgentieu02@edu.ece.fr' ORDER BY RAND() LIMIT 1";
+            $sql="SELECT * FROM `photo` WHERE email_auteur='$myEmail' ORDER BY RAND() LIMIT 1";
             $postAuteur=$mysqli->query($sql);
             if($postAuteur->num_rows>0){
 
                 $row=$postAuteur->fetch_assoc();
+                $sql="SELECT * FROM `reaction_photo` R WHERE R.id_photo=$row['id_photo'] and R.email_auteur='$myEmail'";
+                $like=0;
+                $dislike=0;
+                $reaction=$mysqli->query($sql);
+                if($reaction->num_rows>0){
+                    $ligneReac=$reaction->fetch_assoc();
+                }
                 $m3.='<div class="col-sm-6"> 
                     <div class="thumbnail"> 
                         <a href="'.$row['url'].'" target="_blank"> 
@@ -251,12 +262,12 @@ function loginForm() {
                 $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Dislike</button>";
                     
                 
-                //$m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test1']."</span>";
-                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>";   
+                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['post1']."</span>";
+                //$m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>";   
                 $m3.='</div>';
             }
             //Post d'un ami :
-            $sql="SELECT * FROM `photo` P WHERE P.email_auteur in (SELECT AF.email_auteur FROM auteur AF WHERE AF.email_auteur in(SELECT DISTINCT A.email_auteur FROM auteur A WHERE A.email_auteur IN(SELECT A1.email_ami_1 FROM `amitie` A1 WHERE A1.email_ami_2='mgentieu02@edu.ece.fr') or A.email_auteur IN(SELECT A2.email_ami_2 FROM `amitie` A2 WHERE A2.email_ami_1='mgentieu02@edu.ece.fr'))) ORDER BY RAND() LIMIT 1";
+            $sql="SELECT * FROM `photo` P WHERE P.email_auteur in (SELECT AF.email_auteur FROM auteur AF WHERE AF.email_auteur in(SELECT DISTINCT A.email_auteur FROM auteur A WHERE A.email_auteur IN(SELECT A1.email_ami_1 FROM `amitie` A1 WHERE A1.email_ami_2='$myEmail') or A.email_auteur IN(SELECT A2.email_ami_2 FROM `amitie` A2 WHERE A2.email_ami_1='$myEmail'))) ORDER BY RAND() LIMIT 1";
             $postAmi=$mysqli->query($sql);
             if($postAmi->num_rows>0){
                 
@@ -273,8 +284,8 @@ function loginForm() {
                 $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>Like</button>";
                     
                 $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Dislike</button>";
-                //$m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test2']."</span>";
-                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>"; 
+                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['post2']."</span>";
+                //$m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>"; 
                 $m3.='</div>';
             }
         }
@@ -329,80 +340,91 @@ function loginForm() {
     </style>
 
     <script type="text/javascript">
-    function jaime(el){
-        var id=el.id;
-        var val=el.value;
-        
-        var span_id=el.name;
-        var span_el=document.getElementById(el.name);
-        var span_value = parseInt(span_el.innerHTML);
-        var cookie_name="";
-        
-        if(val==0){
-                el.value=1;
-                
-                span_value++;
-                var new_id="2"+id.substring(1);
-                var new_el= document.getElementById(new_id);
-                if(new_el.value==1){
-                    new_el.value=0;
-                    new_el.style.backgroundColor="white";
+        function getCookie(valeur){
+            if(valeur==1){
+                //el.innerHTML=span_value;
+                return "post1";
+            }
+            if(valeur==2){
+                //el.innerHTML=span_value;
+                return "post2";
+            }
+        }
+        function jaime(el){
+            var id=el.id;
+            var val=el.value;
+            
+            var span_id=el.name;
+            var span_el=document.getElementById(el.name);
+            var span_value = parseInt(span_el.innerHTML);
+            var cookie_name=getCookie(span_id);
+            
+            if(val==0){
+                    el.value=1;
+                    
                     span_value++;
-                }
-                
-                el.style.backgroundColor="blue";
-        }
-        else{
-                el.value=0;
-                span_value--;
-                el.style.backgroundColor="white";
-        }
-        span_el.innerHTML=span_value;
-        //document.cookie = cookie_name+"="+span_value+"; expires=" + new Date(new Date().getTime() + 3600 * 1000).toUTCString() + "; path=/";
-
-    }
-    
-    function jaimepas(el){
-        var id=el.id;
-        var val=el.value;
-        var span_id=el.name;
-        var span_el=document.getElementById(el.name);
-        var span_value = parseInt(span_el.innerHTML);
-        var cookie_name="";
-        if(val==0){
-                el.value=1;
-                el.style.backgroundColor="blue";
-                span_value--;
-                var new_id="1"+id.substring(1);
-                var new_el= document.getElementById(new_id);
-                if(new_el.value==1){
-                    new_el.value=0;
-                    new_el.style.backgroundColor="white";
+                    var new_id="2"+id.substring(1);
+                    var new_el= document.getElementById(new_id);
+                    if(new_el.value==1){
+                        new_el.value=0;
+                        new_el.style.backgroundColor="white";
+                        span_value++;
+                    }
+                    
+                    el.style.backgroundColor="blue";
+            }
+            else{
+                    el.value=0;
                     span_value--;
-                }
-                
+                    el.style.backgroundColor="white";
+            }
+            span_el.innerHTML=span_value;
+
+            document.cookie = cookie_name+"="+span_value+"; expires=" + new Date(new Date().getTime() + 3600 * 1000).toUTCString() + "; path=/";
+
         }
-        else{
-                el.value=0;
-                span_value++;
-                el.style.backgroundColor="white";
-        }
-        span_el.innerHTML=span_value;
-        //document.cookie = cookie_name+"="+span_value+"; expires=" + new Date(new Date().getTime() + 3600 * 1000).toUTCString() + "; path=/";
-    }    
+        
+        function jaimepas(el){
+            var id=el.id;
+            var val=el.value;
+            var span_id=el.name;
+            var span_el=document.getElementById(el.name);
+            var span_value = parseInt(span_el.innerHTML);
+            var cookie_name=getCookie(span_id);;
+            if(val==0){
+                    el.value=1;
+                    el.style.backgroundColor="blue";
+                    span_value--;
+                    var new_id="1"+id.substring(1);
+                    var new_el= document.getElementById(new_id);
+                    if(new_el.value==1){
+                        new_el.value=0;
+                        new_el.style.backgroundColor="white";
+                        span_value--;
+                    }
+                    
+            }
+            else{
+                    el.value=0;
+                    span_value++;
+                    el.style.backgroundColor="white";
+            }
+            span_el.innerHTML=span_value;
+            document.cookie = cookie_name+"="+span_value+"; expires=" + new Date(new Date().getTime() + 3600 * 1000).toUTCString() + "; path=/";
+        }    
 
         $(document).ready(function() {
     
 
-    $("#exit").click(function () { 
-        var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
-        if (exit == true) { 
-            window.location = "accueil.php?logout=true"; 
-        } 
-    });
+            $("#exit").click(function () { 
+                var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
+                if (exit == true) { 
+                    window.location = "accueil.php?logout=true"; 
+                } 
+            });
 
-      
-});
+              
+        });
 
 
     </script>
