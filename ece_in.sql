@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `conversation` (
   `date_creation` date NOT NULL,
   `nom_conv` varchar(40) NOT NULL,
   PRIMARY KEY (`id_conv`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Déchargement des données de la table `conversation`
