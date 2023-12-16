@@ -246,10 +246,13 @@ function loginForm() {
                             </div> 
                         </a> 
                     </div>';
-                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>J'aime</button>";
                     
-                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Je n'aime pas</button>";
-                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test1']."</span>";   
+                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>Like</button>";
+                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Dislike</button>";
+                    
+                
+                //$m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test1']."</span>";
+                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>";   
                 $m3.='</div>';
             }
             //Post d'un ami :
@@ -267,10 +270,11 @@ function loginForm() {
                             </div> 
                         </a> 
                     </div>'; 
-                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>J'aime</button>";
+                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>Like</button>";
                     
-                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Je n'aime pas</button>";
-                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test2']."</span>"; 
+                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Dislike</button>";
+                //$m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['test2']."</span>";
+                $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>"; 
                 $m3.='</div>';
             }
         }
@@ -291,7 +295,7 @@ function loginForm() {
     </script> <!-- Dernier JavaScript compilé --> 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="accueil.js"></script>
+    
     <style type="text/css">
         
         #footer {
@@ -325,7 +329,68 @@ function loginForm() {
     </style>
 
     <script type="text/javascript">
+    function jaime(el){
+        var id=el.id;
+        var val=el.value;
         
+        var span_id=el.name;
+        var span_el=document.getElementById(el.name);
+        var span_value = parseInt(span_el.innerHTML);
+        var cookie_name="";
+        
+        if(val==0){
+                el.value=1;
+                
+                span_value++;
+                var new_id="2"+id.substring(1);
+                var new_el= document.getElementById(new_id);
+                if(new_el.value==1){
+                    new_el.value=0;
+                    new_el.style.backgroundColor="white";
+                    span_value++;
+                }
+                
+                el.style.backgroundColor="blue";
+        }
+        else{
+                el.value=0;
+                span_value--;
+                el.style.backgroundColor="white";
+        }
+        span_el.innerHTML=span_value;
+        //document.cookie = cookie_name+"="+span_value+"; expires=" + new Date(new Date().getTime() + 3600 * 1000).toUTCString() + "; path=/";
+
+    }
+    
+    function jaimepas(el){
+        var id=el.id;
+        var val=el.value;
+        var span_id=el.name;
+        var span_el=document.getElementById(el.name);
+        var span_value = parseInt(span_el.innerHTML);
+        var cookie_name="";
+        if(val==0){
+                el.value=1;
+                el.style.backgroundColor="blue";
+                span_value--;
+                var new_id="1"+id.substring(1);
+                var new_el= document.getElementById(new_id);
+                if(new_el.value==1){
+                    new_el.value=0;
+                    new_el.style.backgroundColor="white";
+                    span_value--;
+                }
+                
+        }
+        else{
+                el.value=0;
+                span_value++;
+                el.style.backgroundColor="white";
+        }
+        span_el.innerHTML=span_value;
+        //document.cookie = cookie_name+"="+span_value+"; expires=" + new Date(new Date().getTime() + 3600 * 1000).toUTCString() + "; path=/";
+    }    
+
         $(document).ready(function() {
     
 
