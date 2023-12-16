@@ -35,9 +35,9 @@ if(isset($_SESSION['ep'])){
 
             while($row = $amitie->fetch_assoc()){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
-                $message.="<tr bgColor='lightcyan'><td name='emailami'>".$row['prenom']."</td>";
+                $message.="<tr bgColor='lightcyan'><td name='email_auteur'>".$row['prenom']."</td>";
                 $message.="<td>".$row['nom']."</td>";
-                $message.="<td><a href='#' type='submit' name='valid_ami' value='".$row['id_im_de_fond']."' class='button-style'>Accéder à la photo"."</a></td></tr>";
+                $message.="<td><img src='" . $row['id_im_de_fond'] . "' alt='Image de fond' type='submit' name='valid_ami' value='".$row['id_im_de_fond']."' class='button-style'></td></tr>";
             }
 
             $message.="</table></form>";
@@ -49,8 +49,8 @@ if(isset($_SESSION['ep'])){
         $message.="<form action='demande_ami.php' method='post' bgColor='teal'><table bgColor='teal' class='table' align='center' style='color: black;' width='400'>";
         $message.="<tr bgColor='teal' style='color: white;'> <td colspan='3' align='center' style='color: white;'>Trouver des amis</td></tr>";
         $message.="<tr bgColor='lightcyan'><td>Email d'une personne</td>";
-        $message.="<td><input type='text' name='nom_ami'></td>";
-        $message.="<td><button type='submit' name='creer_amitie' value='email_auteur' class='button-style'>Créer l'amitie</button></td></tr>";
+        $message.="<td><input type='text' name='email_auteur'></td>";
+        $message.="<td><button type='submit' name='id_im_de_fond' value='id_im_de_fond' class='button-style'>Créer l'amitie</button></td></tr>";
         $message.="</table></form>";
 
         //echo $message; 
@@ -78,7 +78,7 @@ if(isset($_POST['valid_ami'])){
     fclose($myfile);
     */
     
-    header("Location: chat.php");
+    header("Location: profil.php");
     exit();
 
 }
