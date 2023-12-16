@@ -100,10 +100,10 @@ INSERT INTO `auteur` (`email_auteur`, `mot_de_passe`, `nom`, `prenom`, `num_tele
 ('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 648527954, 'Moi je suis Ingenieur Aeronautique', 145202, 0),
 ('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 648527954, 'Moi je suis Ingenieur dans la Finance', 145203, 1),
 ('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 671410348, 'Moi je suis Pilote de ligne', 145204, 1),
-('hector.gentieu@edu.ece.fr', 'nullos', 'Gentieu', 'Hector', 652347841, 'Je suis un gros escroc!', 145204, 0),
-('valere.delin@edu.ece.fr', 'WeshWesh', 'Delin', 'Valere', 105058464, 'Je prévois de travailler dans la finance.', 145204, 1),
-('franklin.pinto@edu.ece.fr', 'shrek', 'Pinto', 'Franklin', 798683215, 'Je souhaite travailler dans le  big data.', 145204, 1),
-('arthur.gervais@edu.ece.fr', 'gaming', 'Gervais', 'Arthur', 652858874, 'Je travaille dans la cybersécurité.', 145204, 0);
+('hector.gentieu@edu.ece.fr', 'nullos', 'Gentieu', 'Hector', 652347841, 'Je suis un gros escroc!', 145205, 0),
+('valere.delin@edu.ece.fr', 'WeshWesh', 'Delin', 'Valere', 105058464, 'Je prévois de travailler dans l\'ecologie.', 145206, 1),
+('franklin.pinto@edu.ece.fr', 'shrek', 'Pinto', 'Franklin', 798683215, 'Je souhaite travailler dans le  big data.', 145207, 1),
+('arthur.gervais@edu.ece.fr', 'gaming', 'Gervais', 'Arthur', 652858874, 'Je travaille dans la cybersécurité.', 145208, 0);
 
 -- --------------------------------------------------------
 
@@ -360,9 +360,10 @@ CREATE TABLE IF NOT EXISTS `formation` (
 -- Déchargement des données de la table `formation`
 --
 
-INSERT INTO `formation` (`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`, `mailusers`) VALUES
-('rrnjefnerreg', 'gregr', 'rggre', '2023-12-05', '2023-12-07', 'rege', 'theo.mettez@edu.ece.fr'),
-('EPF', 'ingénieur aéronautique', 'ingénierie', '2023-12-08', '2023-12-30', 'Intégration EPF', 'mgentieu02@edu.ece.fr');
+INSERT INTO `formation` (`Ecole`, `Diplome`, `DomaineEtudes`, `DateDebut`, `DateFin`, `Resultat`, `mailusers`) VALUES
+('ECE', 'ingénieur informatique ', 'ingenierie', '2023-12-05', '2023-12-07', 'Integration ECE', 'mgentieu02@edu.ece.fr'),
+('ESV', 'ingénieur aéronautique', 'ingenierie', '2023-12-08', '2023-12-30', 'Intégration ESV', 'danae.collard@edu.ece.fr');
+('EPF', 'ingénieur finace', 'ingenierie', '2023-12-08', '2023-12-30', 'Intégration EPF', 'theo.mettez@edu.ece.fr');
 
 -- --------------------------------------------------------
 
@@ -386,7 +387,11 @@ INSERT INTO `image_de_fond` (`id_im_de_fond`, `alt`, `url`) VALUES
 (145201, 'Image d\'informatique', 'numerique.png'),
 (145202, 'Image d\'aéronautique', 'aeronautique.png'),
 (145203, 'Image d\'argent', 'finance.png'),
-(145204, 'Image de AirFrance', 'airfrance.png');
+(145204, 'Image de AirFrance', 'airfrance.png'),
+(145205, 'Image d\'escroc', 'escroc.png'),
+(145206, 'Image d\'ecologie', 'ecologie.png'),
+(145207, 'Image de big data', 'bigdata.png'),
+(145208, 'Image de Cibersecurite', 'cybersecurite.png');
 
 -- --------------------------------------------------------
 
