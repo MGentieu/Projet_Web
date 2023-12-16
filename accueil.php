@@ -252,8 +252,16 @@ function loginForm() {
                         </a> 
                     </div>';
                     
-                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=".$like." onclick=jaime(this)>Like</button>";
-                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=".$dislike." onclick=jaimepas(this)>Dislike</button>";
+                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=".$like." onclick=jaime(this) ";
+                if($like==1){
+                    $m3.="style='background-color:blue;'";
+                }
+                $m3.=">Like</button>";
+                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=".$dislike." onclick=jaimepas(this) ";
+                if($dislike==1){
+                    $m3.="style='background-color:blue;'";
+                }
+                $m3.=">Dislike</button>";
                     
                 
                 $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['post1']."</span>";
@@ -266,6 +274,16 @@ function loginForm() {
             if($postAmi->num_rows>0){
                 
                 $row=$postAmi->fetch_assoc();
+                $sql = "SELECT * FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+
+                $like=0;
+                $dislike=0;
+                $reaction=$mysqli->query($sql);
+                if($reaction->num_rows>0){
+                    $ligneReac=$reaction->fetch_assoc();
+                    $like=($ligneReac['reac_positive']==1)?1:0;
+                    $dislike=($like==1)?0:1;
+                }
                 $m3.='<div class="col-sm-6"> 
                     <div class="thumbnail"> 
                         <a href="'.$row['url'].'" target="_blank"> 
@@ -275,9 +293,17 @@ function loginForm() {
                             </div> 
                         </a> 
                     </div>'; 
-                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>Like</button>";
+                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=".$like." onclick=jaime(this) ";
+                if($like==1){
+                    $m3.="style='background-color:blue;'";
+                }
+                $m3.=">Like</button>";
                     
-                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Dislike</button>";
+                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=".$dislike." onclick=jaimepas(this) ";
+                if($dislike==1){
+                    $m3.="style='background-color:blue;'";
+                }
+                $m3.=">Dislike</button>";
                 $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['post2']."</span>";
                 //$m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">0</span>"; 
                 $m3.='</div>';
@@ -353,7 +379,7 @@ function loginForm() {
             var span_value = parseInt(span_el.innerHTML);
             var cookie_name=getCookie(span_id);
             
-            if(val==0){
+            if(val==0||val=='0'){
                     el.value=1;
                     
                     span_value++;
@@ -385,7 +411,7 @@ function loginForm() {
             var span_el=document.getElementById(el.name);
             var span_value = parseInt(span_el.innerHTML);
             var cookie_name=getCookie(span_id);;
-            if(val==0){
+            if(val==0||val=='0'){
                     el.value=1;
                     el.style.backgroundColor="blue";
                     span_value--;
