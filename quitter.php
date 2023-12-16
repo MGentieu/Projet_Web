@@ -31,7 +31,7 @@ if (isset($_GET['logout'])){
                 $sommeTotale=$somme->fetch_assoc();
                 $incremente=$reac1-$sommeTotale['SUM(reac_positive)'];
             }
-            $sql = "SELECT reac_positive FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+            $sql = "SELECT reac_positive FROM `reaction_photo` R WHERE R.id_photo = '" . $id1 . "' AND R.email_auteur = '$myEmail'";
             $result=$mysqli->query($sql);
             if($result->num_rows>0){
                 $reacTotale=$somme->fetch_assoc();
@@ -51,10 +51,10 @@ if (isset($_GET['logout'])){
                 $sommeTotale=$somme->fetch_assoc();
                 $incremente=$reac2-$sommeTotale['SUM(reac_positive)'];
             }
-            $sql = "SELECT reac_positive FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+            $sql = "SELECT reac_positive FROM `reaction_photo` R WHERE R.id_photo = '" . $id2 . "' AND R.email_auteur = '$myEmail'";
             $result=$mysqli->query($sql);
             if($result->num_rows>0){
-                $reacTotale=$somme->fetch_assoc();
+                $reacTotale=$result->fetch_assoc();
                 $reac=$reacTotale['reac_positive'];
             }
             
