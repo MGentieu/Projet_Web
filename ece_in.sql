@@ -3,10 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 16 déc. 2023 à 12:28
+-- Généré le : sam. 16 déc. 2023 à 22:43
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
-
 
 
 
@@ -87,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `auteur` (
   `Description` varchar(300) DEFAULT NULL,
   `id_im_de_fond` decimal(6,0) DEFAULT NULL,
   `est_dans_le_reseau` tinyint(1) NOT NULL,
+  `domaine` varchar(80) NOT NULL,
   PRIMARY KEY (`email_auteur`),
   KEY `FK1` (`id_im_de_fond`)
 ) ;
@@ -95,15 +95,15 @@ CREATE TABLE IF NOT EXISTS `auteur` (
 -- Déchargement des données de la table `auteur`
 --
 
-INSERT INTO `auteur` (`email_auteur`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`, `Description`, `id_im_de_fond`, `est_dans_le_reseau`) VALUES
-('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 695973078, 'Moi je suis Ingenieur Numérique', 145201, 1),
-('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 648527954, 'Moi je suis Ingenieur Aeronautique', 145202, 0),
-('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 648527954, 'Moi je suis Ingenieur dans la Finance', 145203, 1),
-('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 671410348, 'Moi je suis Pilote de ligne', 145204, 1),
-('hector.gentieu@edu.ece.fr', 'nullos', 'Gentieu', 'Hector', 652347841, 'Je suis un gros escroc!', 145205, 0),
-('valere.delin@edu.ece.fr', 'WeshWesh', 'Delin', 'Valere', 105058464, 'Je prévois de travailler dans l\'ecologie.', 145206, 1),
-('franklin.pinto@edu.ece.fr', 'shrek', 'Pinto', 'Franklin', 798683215, 'Je souhaite travailler dans le  big data.', 145207, 1),
-('arthur.gervais@edu.ece.fr', 'gaming', 'Gervais', 'Arthur', 652858874, 'Je travaille dans la cybersécurité.', 145208, 0);
+INSERT INTO `auteur` (`email_auteur`, `mot_de_passe`, `nom`, `prenom`, `num_telephone`, `Description`, `id_im_de_fond`, `est_dans_le_reseau`, `domaine`) VALUES
+('mgentieu02@edu.ece.fr', 'volcan1', 'Gentieu', 'Martin', 695973078, 'Moi je suis Ingenieur Numérique', 145201, 1, 'info'),
+('hergentieu98@edu.ece.fr', 'siece2', 'Gentily', 'Hervé', 648527954, 'Moi je suis Ingenieur Aeronautique', 145202, 0, 'aero'),
+('theo.mettez@edu.ece.fr', 'Theo01', 'Mettez', 'Théo', 648527954, 'Moi je suis Ingenieur dans la Finance', 145203, 1, 'finance'),
+('danae.collard@edu.ece.fr', 'Danae08', 'Collard', 'Danaé', 671410348, 'Moi je suis Pilote de ligne', 145204, 1, 'pilotage'),
+('hector.gentieu@edu.ece.fr', 'nullos', 'Gentieu', 'Hector', 652347841, 'Je suis un gros escroc!', 145205, 0, 'pilotage'),
+('valere.delin@edu.ece.fr', 'WeshWesh', 'Delin', 'Valere', 105058464, 'Je prévois de travailler dans l\'ecologie.', 145206, 1, 'finance'),
+('franklin.pinto@edu.ece.fr', 'shrek', 'Pinto', 'Franklin', 798683215, 'Je souhaite travailler dans le  big data.', 145207, 1, 'info'),
+('arthur.gervais@edu.ece.fr', 'gaming', 'Gervais', 'Arthur', 652858874, 'Je travaille dans la cybersécurité.', 145208, 0, 'info');
 
 -- --------------------------------------------------------
 
@@ -363,6 +363,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
 INSERT INTO `formation` (`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`, `mailusers`) VALUES
 ('rrnjefnerreg', 'gregr', 'rggre', '2023-12-05', '2023-12-07', 'rege', 'theo.mettez@edu.ece.fr'),
 ('EPF', 'ingénieur aéronautique', 'ingénierie', '2023-12-08', '2023-12-30', 'Intégration EPF', 'mgentieu02@edu.ece.fr');
+
 -- --------------------------------------------------------
 
 --
@@ -437,6 +438,9 @@ CREATE TABLE IF NOT EXISTS `offre_emploi` (
   `remuneration` decimal(10,0) NOT NULL,
   `Description` varchar(200) NOT NULL,
   `siret` decimal(14,0) NOT NULL,
+  `type` varchar(80) NOT NULL,
+  `domaine` varchar(80) NOT NULL,
+  `url` varchar(100) NOT NULL,
   PRIMARY KEY (`reference_offre`),
   KEY `FK1` (`siret`)
 ) ;
@@ -445,11 +449,11 @@ CREATE TABLE IF NOT EXISTS `offre_emploi` (
 -- Déchargement des données de la table `offre_emploi`
 --
 
-INSERT INTO `offre_emploi` (`reference_offre`, `nom_offre`, `duree`, `date_debut`, `remuneration`, `Description`, `siret`) VALUES
-('STG235-ECE', 'Developpeur informatique', '4 mois', '2024-04-01', 2000, 'Poste de developpeur informatique sur le campus Eiffel 1', 11122233300015),
-('STG245-AIRBUS', 'Ingenieur en maintenance aeronautique', '3 mois', '2024-01-01', 1500, 'Poste d\'ingenieur en maintenance aeronautique à Toulouse.', 11122233300016),
-('STG255-BNP', 'Conseiller bancaire', '2 mois', '2024-02-01', 1600, 'Poste de Conseiller bancaire à la BNP de Bir Hakeim', 11122233300017),
-('STG265-AIRFRANCE', 'Personnel Complémentaire de bord', '3 mois', '2024-07-01', 1700, 'Poste de Personnel Complémentaire de bord basé à l\'aeroport de Roissy CDG', 11122233300018);
+INSERT INTO `offre_emploi` (`reference_offre`, `nom_offre`, `duree`, `date_debut`, `remuneration`, `Description`, `siret`, `type`, `domaine`, `url`) VALUES
+('STG235-ECE', 'Developpeur informatique', '4 mois', '2024-04-01', 2000, 'Poste de developpeur informatique sur le campus Eiffel 1', 11122233300015, 'stage', 'info', '#'),
+('STG245-AIRBUS', 'Ingenieur en maintenance aeronautique', '3 mois', '2024-01-01', 1500, 'Poste d\'ingenieur en maintenance aeronautique à Toulouse.', 11122233300016, 'stage', 'aero', '#'),
+('STG255-BNP', 'Conseiller bancaire', '2 mois', '2024-02-01', 1600, 'Poste de Conseiller bancaire à la BNP de Bir Hakeim', 11122233300017, 'stage', 'finance', '#'),
+('STG265-AIRFRANCE', 'Personnel Complémentaire de bord', '3 mois', '2024-07-01', 1700, 'Poste de Personnel Complémentaire de bord basé à l\'aeroport de Roissy CDG', 11122233300018, 'stage', 'pilotage', '#');
 
 -- --------------------------------------------------------
 
@@ -648,7 +652,7 @@ INSERT INTO `reaction_photo` (`id_photo`, `email_auteur`, `date_reaction`, `reac
 (1, 'theo.mettez@edu.ece.fr', '2023-12-01', 1),
 (1, 'hergentieu98@edu.ece.fr', '2023-12-01', 1),
 (2, 'danae.collard@edu.ece.fr', '2023-12-01', 1),
-(2, 'mgentieu02@edu.ece.fr', '2023-12-01', 1),
+(2, 'mgentieu02@edu.ece.fr', '2023-12-01', 0),
 (3, 'hergentieu98@edu.ece.fr', '2023-12-01', 1),
 (3, 'danae.collard@edu.ece.fr', '2023-12-01', 1),
 (4, 'hergentieu98@edu.ece.fr', '2023-12-01', 1),

@@ -297,7 +297,7 @@ function loginForm() {
                 }
                 setcookie("post2",$valCookie2,time()+3600,"/");
 
-                $sql = "SELECT * FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+                
                 
                 $sql = "SELECT * FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
                 $_SESSION['id_postAmi1']=$row['id_photo'];
