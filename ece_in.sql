@@ -360,11 +360,9 @@ CREATE TABLE IF NOT EXISTS `formation` (
 -- Déchargement des données de la table `formation`
 --
 
-INSERT INTO `formation` (`Ecole`, `Diplome`, `DomaineEtudes`, `DateDebut`, `DateFin`, `Resultat`, `mailusers`) VALUES
-('ECE', 'ingénieur informatique ', 'ingenierie', '2023-12-05', '2023-12-07', 'Integration ECE', 'mgentieu02@edu.ece.fr'),
-('ESV', 'ingénieur aéronautique', 'ingenierie', '2023-12-08', '2023-12-30', 'Intégration ESV', 'danae.collard@edu.ece.fr');
-('EPF', 'ingénieur finace', 'ingenierie', '2023-12-08', '2023-12-30', 'Intégration EPF', 'theo.mettez@edu.ece.fr');
-
+INSERT INTO `formation` (`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`, `mailusers`) VALUES
+('rrnjefnerreg', 'gregr', 'rggre', '2023-12-05', '2023-12-07', 'rege', 'theo.mettez@edu.ece.fr'),
+('EPF', 'ingénieur aéronautique', 'ingénierie', '2023-12-08', '2023-12-30', 'Intégration EPF', 'mgentieu02@edu.ece.fr');
 -- --------------------------------------------------------
 
 --
