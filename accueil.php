@@ -81,6 +81,9 @@ if (isset($_POST['enter_auteur'])){
 
                             $_SESSION['ep']=$mypseudo['pseudo'];
                             $_SESSION['emailauteur']=$email_pseudo;
+                            
+                            
+                            $mysqli->close();
                             header("Location: accueil.php");
                             exit();
                         }
@@ -108,15 +111,16 @@ if (isset($_POST['enter_auteur'])){
                         if($row3['est_dans_le_reseau']==1){
                             $_SESSION['ep']=$row2['pseudo'];
                             $_SESSION['emailauteur']=$email_correspondant;
+                            
+                            
                                                 //session_s]tart();
                         //$_SESSION['info'] = "Ceci est une information depuis PHP";
                         }
                         else{
                             $message.="L'utilisateur n'a pas le droit d'accéder au réseau.<br>";
                         }
-                        
-                        header("Location: accueil.php");
                         $mysqli->close();
+                        header("Location: accueil.php");                       
                         exit();
                     }
                     else{
@@ -202,8 +206,7 @@ function loginForm() {
 
 <?php  
     if(!isset($_SESSION['ep'])){
-        setcookie("post1",3,time()+3600,"/");
-        setcookie("post2",3,time()+3600,"/");
+        
         loginForm();
     }
     else{
@@ -230,15 +233,25 @@ function loginForm() {
             if($postAuteur->num_rows>0){
 
                 $row=$postAuteur->fetch_assoc();
+                $reacid=$row['id_photo'];
+                $sql="SELECT SUM(reac_positive) FROM `reaction_photo` WHERE id_photo=$reacid";
+                $reaction=$mysqli->query($sql);
+                $valCookie1=0;
+                if($reaction->num_rows>0){
+                    $ligneReac=$reaction->fetch_assoc();
+                    $valCookie1=$ligneReac['SUM(reac_positive)'];
+                }
+                setcookie("post1",$valCookie1,time()+3600,"/");
                 $sql = "SELECT * FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
-
+                $_SESSION['id_postAuteur1']=$reacid;
+                
                 $like=0;
                 $dislike=0;
                 $reaction=$mysqli->query($sql);
                 if($reaction->num_rows>0){
                     $ligneReac=$reaction->fetch_assoc();
                     $like=($ligneReac['reac_positive']==1)?1:0;
-                    $dislike=($like==1)?0:1;
+                    $dislike=($ligneReac['reac_positive']==-1)?1:0;
                 }
                 //$_SESSION['post1like']=$like;
                 //$_SESSION['post1like']=$like;
@@ -274,15 +287,27 @@ function loginForm() {
             if($postAmi->num_rows>0){
                 
                 $row=$postAmi->fetch_assoc();
-                $sql = "SELECT * FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+                $reacid=$row['id_photo'];
+                $sql="SELECT SUM(reac_positive) FROM `reaction_photo` WHERE id_photo=$reacid";
+                $reaction=$mysqli->query($sql);
+                $valCookie2=0;
+                if($reaction->num_rows>0){
+                    $ligneReac=$reaction->fetch_assoc();
+                    $valCookie2=$ligneReac['SUM(reac_positive)'];
+                }
+                setcookie("post2",$valCookie2,time()+3600,"/");
 
+                $sql = "SELECT * FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+                
+                $sql = "SELECT * FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+                $_SESSION['id_postAmi1']=$row['id_photo'];
                 $like=0;
                 $dislike=0;
                 $reaction=$mysqli->query($sql);
                 if($reaction->num_rows>0){
                     $ligneReac=$reaction->fetch_assoc();
                     $like=($ligneReac['reac_positive']==1)?1:0;
-                    $dislike=($like==1)?0:1;
+                    $dislike=($ligneReac['reac_positive']==-1)?1:0;
                 }
                 $m3.='<div class="col-sm-6"> 
                     <div class="thumbnail"> 
