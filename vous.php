@@ -118,7 +118,7 @@ mysqli_close($db_handle)
             $("#exit").click(function () { 
                 var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
                 if (exit == true) { 
-                    window.location = "accueil.php?logout=true"; 
+                    window.location = "quitter.php?logout=true"; 
                 } 
             });
         });

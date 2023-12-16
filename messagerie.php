@@ -8,18 +8,6 @@ function load_conv($el) {
     echo "<br>L'id de conversation choisi est : ".$el."<br>"; 
 } 
 
-if (isset($_GET['logout'])){ 
-//Message de sortie simple 
-    $logout_message = "On a quitté<br>";
-    $myfile = fopen(__DIR__ . "/currentUser.html", "w") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/currentUser.html"); 
-    fwrite($myfile, $logout_message); 
-    fclose($myfile); 
-    session_destroy(); 
-    sleep(1); 
-    header("Location: accueil.php"); 
-    exit();
-    //Rediriger l'utilisateur 
-}
 
 $message="";
 $message2="";
@@ -134,7 +122,7 @@ if(isset($_POST['creer_conv'])){
             $("#exit").click(function () { 
                 var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
                 if (exit == true) { 
-                    window.location = "accueil.php?logout=true"; 
+                    window.location = "quitter.php?logout=true"; 
                 } 
             });
         });

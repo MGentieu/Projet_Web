@@ -2,18 +2,7 @@
 session_start();
 
 $m3="";
-if (isset($_GET['logout'])){ 
-//Message de sortie simple 
-    $logout_message = "On a quitté<br>";
-    $myfile = fopen(__DIR__ . "/currentUser.html", "w") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/currentUser.html"); 
-    fwrite($myfile, $logout_message); 
-    fclose($myfile); 
-    session_destroy(); 
-    sleep(1); 
-    header("Location: accueil.php"); 
-    exit();
-    //Rediriger l'utilisateur 
-} 
+
 
 if (isset($_POST['enter_auteur'])){ 
     
@@ -241,13 +230,18 @@ function loginForm() {
             if($postAuteur->num_rows>0){
 
                 $row=$postAuteur->fetch_assoc();
-                $sql="SELECT * FROM `reaction_photo` R WHERE R.id_photo=$row['id_photo'] and R.email_auteur='$myEmail'";
+                $sql = "SELECT * FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+
                 $like=0;
                 $dislike=0;
                 $reaction=$mysqli->query($sql);
                 if($reaction->num_rows>0){
                     $ligneReac=$reaction->fetch_assoc();
+                    $like=($ligneReac['reac_positive']==1)?1:0;
+                    $dislike=($like==1)?0:1;
                 }
+                //$_SESSION['post1like']=$like;
+                //$_SESSION['post1like']=$like;
                 $m3.='<div class="col-sm-6"> 
                     <div class="thumbnail"> 
                         <a href="'.$row['url'].'" target="_blank"> 
@@ -258,8 +252,8 @@ function loginForm() {
                         </a> 
                     </div>';
                     
-                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaime(this)>Like</button>";
-                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=0 onclick=jaimepas(this)>Dislike</button>";
+                $m3.="<button id='1".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=".$like." onclick=jaime(this)>Like</button>";
+                $m3.="<button id='2".$row['id_photo'].$row['email_auteur']."' type='button' name=".$row['id_photo']." value=".$dislike." onclick=jaimepas(this)>Dislike</button>";
                     
                 
                 $m3.="<span style='border: 1px solid black; padding: 3px;' id=".$row['id_photo'].">".$_COOKIE['post1']."</span>";
@@ -419,7 +413,7 @@ function loginForm() {
             $("#exit").click(function () { 
                 var exit = confirm("Voulez-vous vraiment mettre fin à la session ?"); 
                 if (exit == true) { 
-                    window.location = "accueil.php?logout=true"; 
+                    window.location = "quitter.php?logout=true"; 
                 } 
             });
 
