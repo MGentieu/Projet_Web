@@ -61,7 +61,7 @@ if(isset($_SESSION['ep'])){
         $message.="<tr bgColor='teal' style='color: white;'> <td colspan='3' align='center' style='color: white;'>Trouver des amis</td></tr>";
         $message.="<tr bgColor='lightcyan'><td>Email d'une personne</td>";
         $message.="<td><input type='text' name='nom_ami'></td>";
-        $message.="<td><button type='submit' name='creer_amitie' value='creer_amitie' class='button-style'>Créer l'amitie</button></td></tr>";
+        $message.="<td><button type='submit' name='creer_amitie' value='email_auteur' class='button-style'>Créer l'amitie</button></td></tr>";
         $message.="</table></form>";
 
         //echo $message; 
