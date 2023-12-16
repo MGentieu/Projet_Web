@@ -17,6 +17,7 @@ if (isset($_GET['logout'])){
                 . $mysqli->connect_error);
     }
     else{
+        $myEmail=$_SESSION['emailauteur'];
         $reac1=$_COOKIE['post1'];
         $reac2=$_COOKIE['post2'];
         $id1=isset($_SESSION['id_postAuteur1'])?$_SESSION['id_postAuteur1']:-1000;
@@ -25,19 +26,47 @@ if (isset($_GET['logout'])){
             $sql="SELECT SUM(reac_positive) FROM `reaction_photo` WHERE id_photo=$id1";
             $somme=$mysqli->query($sql);
             $incremente=0;
+            $reac=0;
             if($somme->num_rows>0){
                 $sommeTotale=$somme->fetch_assoc();
                 $incremente=$reac1-$sommeTotale['SUM(reac_positive)'];
             }
+            $sql = "SELECT reac_positive FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+            $result=$mysqli->query($sql);
+            if($result->num_rows>0){
+                $reacTotale=$somme->fetch_assoc();
+                $reac=$reacTotale['reac_positive'];
+            }
             
+            $final=(($incremente>=2)*1)+(($incremente<=-2)*(-1))+min(1,max(-1,($reac+$incremente)*($incremente>-2&&$incremente<2)));
+            $sql="UPDATE `reaction_photo` SET `reac_positive` = '$final' WHERE CONCAT(`reaction_photo`.`id_photo`) = $id1 AND `reaction_photo`.`email_auteur` = '$myEmail'";
+            $mysqli->query($sql);
         }
         if(isset($_SESSION['id_postAmi1'])){
             $sql="SELECT SUM(reac_positive) FROM `reaction_photo` WHERE id_photo=$id2";
+            $somme=$mysqli->query($sql);
+            $incremente=0;
+            $reac=0;
+            if($somme->num_rows>0){
+                $sommeTotale=$somme->fetch_assoc();
+                $incremente=$reac2-$sommeTotale['SUM(reac_positive)'];
+            }
+            $sql = "SELECT reac_positive FROM `reaction_photo` R WHERE R.id_photo = '" . $row['id_photo'] . "' AND R.email_auteur = '$myEmail'";
+            $result=$mysqli->query($sql);
+            if($result->num_rows>0){
+                $reacTotale=$somme->fetch_assoc();
+                $reac=$reacTotale['reac_positive'];
+            }
+            
+            $final=(($incremente>=2)*1)+(($incremente<=-2)*(-1))+min(1,max(-1,($reac+$incremente)*($incremente>-2&&$incremente<2)));
+            $sql="UPDATE `reaction_photo` SET `reac_positive` = '$final' WHERE CONCAT(`reaction_photo`.`id_photo`) = $id2 AND `reaction_photo`.`email_auteur` = '$myEmail'";
+            $mysqli->query($sql);
         }
         
     }
     $logout_message = "On a quitté<br>";
     $myfile = fopen(__DIR__ . "/currentUser.html", "w") or die("Impossible d'ouvrir le fichier!" . __DIR__ . "/currentUser.html"); 
+    $mysqli->close();
     fwrite($myfile, $logout_message); 
     fclose($myfile); 
     session_destroy(); 
