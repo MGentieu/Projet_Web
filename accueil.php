@@ -554,11 +554,13 @@ function loginForm() {
             </div>
             
         </div>
+        <br>
+        <h2>Évenements de l'année</h2>
         </div>
         
 
         <div class="rightcolumn" style="overflow:scroll;">
-            <p style="text-align:center">ECE In est une platforme de réseau social...
+            <p>ECE In est une platforme de réseau social qui vous permet d'avoir accès aux informations importantes au sein de l'école. Vous pouvez également vous faire des amis et discuter avec eux en privé ou dans des conversations de groupe. Enfin, la platforme vous propose un panel d'offres d'emploi dans le domaine qui vous plaît, pour lesquelles vous pouvez candidater. 
                 <br>
             </p>
             <div class="row">
