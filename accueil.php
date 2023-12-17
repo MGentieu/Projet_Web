@@ -522,33 +522,33 @@ function loginForm() {
             <!-- Wrapper pour les images --> 
             <div class="carousel-inner"> 
                 <div class="item active"> 
-                    <img src="images/france1.jpg" alt="Paris" style="width:250px; height:250px ;"> 
+                    <img src="images/salon.png" alt="Paris" style="width:250px; height:250px ;"> 
                     <div class="carousel-caption"> 
-                        <h3>Paris</h3> 
-                        <p>La ville lumière!</p> 
+                        <h3>Salon des étudiants</h3> 
+                        <p>Venez vous renseignez!</p> 
                     </div> 
                 </div> 
                 <div class="item">
-                    <img src="images/france2.jpg" style="width:250px; height:250px">
+                    <img src="images/diplome.png" style="width:250px; height:250px">
                     <div class="carousel-caption">
-                        <h3>Berlin</h3>
-                        <p>La ville grise</p>       
+                        <h3>Diplômes</h3>
+                        <p>La remise des diplomes</p>       
                     </div>
                 </div>
 
                 <div class="item">
-                    <img src="images/france3.jpg" style="width:250px; height:250px">
+                    <img src="images/rentree.png" style="width:250px; height:250px">
                     <div class="carousel-caption">
-                        <h3>Rome</h3>
-                        <p>La ville romaine</p>     
+                        <h3>Rentrée scolaire</h3>
+                        <p>amphi d'informations</p>     
                     </div>
                 </div>
 
                 <div class="item">
-                    <img src="images/france4.jpg" style="width:250px; height:250px">
+                    <img src="images/noel.png" style="width:250px; height:250px">
                     <div class="carousel-caption">
-                        <h3>Prague</h3>
-                        <p>La ville de Tchéquie</p>        
+                        <h3>Noël</h3>
+                        <p>Le repas de noël</p>        
                     </div>
                 </div>
             </div>
