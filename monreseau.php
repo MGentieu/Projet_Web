@@ -24,7 +24,8 @@ if(isset($_SESSION['ep'])){
 
     else{
         $email_pseudo=$_SESSION['emailauteur']; 
-        $SQL="SELECT AF.nom,AF.prenom,AF.id_im_de_fond FROM auteur AF WHERE AF.email_auteur IN(SELECT DISTINCT A.email_auteur FROM auteur A WHERE A.email_auteur IN(SELECT A1.email_ami_1 FROM amitie A1 WHERE A1.email_ami_2='$email_pseudo') or A.email_auteur IN(SELECT A2.email_ami_2 FROM amitie A2 WHERE A2.email_ami_1='$email_pseudo'))";
+        $SQL="SELECT AF.nom,AF.prenom,AF.id_im_de_fond,IM.url FROM auteur AF JOIN image_de_fond IM ON AF.id_im_de_fond=IM.id_im_de_fond
+        WHERE AF.email_auteur IN(SELECT DISTINCT A.email_auteur FROM auteur A WHERE A.email_auteur IN(SELECT A1.email_ami_1 FROM amitie A1 WHERE A1.email_ami_2='$email_pseudo') or A.email_auteur IN(SELECT A2.email_ami_2 FROM amitie A2 WHERE A2.email_ami_1='$email_pseudo'))";
         $amitie=$mysqli->query($SQL);
 
 
