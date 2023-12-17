@@ -1,10 +1,10 @@
 <?php
 // Pour demarer la session et la lier aux autres, ceci permet d'utiliser les variables globals.
 session_start();
+$emailauteur="";
 
 //Permet d'appliquer les styles css.
 echo"<meta charset='utf-8'>";
-
 if (isset($_GET['logout']))
 { 
 
@@ -57,11 +57,13 @@ if(isset($_POST["ajoutformation"]))
     $domaineDetudes= isset($_POST["domaineDetudes"])?$_POST["domaineDetudes"]:"";
     $res = isset($_POST["res"])?$_POST["res"]:"";
     */
-
+    echo "Ecole: $ecole<br>";
+echo "Date de début: $dateDebut<br>";
+echo "Date de fin: $dateFin<br>";
     // Regarde si les données essentiels sont bien saisis et si oui les ajoutes
     if($ecole!=""&&$dateDebut!=""&&$dateFin!="")
     { 
-        $sql = "INSERT INTO `formation`(`Ecole`, `DateDebut`, `DateFin`, `mailusers`) VALUES ('$ecole', '$dateDebut', '$dateFin', '$emailauteur')";
+        $sql = "INSERT INTO `formation`(`Ecole`, `DataDebut`, `DateFin`, `mailusers`) VALUES ('$ecole', '$dateDebut', '$dateFin', '$emailauteur')";
 
         // Result contient le tableau de valeur retourné par la requete sql.
         $result = mysqli_query($db_handle, $sql);
@@ -105,6 +107,7 @@ if(isset($_POST["ajoutformation"]))
             $message.="Pas de domaine d'études mentionné.<br>";
         }
         */
+        echo "$message";
     }
 }
 
@@ -230,42 +233,9 @@ mysqli_close($db_handle)
         
 
         <div class="leftcolumn" style="overflow:scroll;width: 20%;">
+
             <div >
-                <?php
-                /*
-                session_start();
-                        echo"<meta charset='utf-8'>";
-
-                            //essayer de l'afficher avec un alerte
-                            $message2="";
-
-                            // Définie la base de donnée
-                            $db = "ece_in";
-
-                            // Définie la connexion à la base de donnée
-                            $db_handle = mysqli_connect('localhost','root',$password);
-                            
-                            // On va trouver la BD au bon endroit (serveur)à l'aide des deux variables definie précèdement et on le definie comme suit
-                            $db_found = mysqli_select_db($db_handle,$db);
-                            $photo = isset($_FILES["photo"]) ? $_FILES["photo"]["name"] : "";
-
-                            if(isset($_POST["ajoutphoto"]))
-                            {
-
-                                $sql = "INSERT INTO photo_profile(photo, email_users)
-VALUES('$photo, '$emailauteur')";
-                                $result = mysqli_query($db_handle, $sql);
-
-                                $sql = "SELECT DISTINCT photo FROM photo_profile WHERE email_users LIKE '%" . $emailauteur . "%'";
-
-                                $data = mysqli_fetch_assoc($result);
-
-                                $result = mysqli_query($db_handle, $sql);
-                                echo "<td>" . "<img src='$data['photo']' height='120' width='100'>" .
-                "</td>";
-                            }
-*/
-                ?>
+             
 
                 <img id ="photoProfil"src ="images/france1.jpg" alt = "Photo de profil" height="70" width="70">
             </div>
@@ -276,7 +246,8 @@ VALUES('$photo, '$emailauteur')";
 
           
 
-            <ul>        <?php 
+            <ul>        
+                <?php 
                             //session_start();
                             echo"<meta charset='utf-8'>";
 
@@ -296,7 +267,7 @@ VALUES('$photo, '$emailauteur')";
 
                             {
 
-                                $SQL = "SELECT DISTINCT Ecole, DateDebut, DateFin FROM formation WHERE mailusers LIKE '%" . $emailauteur . "%'ORDER BY DateDebut DESC";
+                                $SQL = "SELECT DISTINCT Ecole, DataDebut, DateFin FROM formation WHERE mailusers LIKE '%" . $emailauteur . "%'ORDER BY DataDebut DESC";
 
                                 // Result contient le tableau de valeur retourné par la requete sql.
                                 $result = mysqli_query($db_handle, $SQL);
@@ -304,12 +275,14 @@ VALUES('$photo, '$emailauteur')";
                                 // Le bloc de code à l'intérieur de la boucle s'exécute pour chaque ligne de résultat
                                 while ($data = mysqli_fetch_assoc($result)) 
                                 {
-                                    $message2.="<li>". "École : " . $data['Ecole'] /* photo si temps*/."<br>";
-                                    $message2.= "Date de début : " .$data['DateDebut']."<br>" ."Date de fin :" .$data['DateFin']. "<br>"."</li><br>";
+                                    $message2 .= "<li>" . "École : " . $data['Ecole'] . "<br>";
+                                    $message2 .= "Date de début : " . $data['DataDebut'] . "<br>" . "Date de fin :" . $data['DateFin'] . "<br>" . "</li><br>";
                                     echo $message2;
                                 }
+
                             }
-                        ?> 
+                            mysqli_close($db_handle);
+                        ?>        
             </ul>       
         </div>
 
@@ -326,7 +299,7 @@ VALUES('$photo, '$emailauteur')";
 
             <!-- Formulaire permettant de remplir ses formations -->
 
-            <form action="" method="post">
+            <form action="vous.php" method="post">
 
                 <table border="0.3" border radius ="10px" >
 
@@ -355,10 +328,8 @@ VALUES('$photo, '$emailauteur')";
 
                     <tr>
                         <td>Date de fin : </td>
-                        <td colspan = "2"><input type = "date" name = "dateFin"> </td>
+                        <td><input type = "date" name = "dateFin"> </td>
                     </tr>
-                    </tr>
-
                     <tr>
                         <td colspan="2" align="center">
                             <input type="submit" name = "ajoutformation" value = "Ajouter une formation">
@@ -386,7 +357,7 @@ VALUES('$photo, '$emailauteur')";
 
                 </tr>
                 <tr>
-                    <td colspan="2" align="center" ><input type="submit" name = "photo" value = "Ajouter une photo">
+                    <td colspan="2" align="center" ><input type="submit" name = "photoo" value = "Ajouter une photo">
                     </td>
                 </tr>
                 </table>
