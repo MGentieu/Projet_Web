@@ -1,7 +1,182 @@
 <?php
 
 session_start();
+$m1="";
+$m2="";
+if(isset($_POST['affiche_emploi'])){
+    $choice =$_POST["affiche_emploi"]; 
+    /*if (empty($choice)) { 
+        $choice = 0; 
+    }*/
+    $m2="";
+    $user = 'root';
+    $serveur='localhost';
+    $password = $_SESSION['mdp_bdd'];
+    $port = NULL;
+    $database = 'ECE_IN';
+    $mysqli = new mysqli($serveur, $user, $password, $database, $port);
 
+    if ($mysqli->connect_error) {
+        echo "Erreur de connexion à la base de données.<br>";
+        die('Connect Error (' . $mysqli->connect_errno . ') '
+                . $mysqli->connect_error);
+    }
+    else{ 
+        $choice = (int)$choice; 
+        $myEmail=$_SESSION['emailauteur'];
+        $sql="SELECT * from auteur where email_auteur='$myEmail'";
+        $result=$mysqli->query($sql);
+        $domaine="null";
+        if($result->num_rows>0){
+            $row=$result->fetch_assoc();
+            $domaine=$row['domaine'];
+        }
+        $sql = "";
+
+        switch($choice){
+
+            case 1: 
+                $sql = "SELECT * FROM offre_emploi where domaine='info' order by date_debut"; 
+                break; 
+
+            case 2: 
+                $sql = "SELECT * FROM offre_emploi where domaine='aero'"; 
+                break; 
+
+            case 3: 
+                $sql = "SELECT * FROM offre_emploi where domaine='finance'"; 
+                break; 
+
+            case 4: 
+                $sql = "SELECT * FROM offre_emploi where domaine='pilotage'"; 
+                break; 
+
+            case 5: 
+                $sql = "SELECT * FROM offre_emploi where domaine='info'"; 
+                break; 
+
+            case 6:
+                $sql = "SELECT * FROM offre_emploi where domaine='info'"; 
+                break; 
+
+            case 7: 
+                $sql = "SELECT * FROM offre_emploi where domaine='info'"; 
+                break; 
+
+            case 8:
+                $sql = "SELECT * FROM offre_emploi where domaine='info'"; 
+                break;    
+
+            default: 
+                $sql = ""; 
+                break;
+        }
+        $result=$mysqli->query($sql);
+        if($result->num_rows>0){
+            $row=$result->fetch_assoc();
+            $url=$row['url'];
+            $descr=$row['Description'];
+            $nom_offre=$row['nom_offre'];
+            $ref_offre=$row['reference_offre'];
+            $date=$row['date_debut'];
+            $m2.='
+                <div class="row">
+                    <div class="col-sm-3" style="background-color: lavender; height: 190px;">
+                        <p style="text-align:center">
+                            <a href="#"><img src="'.$url.'" height="190" width="190"></a>
+                        </p>
+                    </div>
+                    <div class="col-sm-3" style="background-color: lavender; height: 190px; overflow:scroll;">
+                        <h3 style="color: black; text-align: left;">'.$nom_offre.'</h3>
+                        <p style="color: black; text-align: left;">
+                            '.$descr.'.<br>Date de début : '.$date.'.
+                        </p>
+                        <button id="stage1" value='.$ref_offre.'>Candidater</button>
+                    </div>';
+                
+        }
+        else{
+            $m2.="<div>";
+        }
+        if($row=$result->fetch_assoc()){
+            
+            $url=$row['url'];
+            $descr=$row['Description'];
+            $nom_offre=$row['nom_offre'];
+            $ref_offre=$row['reference_offre'];
+            $date=$row['date_debut'];
+            $m2.='
+                
+                    <div class="col-sm-3" style="background-color: lavender; height: 190px;">
+                        <p style="text-align:center">
+                            <a href="#"><img src="'.$url.'" height="190" width="190"></a>
+                        </p>
+                    </div>
+                    <div class="col-sm-3" style="background-color: lavender; height: 190px; overflow:scroll;">
+                        <h3 style="color: black; text-align: left;">'.$nom_offre.'</h3>
+                        <p style="color: black; text-align: left;">
+                            '.$descr.'.<br>Date de début : '.$date.'.
+                        </p>
+                        <button id="stage1" value='.$ref_offre.'>Candidater</button>
+                    </div>';
+            $m2.='</div>';
+        }
+        else{
+            $m2.="</div>";
+        }
+        if($row=$result->fetch_assoc()){
+            $url=$row['url'];
+            $descr=$row['Description'];
+            $nom_offre=$row['nom_offre'];
+            $ref_offre=$row['reference_offre'];
+            $date=$row['date_debut'];
+            $m2.='
+                <div class="row">
+                    <div class="col-sm-3" style="background-color: lavender; height: 190px;">
+                        <p style="text-align:center">
+                            <a href="#"><img src="'.$url.'" height="190" width="190"></a>
+                        </p>
+                    </div>
+                    <div class="col-sm-3" style="background-color: lavender; height: 190px; overflow:scroll;">
+                        <h3 style="color: black; text-align: left;">'.$nom_offre.'</h3>
+                        <p style="color: black; text-align: left;">
+                            '.$descr.'.<br>Date de début : '.$date.'.
+                        </p>
+                        <button id="stage1" value='.$ref_offre.'>Candidater</button>
+                    </div>';
+        }
+        else{
+            $m2.="<div>";
+        }
+        if($row=$result->fetch_assoc()){
+            
+            $url=$row['url'];
+            $descr=$row['Description'];
+            $nom_offre=$row['nom_offre'];
+            $ref_offre=$row['reference_offre'];
+            $date=$row['date_debut'];
+            $m2.='
+                
+                    <div class="col-sm-3" style="background-color: lavender; height: 190px;">
+                        <p style="text-align:center">
+                            <a href="#"><img src="'.$url.'" height="190" width="190"></a>
+                        </p>
+                    </div>
+                    <div class="col-sm-3" style="background-color: lavender; height: 190px; overflow:scroll;">
+                        <h3 style="color: black; text-align: left;">'.$nom_offre.'</h3>
+                        <p style="color: black; text-align: left;">
+                            '.$descr.'.<br>Date de début : '.$date.'.
+                        </p>
+                        <button id="stage1" value='.$ref_offre.'>Candidater</button>
+                    </div>';
+            $m2.='</div>';
+        }
+        else{
+            $m2.="</div>";
+        }
+    }
+    $mysqli->close();
+}
 
 if(!isset($_SESSION['ep'])){
     session_destroy();
@@ -9,6 +184,7 @@ if(!isset($_SESSION['ep'])){
     exit();
 }
 else{
+    /*
     $m1="";
     $user = 'root';
     $serveur='localhost';
@@ -56,11 +232,12 @@ else{
                         <button id="stage1" value='.$ref_offre.'>Candidater</button>
                     </div>
                 </div>';
+                
         }
-        else{
-            $m1.="Un problème...";
-        }
+        
     }
+    $mysqli->close();
+    */
 ?>
 
 <!DOCTYPE html>
@@ -128,11 +305,42 @@ else{
             </div>
 
         </div>
+        
         <div class="row" style="margin: 15px 0; padding: 5px;">
-            <div class="col-sm-10" style="height:400px; overflow:scroll; float:left; border: 1px solid black;">
-                <?php 
-                    echo $m1;
-                ?>
+            <div class="col-sm-2" style="height:400px; float:left; overflow:scroll; border: 1px solid black;">
+                <p style="text-align:center">
+                    <form action="emploi.php" method="post">
+                        <table class="table">
+                            <tr>
+                                <td><button type="submit" name="affiche_emploi" value="1">Informatique</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" name="affiche_emploi" value="2">Aéronautique</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" name="affiche_emploi" value="3">Finance</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" name="affiche_emploi" value="4">Pilotage</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" name="affiche_emploi" value="5">Stages</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" name="affiche_emploi" value="6">Apprentissage</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" name="affiche_emploi" value="7">CDD</button></td>
+                            </tr>
+                            <tr>
+                                <td><button type="submit" name="affiche_emploi" value="8">CDI</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                </p>
+            </div>
+            <div class="col-sm-8" style="height:400px; overflow:scroll; float:left; border: 1px solid black;">
+                <?php echo $m2; ?>
             </div>
             <div class="col-sm-2" style="height:400px;width :auto float:left; border: 1px solid black;">
                 
@@ -140,6 +348,7 @@ else{
                     <a id="exit" href="#" style="color: #FFF;"><button type="button" class="btn btn-primary" style="width:180px;background-color: #E74C3C; font-size: 2em;">Quitter</button></a>
                 </p>
             </div>
+            
         </div>
         
         
