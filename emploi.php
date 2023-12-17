@@ -52,19 +52,19 @@ if(isset($_POST['affiche_emploi'])){
                 break; 
 
             case 5: 
-                $sql = "SELECT * FROM offre_emploi where domaine='info'"; 
+                $sql = "SELECT * FROM offre_emploi where type='stage'"; 
                 break; 
 
             case 6:
-                $sql = "SELECT * FROM offre_emploi where domaine='info'"; 
+                $sql = "SELECT * FROM offre_emploi where type='apprentissage'"; 
                 break; 
 
             case 7: 
-                $sql = "SELECT * FROM offre_emploi where domaine='info'"; 
+                $sql = "SELECT * FROM offre_emploi where type='cdd'"; 
                 break; 
 
             case 8:
-                $sql = "SELECT * FROM offre_emploi where domaine='info'"; 
+                $sql = "SELECT * FROM offre_emploi where type='cdi'"; 
                 break;    
 
             default: 
@@ -76,6 +76,7 @@ if(isset($_POST['affiche_emploi'])){
             $row=$result->fetch_assoc();
             $url=$row['url'];
             $descr=$row['Description'];
+            $type=$row['type'];
             $nom_offre=$row['nom_offre'];
             $ref_offre=$row['reference_offre'];
             $date=$row['date_debut'];
@@ -87,7 +88,8 @@ if(isset($_POST['affiche_emploi'])){
                         </p>
                     </div>
                     <div class="col-sm-3" style="background-color: lavender; height: 190px; overflow:scroll;">
-                        <h3 style="color: black; text-align: left;">'.$nom_offre.'</h3>
+                    <h3 style="color: black; text-align: left;">'.$type.'</h3>
+                        <h4 style="color: black; text-align: left;">'.$nom_offre.'</h4>
                         <p style="color: black; text-align: left;">
                             '.$descr.'.<br>Date de début : '.$date.'.
                         </p>
@@ -102,6 +104,7 @@ if(isset($_POST['affiche_emploi'])){
             
             $url=$row['url'];
             $descr=$row['Description'];
+            $type=$row['type'];
             $nom_offre=$row['nom_offre'];
             $ref_offre=$row['reference_offre'];
             $date=$row['date_debut'];
@@ -113,7 +116,8 @@ if(isset($_POST['affiche_emploi'])){
                         </p>
                     </div>
                     <div class="col-sm-3" style="background-color: lavender; height: 190px; overflow:scroll;">
-                        <h3 style="color: black; text-align: left;">'.$nom_offre.'</h3>
+                        <h3 style="color: black; text-align: left;">'.$type.'</h3>
+                        <h4 style="color: black; text-align: left;">'.$nom_offre.'</h4>
                         <p style="color: black; text-align: left;">
                             '.$descr.'.<br>Date de début : '.$date.'.
                         </p>
@@ -127,6 +131,7 @@ if(isset($_POST['affiche_emploi'])){
         if($row=$result->fetch_assoc()){
             $url=$row['url'];
             $descr=$row['Description'];
+            $type=$row['type'];
             $nom_offre=$row['nom_offre'];
             $ref_offre=$row['reference_offre'];
             $date=$row['date_debut'];
@@ -138,7 +143,8 @@ if(isset($_POST['affiche_emploi'])){
                         </p>
                     </div>
                     <div class="col-sm-3" style="background-color: lavender; height: 190px; overflow:scroll;">
-                        <h3 style="color: black; text-align: left;">'.$nom_offre.'</h3>
+                        <h3 style="color: black; text-align: left;">'.$type.'</h3>
+                        <h4 style="color: black; text-align: left;">'.$nom_offre.'</h4>
                         <p style="color: black; text-align: left;">
                             '.$descr.'.<br>Date de début : '.$date.'.
                         </p>
@@ -152,6 +158,7 @@ if(isset($_POST['affiche_emploi'])){
             
             $url=$row['url'];
             $descr=$row['Description'];
+            $type=$row['type'];
             $nom_offre=$row['nom_offre'];
             $ref_offre=$row['reference_offre'];
             $date=$row['date_debut'];
@@ -163,7 +170,8 @@ if(isset($_POST['affiche_emploi'])){
                         </p>
                     </div>
                     <div class="col-sm-3" style="background-color: lavender; height: 190px; overflow:scroll;">
-                        <h3 style="color: black; text-align: left;">'.$nom_offre.'</h3>
+                        <h3 style="color: black; text-align: left;">'.$type.'</h3>
+                        <h4 style="color: black; text-align: left;">'.$nom_offre.'</h4>
                         <p style="color: black; text-align: left;">
                             '.$descr.'.<br>Date de début : '.$date.'.
                         </p>

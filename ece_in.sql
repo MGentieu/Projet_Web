@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 16 déc. 2023 à 22:43
+-- Généré le : dim. 17 déc. 2023 à 16:00
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -345,26 +345,33 @@ INSERT INTO `evenement` (`id_evenement`, `email_auteur`, `alt`, `url`, `date_deb
 --
 
 DROP TABLE IF EXISTS `formation`;
-CREATE TABLE IF NOT EXISTS `formation` (
+
+CREATE TABLE `formation` (
   `Ecole` varchar(255) NOT NULL,
-  `Diplome` varchar(255) NOT NULL,
-  `DomaineEtudes` varchar(255) NOT NULL,
-  `DataDebut` date NOT NULL,
+  `DateDebut` date NOT NULL, -- Correction ici
   `DateFin` date NOT NULL,
-  `Resultat` varchar(255) NOT NULL,
-  `mailusers` varchar(100) NOT NULL,
-  PRIMARY KEY (`mailusers`)
-) ;
+  `mailusers` varchar(255) NOT NULL
+);
 
 --
 -- Déchargement des données de la table `formation`
 --
 
-INSERT INTO `formation` (`Ecole`, `Diplome`, `DomaineEtudes`, `DataDebut`, `DateFin`, `Resultat`, `mailusers`) VALUES
-('rrnjefnerreg', 'gregr', 'rggre', '2023-12-05', '2023-12-07', 'rege', 'theo.mettez@edu.ece.fr'),
-('EPF', 'ingénieur aéronautique', 'ingénierie', '2023-12-08', '2023-12-30', 'Intégration EPF', 'mgentieu02@edu.ece.fr');
+INSERT INTO `formation` (`Ecole`, `DateDebut`, `DateFin`, `mailusers`) VALUES
+('CIV', '2023-12-22', '2023-12-22', 'theo.mettez@edu.ece.fr'),
+('ECE', '2024-03-08', '2023-12-21', 'theo.mettez@edu.ece.fr'),
+('ECE', '2024-03-08', '2023-12-21', 'theo.mettez@edu.ece.fr'),
+('ECE', '2024-03-08', '2023-12-21', 'theo.mettez@edu.ece.fr'),
+('ECE', '2024-03-08', '2023-12-21', 'theo.mettez@edu.ece.fr'),
+('ECE', '2024-03-08', '2023-12-21', 'theo.mettez@edu.ece.fr'),
+('ECE', '2024-03-08', '2023-12-21', 'theo.mettez@edu.ece.fr'),
+('ECE', '2024-03-08', '2023-12-21', 'theo.mettez@edu.ece.fr'),
+('ECE', '2024-03-08', '2023-12-21', 'theo.mettez@edu.ece.fr'),
+('ECE', '2024-03-08', '2023-12-21', 'theo.mettez@edu.ece.fr'),
+(' dx', '2023-12-22', '2023-12-07', 'theo.mettez@edu.ece.fr'),
+('decedc', '2023-12-22', '2023-12-14', 'theo.mettez@edu.ece.fr');
 
--- --------------------------------------------------------
+COMMIT;
 
 --
 -- Structure de la table `image_de_fond`
@@ -450,13 +457,31 @@ CREATE TABLE IF NOT EXISTS `offre_emploi` (
 --
 
 INSERT INTO `offre_emploi` (`reference_offre`, `nom_offre`, `duree`, `date_debut`, `remuneration`, `Description`, `siret`, `type`, `domaine`, `url`) VALUES
-('STG235-ECE', 'Developpeur informatique', '4 mois', '2024-04-01', 2000, 'Poste de developpeur informatique sur le campus Eiffel 1', 11122233300015, 'stage', 'info', '#'),
-('STG245-AIRBUS', 'Ingenieur en maintenance aeronautique', '3 mois', '2024-01-01', 1500, 'Poste d\'ingenieur en maintenance aeronautique à Toulouse.', 11122233300016, 'stage', 'aero', '#'),
-('STG255-BNP', 'Conseiller bancaire', '2 mois', '2024-02-01', 1600, 'Poste de Conseiller bancaire à la BNP de Bir Hakeim', 11122233300017, 'stage', 'finance', '#'),
-('STG265-AIRFRANCE', 'Personnel Complémentaire de bord', '3 mois', '2024-07-01', 1700, 'Poste de Personnel Complémentaire de bord basé à l\'aeroport de Roissy CDG', 11122233300018, 'stage', 'pilotage', '#');
+('STG235-ECE', 'Developpeur informatique', '4 mois', '2024-04-01', 2000, 'Poste de developpeur informatique sur le campus Eiffel 1', 11122233300015, 'stage', 'info', 'images/ecebaniere.jpg'),
+('STG245-AIRBUS', 'Ingenieur en maintenance aeronautique', '3 mois', '2024-01-01', 1500, 'Poste d\'ingenieur en maintenance aeronautique à Toulouse.', 11122233300016, 'stage', 'aero', 'images/airbus.png'),
+('STG255-BNP', 'Conseiller bancaire', '2 mois', '2024-02-01', 1600, 'Poste de Conseiller bancaire à la BNP de Bir Hakeim', 11122233300017, 'stage', 'finance', 'images/bnp.png'),
+('STG265-AIRFRANCE', 'Personnel Complémentaire de bord', '3 mois', '2024-07-01', 1700, 'Poste de Personnel Complémentaire de bord basé à l\'aeroport de Roissy CDG', 11122233300018, 'stage', 'pilotage', 'images/af.png'),
+('APPR245-SID', 'Apprenti au sein du SID', '2 ans', '2024-09-05', 1500, 'Poste d\'apprenti au sein de la cellule cybersécurité du Service d\'Infrastructure de la Défense.', 11009001600053, 'apprentissage', 'info', 'images/sid.png'),
+('CDD784-DGA', 'Développeur fullstack', '3 mois', '2024-02-01', 1900, 'Poste de développeur dont la mission sera de développer un site intranet afin de supporter le personnel du camp de Saclay.', 11009001600053, 'cdd', 'info', 'images/dga.png'),
+('CDI456-CDISCOUNT', 'Développeur Backend', 'indéterminée', '2024-03-01', 2700, 'Poste chez Cdiscount à Bordeaux. Gestion des serveurs et de la maintenance du site.', 42405982200333, 'cdi', 'info', 'images/cdiscount.png'),
+('APPR621-THALES', 'Apprenti ingénieur aéronautique', '2 ans', '2024-09-02', 1300, 'Poste d\'apprenti ingénieur dans la section spécialisée en aéronautique et mécanique de Thalès.', 55205902401909, 'apprentissage', 'aero', 'images/thales.png'),
+('APPR451-SG', 'Apprenti conseiller bancaire', '2 ans', '2025-09-01', 1550, 'Poste d\'apprenti conseiller bancaire au sein de la Société Générale ayant pour but d\'évaluer la rentabilité de certains marchés.', 55212022200013, 'apprentissage', 'finance', 'images/sg.png'),
+('APPR666-AIRF', 'Apprenti pilote', '2 ans', '2024-02-01', 1500, 'Poste d\'apprenti pilote au sein de Air France', 55204300275008, 'apprentissage', 'pilotage', 'images/af.png'),
+('CDD231-AIRBUS', 'Poste d\'expert robotique', '2 à 3 ans', '2024-09-03', 4000, 'Poste d\'ingénieur spécialisé en systèmes embarqués ayant pour but de designer des circuits PCB pour les avions A-350.', 38347481400100, 'cdd', 'aero', 'images/airbus.png'),
+('CDD589-PG', 'Expert comptable', '6 mois', '2024-01-01', 2200, 'Poste de comptable chez Procter & Gamble. Potentielle débouchée vers un CDI.', 39154357600097, 'cdd', 'finance', 'images/pg.png'),
+('CDD912-EMIR', 'Copilote', '4 mois', '2024-04-06', 3000, 'Poste de copilote au sein de la compagnie EMIRATES', 55212045200013, 'cdd', 'pilotage', 'images/emir.png'),
+('CDI888-BP', 'Banquier', 'indéterminée', '2024-02-01', 4500, 'Poste de Banquier chez la banque postale. Minimum 5 ans d\'expérience dans le secteur requis.', 42110064575006, 'cdi', 'finance', 'images/bp.png'),
+('CDI167-SAFR', 'Ingénieur mécanique des fluides', 'indéterminée', '2025-01-02', 5000, 'Ingénieur en mécanique des fluides chargé de de designer des nouveaux modèles d\'avions', 56208290975015, 'cdi', 'aero', 'images/safran.png'),
+('CDI375-BOEING', 'Pilote de ligne', 'indéterminée', '2024-06-01', 4500, 'Poste de pilote de ligne chez Boeing', 47867926900017, 'cdi', 'pilotage', 'images/boeing.png');
 
 -- --------------------------------------------------------
 
+DROP TABLE IF EXISTS `photo_profile`;
+CREATE TABLE `photo_profile` (
+  `photo` varchar(255) NOT NULL,
+  `email_users` varchar(255) NOT NULL
+) ;
+COMMIT;
 --
 -- Structure de la table `partage_evenement`
 --

@@ -61,7 +61,7 @@ if(isset($_POST["ajoutformation"]))
     // Regarde si les données essentiels sont bien saisis et si oui les ajoutes
     if($ecole!=""&&$dateDebut!=""&&$dateFin!="")
     { 
-        $sql = "INSERT INTO `formation`(`Ecole`, `DataDebut`, `DateFin`, `mailusers`) VALUES ('$ecole', '$dateDebut', '$dateFin', '$emailauteur')";
+        $sql = "INSERT INTO `formation`(`Ecole`, `DateDebut`, `DateFin`, `mailusers`) VALUES ('$ecole', '$dateDebut', '$dateFin', '$emailauteur')";
 
         // Result contient le tableau de valeur retourné par la requete sql.
         $result = mysqli_query($db_handle, $sql);
@@ -296,7 +296,7 @@ VALUES('$photo, '$emailauteur')";
 
                             {
 
-                                $SQL = "SELECT DISTINCT Ecole, DataDebut, DateFin FROM formation WHERE mailusers LIKE '%" . $emailauteur . "%'ORDER BY DataDebut DESC";
+                                $SQL = "SELECT DISTINCT Ecole, DateDebut, DateFin FROM formation WHERE mailusers LIKE '%" . $emailauteur . "%'ORDER BY DateDebut DESC";
 
                                 // Result contient le tableau de valeur retourné par la requete sql.
                                 $result = mysqli_query($db_handle, $SQL);
@@ -305,7 +305,7 @@ VALUES('$photo, '$emailauteur')";
                                 while ($data = mysqli_fetch_assoc($result)) 
                                 {
                                     $message2.="<li>". "École : " . $data['Ecole'] /* photo si temps*/."<br>";
-                                    $message2.= "Date de début : " .$data['DataDebut']."<br>" ."Date de fin :" .$data['DateFin']. "<br>"."</li><br>";
+                                    $message2.= "Date de début : " .$data['DateDebut']."<br>" ."Date de fin :" .$data['DateFin']. "<br>"."</li><br>";
                                     echo $message2;
                                 }
                             }
