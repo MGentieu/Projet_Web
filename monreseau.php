@@ -38,7 +38,7 @@ if(isset($_SESSION['ep'])){
                 //$message.="La conversation nommée : '".$row['nom_conv']."'<br>";
                 $message.="<tr bgColor='lightcyan'><td name='email_auteur'>".$row['prenom']."</td>";
                 $message.="<td>".$row['nom']."</td>";
-                $message.="<td><img src='" . $row['url'] . "' alt='Image de fond' height='50px' width='80px' type='submit' name='valid_ami' value='".$row['id_im_de_fond']."' class='button-style'></td></tr>";
+                $message.="<td><img src='" . $row['url'] . "' alt='Image de fond' height='50px' width='80px' style='border-radius: 50%; border: 4px solid teal;' type='submit' name='valid_ami' value='".$row['id_im_de_fond']."' class='button-style'></td></tr>";
             }
 
             $message.="</table></form>";
