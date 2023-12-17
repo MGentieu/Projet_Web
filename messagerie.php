@@ -179,12 +179,13 @@ if(isset($_POST['creer_conv'])){
         
 
         <div class="leftcolumn">
-            <?php
-            echo $_COOKIE['post1'].'<br>'.$_COOKIE['post2'];
-            ?>
+            
             <br><br><br>
             <p style="text-align:center">
-                <a href="#"><img src="images/teams.png" height='200' width='200'></a>
+                <a href="msteams://teams.microsoft.com/l/chat/0/0?users=%3Cmgentieu02%40gmail.com%3E">
+                <img src="images/teams.png" height='200' width='200'>
+                </a>
+
             </p>
     	</div>
         
