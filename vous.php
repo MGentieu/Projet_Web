@@ -52,6 +52,7 @@ if(isset($_POST["ajoutformation"]))
     $dateDebut = isset($_POST["dateDebut"])?$_POST["dateDebut"]:"";
     $dateFin = isset($_POST["dateFin"])?$_POST["dateFin"]:"";
     $emailauteur = $_SESSION['emailauteur'];
+    $photo = isset($_FILES["photo"]) ? $_FILES["photo"]["name"] : "";
     /*
     $diplome = isset($_POST["diplome"])?$_POST["diplome"]:"";
     $domaineDetudes= isset($_POST["domaineDetudes"])?$_POST["domaineDetudes"]:"";
@@ -112,7 +113,7 @@ echo "Date de fin: $dateFin<br>";
 }
 
 // ferme la connexion
-mysqli_close($db_handle)
+mysqli_close($db_handle);
 
 ?>
 
@@ -235,8 +236,36 @@ mysqli_close($db_handle)
         <div class="leftcolumn" style="overflow:scroll;width: 20%;">
 
             <div >
-             
+                
+            <?php
+            //session_start();
+             // Définie la base de donnée
+                            $db = "ece_in";
 
+                            // Définie la connexion à la base de donnée
+                            $db_handle = mysqli_connect('localhost','root',$password);
+
+                            // On va trouver la BD au bon endroit (serveur)à l'aide des deux variables definie précèdement et on le definie comme suit
+                            $db_found = mysqli_select_db($db_handle,$db);
+                if(isset($_POST["photoo"]))
+                 
+                {
+                    // Récupére les données de la page vous.php
+                    $emailauteur = $_SESSION['emailauteur'];
+                    $photo = isset($_FILES["photo"]) ? $_FILES["photo"]["name"] : "";
+                    $sql = "INSERT INTO photo_profile(photo, email_users)
+                    VALUES('$photo', '$emailauteur')";
+                    $result = mysqli_query($db_handle, $sql);
+                    $sql = "SELECT photo FROM photo_profile WHERE email_users LIKE '%" . $emailauteur . "%' AND photo LIKE'%jpg%'";
+                    $result = mysqli_query($db_handle, $sql);
+                    $data = mysqli_fetch_assoc($result); 
+
+                    echo "" . "<img id ='photoProfil' src='$data' alt = 'Photo de profil' height='70' width='70'>" .
+                "";
+                }
+                    mysqli_close($db_handle);
+                ?>
+                
                 <img id ="photoProfil"src ="images/france1.jpg" alt = "Photo de profil" height="70" width="70">
             </div>
 
@@ -340,7 +369,7 @@ mysqli_close($db_handle)
 
             </form>
 
-            <!-- Formulaire permettant de remplir ou changer sa photo de profils-->
+              <!-- Formulaire permettant de remplir ou changer sa photo de profils-->
 
             <form action="vous.php" method="post" enctype="multipart/form-data">
 
