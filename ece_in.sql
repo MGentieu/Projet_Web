@@ -390,14 +390,14 @@ CREATE TABLE IF NOT EXISTS `image_de_fond` (
 --
 
 INSERT INTO `image_de_fond` (`id_im_de_fond`, `alt`, `url`) VALUES
-(145201, 'Image d\'informatique', 'numerique.png'),
-(145202, 'Image d\'aéronautique', 'aeronautique.png'),
-(145203, 'Image d\'argent', 'finance.png'),
-(145204, 'Image de AirFrance', 'airfrance.png'),
-(145205, 'Image d\'escroc', 'escroc.png'),
-(145206, 'Image d\'ecologie', 'ecologie.png'),
-(145207, 'Image de big data', 'bigdata.png'),
-(145208, 'Image de Cibersecurite', 'cybersecurite.png');
+(145201, 'Image d\'informatique', 'images/numerique.png'),
+(145202, 'Image d\'aéronautique', 'images/aeronautique.png'),
+(145203, 'Image d\'argent', 'images/finance.png'),
+(145204, 'Image de AirFrance', 'images/airfrance.png'),
+(145205, 'Image d\'escroc', 'images/escroc.png'),
+(145206, 'Image d\'ecologie', 'images/ecologie.png'),
+(145207, 'Image de big data', 'images/bigdata.png'),
+(145208, 'Image de Cybersecurite', 'images/cybersecurite.png');
 
 -- --------------------------------------------------------
 
