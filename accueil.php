@@ -588,7 +588,8 @@ function loginForm() {
 
         <div id="footer">
 
-             <strong align='center'> ECE In <br> 75015 Paris </strong> 
+             <strong align='center'> ECE In <br> 75015 Paris <br>
+                <a href="mailto:scolarite@ece.fr">Contactez l'ECE</a></strong> 
     
         </div>
         
